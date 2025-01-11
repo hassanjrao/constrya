@@ -3,8 +3,6 @@
 
 @section('styles')
 
-    {{-- <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_LIVE_API_USERNAME') }}&currency=USD"></script> --}}
-
     @if (config('paypal.mode') == 'sandbox')
         <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_SANDBOX_CLIENT_ID') }}&vault=true"></script>
     @else
