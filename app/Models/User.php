@@ -24,6 +24,8 @@ class User extends Authenticatable
         'phone',
         'profession',
         'plan_id',
+        'subscription_id',
+        'is_paid',
     ];
 
     /**

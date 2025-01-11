@@ -9,7 +9,6 @@
 
 
 
-
     <!-- Icons -->
     <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
     <link rel="shortcut icon" href="{{ asset('media/favicons/favicon.png') }}">
@@ -25,6 +24,7 @@
     <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
     <!-- <link rel="stylesheet" id="css-theme" href="{{ asset('css/themes/amethyst.css') }}"> -->
     <!-- END Stylesheets -->
+    @yield('styles')
 </head>
 
 <body>
@@ -71,269 +71,89 @@
 
         'sidebar-dark page-header-dark dark-mode'   Enable dark mode (light sidebar/header is not supported with dark mode)
     -->
-    <div id="page-container" class="sidebar-dark side-scroll page-header-fixed page-header-dark">
-
-        <!-- Sidebar -->
-        <!--
-          Sidebar Mini Mode - Display Helper classes
-
-          Adding 'smini-hide' class to an element will make it invisible (opacity: 0) when the sidebar is in mini mode
-          Adding 'smini-show' class to an element will make it visible (opacity: 1) when the sidebar is in mini mode
-              If you would like to disable the transition animation, make sure to also add the 'no-transition' class to your element
-
-          Adding 'smini-hidden' to an element will hide it when the sidebar is in mini mode
-          Adding 'smini-visible' to an element will show it (display: inline-block) only when the sidebar is in mini mode
-          Adding 'smini-visible-block' to an element will show it (display: block) only when the sidebar is in mini mode
-      -->
-        <nav id="sidebar" aria-label="Main Navigation">
-            <!-- Side Header -->
-            <div class="content-header bg-white-5">
-                <!-- Logo -->
-                <a class="fw-semibold text-dual" href="index.html">
-                    <span class="smini-visible">
-                        <i class="fa fa-circle-notch text-primary"></i>
-                    </span>
-                    <span class="smini-hide fs-5 tracking-wider">
-                        {{ config('app.name') }}
-                    </span>
-                </a>
-                <!-- END Logo -->
-
-                <!-- Extra -->
-                <div>
-                    <!-- Options -->
-                    <div class="dropdown d-inline-block ms-1">
-                        <button type="button" class="btn btn-sm btn-alt-secondary" id="sidebar-themes-dropdown"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="far fa-circle"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-end fs-sm smini-hide border-0"
-                            aria-labelledby="sidebar-themes-dropdown">
-                            <!-- Color Themes -->
-                            <!-- Layout API, functionality initialized in Template._uiHandleTheme() -->
-                            <a class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
-                                data-toggle="theme" data-theme="default" href="#">
-                                <span>Default</span>
-                                <i class="fa fa-circle text-default"></i>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
-                                data-toggle="theme" data-theme="{{ asset('css/themes/amethyst.min.css') }}"
-                                href="#">
-                                <span>Amethyst</span>
-                                <i class="fa fa-circle text-amethyst"></i>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
-                                data-toggle="theme" data-theme="{{ asset('css/themes/city.min.css') }}" href="#">
-                                <span>City</span>
-                                <i class="fa fa-circle text-city"></i>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
-                                data-toggle="theme" data-theme="{{ asset('css/themes/flat.min.css') }}" href="#">
-                                <span>Flat</span>
-                                <i class="fa fa-circle text-flat"></i>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
-                                data-toggle="theme" data-theme="{{ asset('css/themes/modern.min.css') }}"
-                                href="#">
-                                <span>Modern</span>
-                                <i class="fa fa-circle text-modern"></i>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
-                                data-toggle="theme" data-theme="{{ asset('css/themes/smooth.min.css') }}"
-                                href="#">
-                                <span>Smooth</span>
-                                <i class="fa fa-circle text-smooth"></i>
-                            </a>
-                            <!-- END Color Themes -->
-                        </div>
-                    </div>
-                    <!-- END Options -->
-
-                    <!-- Close Sidebar, Visible only on mobile screens -->
-                    <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                    <a class="d-lg-none btn btn-sm btn-alt-secondary ms-1" data-toggle="layout"
-                        data-action="sidebar_close" href="javascript:void(0)">
-                        <i class="fa fa-fw fa-times"></i>
-                    </a>
-                    <!-- END Close Sidebar -->
-                </div>
-                <!-- END Extra -->
-            </div>
-            <!-- END Side Header -->
-
-            <!-- Sidebar Scrolling -->
-            <div class="js-sidebar-scroll">
-                <!-- Side Navigation -->
-                <div class="content-side">
-                    <ul class="nav-main">
-                        <li class="nav-main-item">
-                            <a class="nav-main-link active" href="{{ route('home') }}">
-                                <i class="nav-main-link-icon si si-home"></i>
-                                <span class="nav-main-link-name">Home</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link" href="javascript:void(0)">
-                                <i class="nav-main-link-icon si si-rocket"></i>
-                                <span class="nav-main-link-name">Features</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link" href="{{ route('plans.index') }}">
-                                <i class="nav-main-link-icon si si-wallet"></i>
-                                <span class="nav-main-link-name">Join Premium</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link" href="javascript:void(0)">
-                                <i class="nav-main-link-icon si si-envelope"></i>
-                                <span class="nav-main-link-name">Contact</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- END Side Navigation -->
-            </div>
-            <!-- END Sidebar Scrolling -->
-        </nav>
-        <!-- END Sidebar -->
+    <div id="page-container" class="page-header-dark main-content-boxed">
 
         <!-- Header -->
         <header id="page-header">
             <!-- Header Content -->
-            <div class="content-header" style="margin: 20px 0px;">
+            <div class="content-header">
                 <!-- Left Section -->
                 <div class="d-flex align-items-center">
                     <!-- Logo -->
-                    <a class="fw-semibold fs-5 tracking-wider text-dual me-3" href="index.html">
-                        <img src="{{ asset('media/logos/logo.png') }}" class="img-fluid" style="width: 100px;"
-                            alt="">
+                    <a class="fw-semibold fs-5 tracking-wider text-dual me-3" href="{{ route('home') }}">
+                        <img src="{{ asset('media/logos/logo.png') }}" style="width: 60px" alt="">
                     </a>
-                    <!-- END Logo -->
+
+
                 </div>
                 <!-- END Left Section -->
 
                 <!-- Right Section -->
                 <div class="d-flex align-items-center">
-                    <!-- Menu -->
-                    <div>
-                        <div class="d-none d-lg-block">
-                            <ul class="nav-main nav-main-horizontal nav-main-hover">
-                                <li class="nav-main-item">
-                                    <a class="nav-main-link active" href="{{ route('home') }}">
-                                        <i class="nav-main-link-icon si si-home"></i>
-                                        <span class="nav-main-link-name">Home</span>
-                                    </a>
-                                </li>
-                                <li class="nav-main-item">
-                                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu"
-                                        aria-haspopup="true" aria-expanded="false" href="#">
-                                        <span class="nav-main-link-name">Calculators</span>
-                                    </a>
-                                    <ul class="nav-main-submenu nav-main-submenu-right">
-                                        <li class="nav-main-item">
-                                            <a class="nav-main-link" data-toggle="theme" data-theme="default"
-                                                href="#">
-                                                <span class="nav-main-link-name">SheetRock</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-main-item">
-                                            <a class="nav-main-link" data-toggle="theme" data-theme="default"
-                                                href="#">
-                                                <span class="nav-main-link-name">Facius</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-main-item">
-                                            <a class="nav-main-link" data-toggle="theme" data-theme="default"
-                                                href="#">
-                                                <span class="nav-main-link-name">Flat Ceiling</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-main-item">
-                                            <a class="nav-main-link" data-toggle="theme" data-theme="default"
-                                                href="#">
-                                                <span class="nav-main-link-name">Muros</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-main-item">
-                                            <a class="nav-main-link" data-toggle="theme" data-theme="default"
-                                                href="#">
-                                                <span class="nav-main-link-name">Plafon</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-main-item">
-                                            <a class="nav-main-link" data-toggle="theme" data-theme="default"
-                                                href="#">
-                                                <span class="nav-main-link-name">Quotation</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-main-item">
-                                            <a class="nav-main-link" data-toggle="theme" data-theme="default"
-                                                href="#">
-                                                <span class="nav-main-link-name">Memory Calculations</span>
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </li>
-
-                                <li class="nav-main-item">
-                                    <a class="nav-main-link" href="{{ route('plans.index') }}">
-                                        <i class="nav-main-link-icon si si-wallet"></i>
-                                        <span class="nav-main-link-name">Join Premium</span>
-                                    </a>
-                                </li>
-                                <li class="nav-main-item">
-                                    <a class="nav-main-link" href="javascript:void(0)">
-                                        <i class="nav-main-link-icon si si-envelope"></i>
-                                        <span class="nav-main-link-name">Contact</span>
-                                    </a>
-                                </li>
 
 
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- END Menu -->
+                    @guest
 
-                    <div class="">
-                        <!-- Logo -->
-                        <a class="btn btn-primary btn-sm  px-2 py-1 m-1" href="{{ route('login') }}">
-                            <i class="fa fa-fw fa-link  me-1"></i> Login
+                        <a href="{{ route('plans.index') }}" class="btn btn-sm btn-alt-secondary"
+                            id="page-header-user-dropdown">
+
+
+                            {{-- join premium icon --}}
+                            <i class="fa fa-fw fa-crown"></i>
+                            <span class="d-none d-sm-inline-block ms-1">Join Premium</span>
                         </a>
-                        <!-- END Logo -->
-                    </div>
 
-                    <!-- Toggle Sidebar -->
-                    <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                    <button type="button" class="btn btn-sm btn-alt-secondary d-lg-none ms-1" data-toggle="layout"
-                        data-action="sidebar_toggle">
-                        <i class="fa fa-fw fa-bars"></i>
-                    </button>
-                    <!-- END Toggle Sidebar -->
+                        <a href="{{ route('login') }}" class="btn btn-sm btn-alt-secondary" id="page-header-user-dropdown">
+
+                            <i class="fa fa-fw fa-user"></i>
+                            <span class="d-none d-sm-inline-block ms-1">Login</span>
+                        </a>
+
+                    @endguest
+
+                    @auth
+
+                        <!-- User Dropdown -->
+                        <div class="dropdown d-inline-block ms-2">
+                            <button type="button" class="btn btn-sm btn-alt-secondary" id="page-header-user-dropdown"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img class="rounded" src="{{ asset('media/avatars/avatar10.jpg') }}" alt="Header Avatar"
+                                    style="width: 21px;" />
+                                <span class="d-none d-sm-inline-block ms-1">{{ auth()->user()->name }}</span>
+                                <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0"
+                                aria-labelledby="page-header-user-dropdown">
+
+                                <div class="p-2">
+
+                                    <a class="dropdown-item d-flex align-items-center justify-content-between"
+                                        href="{{ route('user.profile.index') }}">
+                                        <span class="fs-sm fw-medium">Profile</span>
+                                    </a>
+                                    <form action="{{ route('logout') }}" id="logout-form" method="POST">
+                                        @csrf
+
+                                    </form>
+
+
+                                    <a class="dropdown-item d-flex align-items-center justify-content-between"
+                                        onclick="document.getElementById('logout-form').submit()">
+                                        <span class="fs-sm fw-medium">Log Out</span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- END User Dropdown -->
+
+                    @endauth
                 </div>
                 <!-- END Right Section -->
-
             </div>
             <!-- END Header Content -->
 
-            <!-- Header Search -->
-            <div id="page-header-search" class="overlay-header bg-body-extra-light">
-                <div class="content-header">
-                    <form class="w-100" method="POST">
-                        <div class="input-group input-group-sm">
-                            <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                            <button type="button" class="btn btn-alt-danger" data-toggle="layout"
-                                data-action="header_search_off">
-                                <i class="fa fa-fw fa-times-circle"></i>
-                            </button>
-                            <input type="text" class="form-control" placeholder="Search or hit ESC.."
-                                id="page-header-search-input" name="page-header-search-input">
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!-- END Header Search -->
+
 
             <!-- Header Loader -->
             <!-- Please check out the Loaders page under Components category to see examples of showing/hiding it -->
@@ -349,72 +169,116 @@
         <!-- END Header -->
 
         <!-- Main Container -->
-        <main id="main-container" style="padding-top: 120px">
+        <main id="main-container">
 
-            @yield('content')
+            <!-- Navigation -->
+            <div class="bg-primary-darker">
+                <div class="content py-3">
+                    <!-- Toggle Main Navigation -->
+                    <div class="d-lg-none">
+                        <!-- Class Toggle, functionality initialized in Helpers.oneToggleClass() -->
+                        <button type="button"
+                            class="btn w-100 btn-alt-secondary d-flex justify-content-between align-items-center"
+                            data-toggle="class-toggle" data-target="#main-navigation" data-class="d-none">
+                            Menu
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+                    <!-- END Toggle Main Navigation -->
+
+                    <!-- Main Navigation -->
+                    <div id="main-navigation" class="d-none d-lg-block mt-2 mt-lg-0">
+                        <ul class="nav-main nav-main-dark nav-main-horizontal nav-main-hover">
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="bd_dashboard.html">
+                                    <i class="nav-main-link-icon si si-compass"></i>
+                                    <span class="nav-main-link-name">SheetRock</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="bd_search.html">
+                                    <i class="nav-main-link-icon si si-compass"></i>
+                                    <span class="nav-main-link-name">Facius</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="be_pages_dashboard.html">
+                                    <i class="nav-main-link-icon si si-compass"></i>
+                                    <span class="nav-main-link-name">Flat Ceiling</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="be_pages_dashboard.html">
+                                    <i class="nav-main-link-icon si si-compass"></i>
+                                    <span class="nav-main-link-name">Muros</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="be_pages_dashboard.html">
+                                    <i class="nav-main-link-icon si si-compass"></i>
+                                    <span class="nav-main-link-name">Plafon</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="be_pages_dashboard.html">
+                                    <i class="nav-main-link-icon si si-compass"></i>
+                                    <span class="nav-main-link-name">Quotation</span>
+                                </a>
+                            </li>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="be_pages_dashboard.html">
+                                    <i class="nav-main-link-icon si si-compass"></i>
+                                    <span class="nav-main-link-name">Memory Calculation</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!-- END Main Navigation -->
+                </div>
+            </div>
+            <!-- END Navigation -->
+            <!-- Page Content -->
+            <div class="content">
+
+                @auth
+                    @if (!auth()->user()->is_paid && request()->segment(4)!=='pay')
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6">
+                                <div class="alert alert-danger alert-dismissible" role="alert">
+                                    <p class="mb-0">
+
+                                        <a class="alert-link"
+                                            href="{{ route('user.plans.pay',['plan'=>auth()->user()->plan_id]) }}">
+                                            {{ __('Please click here to pay the fee to enjoy premium features') }}
+                                        </a>!
+                                    </p>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+                @endauth
+
+
+                <div class="push">
+                @yield('content')
+            </div>
+
+            </div>
+            <!-- END Page Content -->
         </main>
         <!-- END Main Container -->
 
         <!-- Footer -->
         <footer id="page-footer" class="bg-body-extra-light">
-            <div class="content py-4">
-                <!-- Footer Navigation -->
-                <div class="row items-push fs-sm border-bottom pt-4 justify-content-center">
-                    <div class="col-md-4">
-
-                    </div>
-                    <div class="col-6 col-md-4">
-                        <h3>Important Links</h3>
-                        <ul class="list list-simple-mini">
-                            <li>
-                                <a class="fw-semibold" href="javascript:void(0)">
-                                    <i class="fa fa-fw fa-link text-primary-lighter me-1"></i> Link #1
-                                </a>
-                            </li>
-                            <li>
-                                <a class="fw-semibold" href="javascript:void(0)">
-                                    <i class="fa fa-fw fa-link text-primary-lighter me-1"></i> Link #2
-                                </a>
-                            </li>
-                            <li>
-                                <a class="fw-semibold" href="javascript:void(0)">
-                                    <i class="fa fa-fw fa-link text-primary-lighter me-1"></i> Link #3
-                                </a>
-                            </li>
-                            <li>
-                                <a class="fw-semibold" href="javascript:void(0)">
-                                    <i class="fa fa-fw fa-link text-primary-lighter me-1"></i> Link #4
-                                </a>
-                            </li>
-                            <li>
-                                <a class="fw-semibold" href="javascript:void(0)">
-                                    <i class="fa fa-fw fa-link text-primary-lighter me-1"></i> Link #5
-                                </a>
-                            </li>
-                            <li>
-                                <a class="fw-semibold" href="javascript:void(0)">
-                                    <i class="fa fa-fw fa-link text-primary-lighter me-1"></i> Link #6
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-6 col-md-4">
-                        <h3>Company</h3>
-                        <div class="fs-sm push">
-                            1080 Sunshine Valley, Suite 2563<br>
-                            San Francisco, CA 85214<br>
-                            <abbr title="Phone">P:</abbr> (123) 456-7890
-                        </div>
-
-                    </div>
-                </div>
-                <!-- END Footer Navigation -->
-
-                <!-- Footer Copyright -->
-                <div class="row fs-sm pt-4">
+            <div class="content py-3">
+                <div class="row fs-sm">
                     <div class="col-sm-6 order-sm-2 py-1 text-center text-sm-end">
-                        All Rights Reserved &copy; {{ config('app.name') }}
+                        All rights reserved.
                     </div>
                     <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-start">
                         <a class="fw-semibold" href="https://1.envato.market/AVD6j"
@@ -422,7 +286,6 @@
                         &copy; <span data-toggle="year-copy"></span>
                     </div>
                 </div>
-                <!-- END Footer Copyright -->
             </div>
         </footer>
         <!-- END Footer -->
@@ -433,9 +296,16 @@
         OneUI JS
 
         Core libraries and functionality
-        webpack is putting everything together at {{ asset('js/main/app.js') }}
+        webpack is putting everything together at {{ asset('_js/main/app.js') }}
     -->
     <script src="{{ asset('js/oneui.app.js') }}"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @include('sweetalert::alert')
+
+
+
+    @stack('scripts')
 </body>
 
 </html>

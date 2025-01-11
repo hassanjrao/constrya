@@ -1,4 +1,5 @@
 @extends('layouts.simple')
+@section('page-title', 'Plans')
 
 @section('content')
     <div class="content content-boxed content-full overflow-hidden">
@@ -65,7 +66,7 @@
                                         <button type="button" class="btn btn-sm rounded-pill btn-secondary px-4">No Sign Up Required</button>
                                     </td>
                                     <td>
-                                        <button type="button" class="btn rounded-pill btn-primary px-4">Sign Up</button>
+                                        <a href="{{ route('plans.register',2) }}" class="btn rounded-pill btn-primary px-4">Sign Up</a>
                                     </td>
 
                                 </tr>

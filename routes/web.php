@@ -3,7 +3,9 @@
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\PlanController;
+use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,16 +21,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::get('plans', [PlanController::class, 'index'])->name('plans.index');
+Route::get('plans/{plan}/register', [PlanController::class, 'register'])->name('plans.register');
+Route::post('plans/{plan}/register', [PlanController::class, 'processRegister'])->name('plans.processRegister');
 
 Route::prefix('user')->name('user.')->middleware(['auth'])->group(function () {
 
-    Route::get('plans', [PlanController::class, 'index'])->name('plans.index');
+    Route::get('plans/{plan}/pay', [PlanController::class, 'payView'])->name('plans.pay');
+
+    Route::post('plans/success', [PlanController::class, 'success'])->name('plans.success');
+
+    Route::post('profile/cancel-subscription', [UserProfileController::class, 'cancelSubscription'])->name('profile.cancelSubscription');
+    Route::resource('profile', UserProfileController::class)->only(['index', 'update']);
+
 });
 
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {

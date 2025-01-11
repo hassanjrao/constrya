@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 class AdminUserController extends Controller
 {
@@ -23,6 +24,7 @@ class AdminUserController extends Controller
 
         return view('admin.users.index',compact('users'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -76,7 +78,6 @@ class AdminUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**

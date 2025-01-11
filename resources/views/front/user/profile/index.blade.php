@@ -7,29 +7,26 @@
             <div class="col-md-8 col-lg-8 col-xl-8">
                 <div class="block block-rounded mb-0">
                     <div class="block-header block-header-default">
-                        <h3 class="block-title">Sign Up</h3>
-                        <div class="block-options">
-                            <a class="btn-block-option fs-sm" href="{{ route('login') }}">Already Registered?</a>
-                            <a class="btn-block-option js-bs-tooltip-enabled" href="{{ route('login') }}">
-                                <i class="fa fa-user-plus"></i>
-                            </a>
-                        </div>
+                        <h3 class="block-title">Profile</h3>
+
                     </div>
                     <div class="block-content">
                         <div class="">
 
-                            <form class="js-validation-signin"
-                                action="{{ route('plans.processRegister', ['plan' => $plan->id]) }}" method="POST">
+                            <form class="js-validation-signin" action="{{ route('user.profile.update', $user->id) }}"
+                                method="POST">
                                 @csrf
+                                @method('PUT')
+
                                 <div class="py-3">
                                     <div class="row mb-4">
                                         <div class="col-lg-6">
                                             <div class="">
-                                                <label class="form-label" for="email">Name</label>
+                                                <label class="form-label" for="email">{{ __('Name') }}</label>
                                                 <input type="text"
                                                     class="form-control form-control-alt form-control-lg @error('name') is-invalid @enderror"
-                                                    value="{{ old('name') }}" required autocomplete="name" autofocus
-                                                    id="name" name="name" placeholder="Name">
+                                                    value="{{ $user->name }}" required autocomplete="name" autofocus
+                                                    id="name" name="name" placeholder="{{ __('Name') }}">
                                                 @error('name')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -38,11 +35,11 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
-                                            <label class="form-label" for="email">Email</label>
+                                            <label class="form-label" for="email">{{ __('Email') }}</label>
                                             <input type="email"
                                                 class="form-control form-control-alt form-control-lg @error('email') is-invalid @enderror"
-                                                value="{{ old('email') }}" required autocomplete="email" autofocus
-                                                id="email" name="email" placeholder="Email">
+                                                value="{{ $user->email }}" required autocomplete="email" autofocus
+                                                id="email" name="email" placeholder="{{ __('Email') }}">
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -54,11 +51,11 @@
                                     <div class="row mb-4">
                                         <div class="col-lg-6">
                                             <div class="">
-                                                <label class="form-label" for="phone">Phone</label>
+                                                <label class="form-label" for="phone">{{ __('Phone') }}</label>
                                                 <input type="tel"
                                                     class="form-control form-control-alt form-control-lg @error('phone') is-invalid @enderror"
-                                                    value="{{ old('phone') }}" required autocomplete="phone" autofocus
-                                                    id="phone" name="phone" placeholder="Phone">
+                                                    value="{{ $user->phone }}" required autocomplete="phone" autofocus
+                                                    id="phone" name="phone" placeholder="{{ __('Phone') }}">
                                                 @error('phone')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -68,11 +65,12 @@
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="">
-                                                <label class="form-label" for="profession">Profession</label>
+                                                <label class="form-label" for="profession">{{ __('Profession') }}</label>
                                                 <input type="text"
                                                     class="form-control form-control-alt form-control-lg @error('profession') is-invalid @enderror"
-                                                    value="{{ old('profession') }}" required autocomplete="profession"
-                                                    autofocus id="profession" name="profession" placeholder="Profession">
+                                                    value="{{ $user->profession }}" required autocomplete="profession"
+                                                    autofocus id="profession" name="profession"
+                                                    placeholder="{{ __('Profession') }}">
                                                 @error('profession')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -86,14 +84,15 @@
                                     <div class="row mb-4">
 
                                         <div class="col-lg-6">
-                                            <label class="form-label" for="login-password">Password</label>
+                                            <label class="form-label"
+                                                for="current_password">{{ __('Current Password') }}</label>
                                             <input type="password"
-                                                class="form-control form-control-alt form-control-lg @error('password') is-invalid @enderror"
-                                                id="login-password" name="password" required autocomplete="current-password"
-                                                placeholder="Password">
+                                                class="form-control form-control-alt form-control-lg @error('current_password') is-invalid @enderror"
+                                                id="current_password" name="current_password" required
+                                                autocomplete="current-password" placeholder="{{ __('Current Password') }}">
 
 
-                                            @error('password')
+                                            @error('current_password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -101,12 +100,17 @@
                                         </div>
 
                                         <div class="col-lg-6">
-                                            <label class="form-label" for="password_confirmation">Confirm Password</label>
+                                            <label class="form-label" for="new_password">{{ __('New Password') }}</label>
                                             <input type="password"
-                                                class="form-control form-control-alt form-control-lg @error('password') is-invalid @enderror"
-                                                id="password_confirmation" name="password_confirmation" required autocomplete="current-password_confirmation"
-                                                placeholder="Confirm Password">
+                                                class="form-control form-control-alt form-control-lg @error('new_password') is-invalid @enderror"
+                                                id="new_password" name="new_password" required autocomplete="new_password"
+                                                placeholder="{{ __('New Password') }}">
 
+                                            @error('new_password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
 
 
                                         </div>
@@ -114,12 +118,12 @@
                                     <div class="row mb-4">
                                         <div class="col-lg-6">
                                             <div class="mb-4">
-                                                <label class="form-label" for="plan">Selected Plan</label>
+                                                <label class="form-label" for="plan">{{ __('Current Plan') }}</label>
                                                 <input type="text"
                                                     class="form-control form-control-alt form-control-lg @error('plan') is-invalid @enderror"
-                                                    value="{{ $plan->name }} - {{ $plan->price }}" disabled required
-                                                    autocomplete="plan" autofocus id="plan" name="plan"
-                                                    placeholder="plan">
+                                                    value="{{ $user->plan->name }} - {{ config('app.currency_symbol') }}{{ $user->plan->price }} Per Year"
+                                                    disabled required autocomplete="plan" autofocus id="plan"
+                                                    name="plan" placeholder="plan">
                                                 @error('plan')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -132,22 +136,39 @@
                                 </div>
                                 <div class="row mb-4 justify-content-center">
                                     <div class="col-md-6 col-xl-5 text-center">
-                                        <button type="submit" class="btn w-50 btn-alt-primary">
-                                            <i class="fa fa-fw fa-sign-in-alt me-1 opacity-50"></i> Sign Up
+                                        <button type="submit" class="btn btn-alt-primary">
+                                            <i class="fa fa-fw fa-sign-in-alt me-1 opacity-50"></i> Update Profile
                                         </button>
+
                                     </div>
+
+
+
 
                                 </div>
                             </form>
 
-                            {{-- dont have account --}}
+                            @if ($user->is_paid)
 
-                            <div class="text-center">
-                                <p class="text-muted">
-                                    Already have an account?
-                                    <a href="{{ route('login') }}">Sign In</a>
-                                </p>
+                            <div class="row">
+                                <div class="col-md-12 col-xl-12 mb-4 text-end">
+                                    <form id="form-{{ $user->id }}"
+                                        action="{{ route('user.profile.cancelSubscription') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="user_id" value="{{ encrypt($user->id) }}">
+                                        <button type="button" onclick="cancelSubscription({{ $user->id }})"
+                                            class="btn btn-alt-danger">
+                                            {{-- unsubscribe icon --}}
+                                            <i class="fa fa-fw fa-sign-in-alt me-1 opacity-50"></i>
+                                            {{ __('Cancel Subscription') }}
+                                        </button>
+
+                                    </form>
+                                </div>
                             </div>
+
+                            @endif
+
 
                         </div>
                     </div>
@@ -157,3 +178,28 @@
 
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        function cancelSubscription(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You want to cancel your subscription!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, cancel it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('form-' + id).submit();
+                    // Swal.fire(
+                    //     'Deleted!',
+                    //     'Your file has been deleted.',
+                    //     'success'
+                    // )
+                }
+            })
+        }
+    </script>
+@endpush

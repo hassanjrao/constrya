@@ -4,13 +4,13 @@
     <div class="content">
 
         <div class="row justify-content-center push">
-            <div class="col-md-8 col-lg-8 col-xl-8">
+            <div class="col-md-6 col-lg-6 col-xl-6">
                 <div class="block block-rounded mb-0">
                     <div class="block-header block-header-default">
                         <h3 class="block-title">Sign In</h3>
                         <div class="block-options">
-                            <a class="btn-block-option fs-sm" href="op_auth_reminder.html">Forgot Password?</a>
-                            <a class="btn-block-option js-bs-tooltip-enabled" href="op_auth_signup.html"
+                            <a class="btn-block-option fs-sm" href="{{ route('password.request') }}">Forgot Password?</a>
+                            <a class="btn-block-option js-bs-tooltip-enabled" href="{{ route('plans.index') }}"
                                 data-bs-toggle="tooltip" data-bs-placement="left" aria-label="New Account"
                                 data-bs-original-title="New Account">
                                 <i class="fa fa-user-plus"></i>
@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="block-content">
-                        <div class="p-sm-3 px-lg-4 px-xxl-5 py-lg-5">
+                        <div class="">
 
                             <form class="js-validation-signin" action="{{ route('login') }}" method="POST">
                                 @csrf
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="row mb-4 justify-content-center">
                                     <div class="col-md-6 col-xl-5 text-center">
-                                        <button type="submit" class="btn w-50 btn-alt-primary">
+                                        <button type="submit" class="btn btn-alt-primary">
                                             <i class="fa fa-fw fa-sign-in-alt me-1 opacity-50"></i> Sign In
                                         </button>
                                     </div>
@@ -76,7 +76,7 @@
                             <div class="text-center">
                                 <p class="text-muted">
                                     Don't have an account?
-                                    <a href="{{ route('register') }}">Sign Up</a>
+                                    <a href="{{ route('plans.index') }}">Sign Up</a>
                                 </p>
                             </div>
 
