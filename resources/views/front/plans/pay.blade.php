@@ -9,7 +9,6 @@
         <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_LIVE_CLIENT_ID') }}&vault=true"></script>
     @endif
 
-
 @endsection
 
 @section('content')
