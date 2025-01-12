@@ -184,6 +184,13 @@
                                 <span class="nav-main-link-name">Users</span>
                             </a>
                         </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->is('admin/blogs*') ? ' active' : '' }}"
+                                href="{{ route('admin.blogs.index') }}">
+                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <span class="nav-main-link-name">Blogs</span>
+                            </a>
+                        </li>
 
                     </ul>
                 </div>

@@ -56,8 +56,8 @@ class PlanController extends Controller
 
     public function payView($planId)
     {
-        if(auth()->user()->is_paid) {
-            return redirect()->route('home')->withToastSuccess('You have already paid for a plan.');
+        if(auth()->user()->subscribed_at) {
+            return redirect()->route('home')->withToastSuccess("__('You are already subscribed to a plan.')");
         }
 
         $plan = Plan::findOrFail($planId);
@@ -71,7 +71,7 @@ class PlanController extends Controller
             'subscription_id' => 'required|string',
         ]);
         auth()->user()->update([
-            'is_paid' => true,
+            'subscribed_at' => now(),
             'subscription_id' => $request->subscription_id,
         ]);
         return redirect()->route('home')->withToastSuccess('Payment successful.');

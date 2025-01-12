@@ -25,7 +25,8 @@ class User extends Authenticatable
         'profession',
         'plan_id',
         'subscription_id',
-        'is_paid',
+        'subscribed_at',
+        'subcription_expired_at'
     ];
 
     /**

@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\CalculatorController;
+use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\UserProfileController;
@@ -25,6 +28,7 @@ Auth::routes(['register' => false]);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('{slug}/calculate', [CalculatorController::class, 'show'])->name('calculator.show');
 
 Route::get('plans', [PlanController::class, 'index'])->name('plans.index');
 Route::get('plans/{plan}/register', [PlanController::class, 'register'])->name('plans.register');
@@ -41,10 +45,16 @@ Route::prefix('user')->name('user.')->middleware(['auth'])->group(function () {
 
 });
 
-Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
+
+Route::post('/ckeditor/upload', [FileUploadController::class, 'upload'])->name('ckeditor.upload');
+
+Route::prefix('admin')->name('admin.')->middleware(['auth','role:admin'])->group(function () {
 
     Route::get('', [AdminDashboardController::class, 'index'])->name('dashboard.index');
     Route::resource("profile", AdminProfileController::class)->only(["index", "update"]);
 
     Route::resource('users', AdminUserController::class);
+
+    Route::resource('blogs', AdminBlogController::class);
+
 });

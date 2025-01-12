@@ -71,6 +71,9 @@
 
         'sidebar-dark page-header-dark dark-mode'   Enable dark mode (light sidebar/header is not supported with dark mode)
     -->
+    @php
+        $calculators = \App\Models\Calculator::all();
+    @endphp
     <div id="page-container" class="page-header-dark main-content-boxed">
 
         <!-- Header -->
@@ -189,49 +192,16 @@
                     <!-- Main Navigation -->
                     <div id="main-navigation" class="d-none d-lg-block mt-2 mt-lg-0">
                         <ul class="nav-main nav-main-dark nav-main-horizontal nav-main-hover">
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" href="bd_dashboard.html">
-                                    <i class="nav-main-link-icon si si-compass"></i>
-                                    <span class="nav-main-link-name">SheetRock</span>
-                                </a>
-                            </li>
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" href="bd_search.html">
-                                    <i class="nav-main-link-icon si si-compass"></i>
-                                    <span class="nav-main-link-name">Facius</span>
-                                </a>
-                            </li>
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" href="be_pages_dashboard.html">
-                                    <i class="nav-main-link-icon si si-compass"></i>
-                                    <span class="nav-main-link-name">Flat Ceiling</span>
-                                </a>
-                            </li>
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" href="be_pages_dashboard.html">
-                                    <i class="nav-main-link-icon si si-compass"></i>
-                                    <span class="nav-main-link-name">Muros</span>
-                                </a>
-                            </li>
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" href="be_pages_dashboard.html">
-                                    <i class="nav-main-link-icon si si-compass"></i>
-                                    <span class="nav-main-link-name">Plafon</span>
-                                </a>
-                            </li>
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" href="be_pages_dashboard.html">
-                                    <i class="nav-main-link-icon si si-compass"></i>
-                                    <span class="nav-main-link-name">Quotation</span>
-                                </a>
-                            </li>
-                            </li>
-                            <li class="nav-main-item">
-                                <a class="nav-main-link" href="be_pages_dashboard.html">
-                                    <i class="nav-main-link-icon si si-compass"></i>
-                                    <span class="nav-main-link-name">Memory Calculation</span>
-                                </a>
-                            </li>
+                            @foreach ($calculators as $calculator)
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link" href="{{ route('calculator.show', $calculator->slug) }}">
+                                        <i class="nav-main-link-icon si si-compass"></i>
+                                        <span class="nav-main-link-name">
+                                            {{ $calculator->name }}
+                                        </span>
+                                    </a>
+                                </li>
+                            @endforeach
 
                         </ul>
                     </div>
@@ -243,14 +213,14 @@
             <div class="content">
 
                 @auth
-                    @if (!auth()->user()->is_paid && request()->segment(4)!=='pay')
+                    @if (!auth()->user()->subscribed_at && request()->segment(4) !== 'pay')
                         <div class="row justify-content-center">
                             <div class="col-lg-6">
                                 <div class="alert alert-danger alert-dismissible" role="alert">
                                     <p class="mb-0">
 
                                         <a class="alert-link"
-                                            href="{{ route('user.plans.pay',['plan'=>auth()->user()->plan_id]) }}">
+                                            href="{{ route('user.plans.pay', ['plan' => auth()->user()->plan_id]) }}">
                                             {{ __('Please click here to pay the fee to enjoy premium features') }}
                                         </a>!
                                     </p>
@@ -265,8 +235,8 @@
 
 
                 <div class="push">
-                @yield('content')
-            </div>
+                    @yield('content')
+                </div>
 
             </div>
             <!-- END Page Content -->

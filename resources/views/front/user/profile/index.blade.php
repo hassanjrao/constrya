@@ -148,7 +148,7 @@
                                 </div>
                             </form>
 
-                            @if ($user->is_paid)
+                            @if ($user->subscribed_at)
 
                             <div class="row">
                                 <div class="col-md-12 col-xl-12 mb-4 text-end">
