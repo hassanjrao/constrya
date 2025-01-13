@@ -15,6 +15,8 @@ class CalculatorController extends Controller
             return abort(404);
         }
 
-        return view('front.calculators.show', compact('calculator'));
+        $calculatorView= $calculator->view;
+
+        return view($calculatorView, compact('calculator'));
     }
 }
