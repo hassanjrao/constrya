@@ -119,8 +119,8 @@
 
                             <div class="d-flex justify-content-end gap-3 mb-3">
                                 <input type="submit" value="Calculate" id="calculate" class="btn btn-alt-success">
-                                <input type="reset" value="Reset" class="btn btn-alt-secondary">
-                                <button id="copiar" class="btn btn-alt-primary">Copy</button>
+                                <input type="reset" id='resetBtn' value="Reset" class="btn btn-alt-secondary">
+                                <button id="copyBtn" onclick="copyResults()" class="btn btn-alt-primary">Copy</button>
                             </div>
 
                             <p class="alert alert-warning fw-semibold text-xs">The boards corresponding to the holes for
@@ -261,7 +261,14 @@
 
 @push('scripts')
     <script>
-        const calculateBtn=$('#calculate');
+        const calculateBtn = $('#calculate');
+        const copyBtn = $('#copyBtn');
+        const resetBtn= $('#resetBtn');
+
+        // disable copy button and reset button
+        copyBtn.prop('disabled', true);
+        resetBtn.prop('disabled', true);
+
         // add form submit event
         $('.sheetRockForm').submit(function(e) {
             e.preventDefault();
@@ -296,14 +303,44 @@
 
 
                     calculateBtn.prop('disabled', false);
+                    copyBtn.prop('disabled', false);
+                    resetBtn.prop('disabled', false);
 
                 },
                 error: function(response) {
                     console.log('error', response);
-
                     calculateBtn.prop('disabled', false);
                 }
             });
         });
+
+        function copyResults() {
+            let profile = $('#profile').val();
+            let finish = $('#finish').val();
+            let board_type = $('#board_type').val();
+            let tape = $('#tape').val();
+            let corner_type=$('#corner_pieces').val();
+            let sleepers=$('#sleepers').text();
+            let screws=$('#screws').text();
+            let wood_reinforcement=$('#wood_reinforcement').text();
+            let studs=$('#studs').text();
+            let structural_screws=$('#structural_screws').text();
+            let panels=$('#panels').text();
+            let nails=$('#nails').text();
+            let putty_bucket=$('#putty_bucket').text();
+            let tapes=$('#tapes').text();
+            let fasteners=$('#fasteners').text();
+            let corner_beads=$('#corner_beads').text();
+            let cement=$('#cement').text();
+
+
+            let text = `Profile: ${profile}\nFinish: ${finish}\nBoard Type: ${board_type}\nTape: ${tape}\nCorner Type: ${corner_type}\nSleepers: ${sleepers}\nScrews: ${screws}\nWood Reinforcement: ${wood_reinforcement}\nStuds: ${studs}\nStructural Screws: ${structural_screws}\nPanels: ${panels}\nNails: ${nails}\nPutty Bucket: ${putty_bucket}\nTapes: ${tapes}\nFasteners: ${fasteners}\nCorner Beads: ${corner_beads}\nCement: ${cement}`;
+
+            navigator.clipboard.writeText(text).then(function() {
+                alertSuccess('Results copied to clipboard');
+            }, function(err) {
+                alertError('Async: Could not copy text: ', err);
+            });
+        }
     </script>
 @endpush
