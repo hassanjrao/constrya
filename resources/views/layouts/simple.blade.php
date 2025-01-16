@@ -268,6 +268,7 @@
         Core libraries and functionality
         webpack is putting everything together at {{ asset('_js/main/app.js') }}
     -->
+    <script src="{{ asset('js/lib/jquery.min.js') }}"></script>
     <script src="{{ asset('js/oneui.app.js') }}"></script>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

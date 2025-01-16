@@ -9,6 +9,7 @@ use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\QuotesController;
+use App\Http\Controllers\SheetRockController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,8 @@ Route::get('plans/{plan}/register', [PlanController::class, 'register'])->name('
 Route::post('plans/{plan}/register', [PlanController::class, 'processRegister'])->name('plans.processRegister');
 
 Route::get('quotation/generate',[QuotesController::class,'generateQuotation'])->name('quotation.generate');
+
+Route::post('sheet-rock/calculate', [SheetRockController::class, 'calculate'])->name('sheet-rock.calculate');
 
 Route::prefix('user')->name('user.')->middleware(['auth'])->group(function () {
 
