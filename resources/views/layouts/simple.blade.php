@@ -194,7 +194,7 @@
                         <ul class="nav-main nav-main-dark nav-main-horizontal nav-main-hover">
                             @foreach ($calculators as $calculator)
                                 <li class="nav-main-item">
-                                    <a class="nav-main-link" href="{{ route('calculator.show', $calculator->slug) }}">
+                                    <a class="nav-main-link {{ request()->is($calculator->slug.'/calculate') ? ' active' : '' }}" href="{{ route('calculator.show', $calculator->slug) }}">
                                         <i class="nav-main-link-icon si si-compass"></i>
                                         <span class="nav-main-link-name">
                                             {{ $calculator->name }}
