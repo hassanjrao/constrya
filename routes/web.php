@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\CalculatorController;
+use App\Http\Controllers\FaciasCalculatorController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\PlanController;
@@ -39,6 +40,8 @@ Route::post('plans/{plan}/register', [PlanController::class, 'processRegister'])
 Route::get('quotation/generate',[QuotesController::class,'generateQuotation'])->name('quotation.generate');
 
 Route::post('sheet-rock/calculate', [SheetRockController::class, 'calculate'])->name('sheet-rock.calculate');
+Route::post('facias/calculate', [FaciasCalculatorController::class, 'calculate'])->name('facias.calculate');
+
 
 Route::prefix('user')->name('user.')->middleware(['auth'])->group(function () {
 

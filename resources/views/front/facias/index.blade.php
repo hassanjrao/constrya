@@ -13,17 +13,18 @@
                         </h1>
                     </div>
                     <div class="block-content block-content-full space-y-3">
-                        <form autocomplete="off">
+                        <form autocomplete="off" id="calForm" method="POST" action="{{ route('facias.calculate') }}">
+                            @csrf
                             <div class="row mb-5">
                                 <div class="col-md-3">
                                     <label class="form-label">Length *</label>
                                     <input type="number" step="any" min="0" placeholder="0" value="0"
-                                        required id="largo" class="form-control bg-warning-light">
+                                        name="largo" required id="largo" class="form-control bg-warning-light">
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">Width *</label>
                                     <input type="number" step="any" min="0" placeholder="0" value="0"
-                                        required id="ancho" class="form-control bg-warning-light">
+                                        name="ancho" required id="ancho" class="form-control bg-warning-light">
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">Perimeter ML *</label>
@@ -39,22 +40,22 @@
                                 <div class="col-md-2">
                                     <label class="form-label">A</label>
                                     <input type="number" step="any" min="0" placeholder="0" value="0"
-                                        required id="a" class="form-control bg-warning-light">
+                                        required id="a" name="a" class="form-control bg-warning-light">
                                 </div>
                                 <div class="col-md-2">
                                     <label class="form-label">B</label>
                                     <input type="number" step="any" min="0" placeholder="0" value="0"
-                                        required id="b" class="form-control bg-warning-light">
+                                        required id="b" name="b" class="form-control bg-warning-light">
                                 </div>
                                 <div class="col-md-2">
                                     <label class="form-label">C</label>
                                     <input type="number" step="any" min="0" placeholder="0" value="0"
-                                        required id="c" class="form-control bg-warning-light">
+                                        required id="c" name="c" class="form-control bg-warning-light">
                                 </div>
                                 <div class="col-md-2">
                                     <label class="form-label">D</label>
                                     <input type="number" step="any" min="0" placeholder="0" value="0"
-                                        required id="d" class="form-control bg-warning-light">
+                                        required id="d" name="d" class="form-control bg-warning-light">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">M² Fascia</label>
@@ -65,7 +66,7 @@
                             <div class="row mb-5">
                                 <div class="col-md-3">
                                     <label class="form-label">Metal Profiles @ 60cm *</label>
-                                    <select id="profiles" class="form-select">
+                                    <select id="profiles" class="form-select" name="profiles" required>
                                         <option>2 1/2 cal .25</option>
                                         <option>2 1/2 cal .22</option>
                                         <option>1 5/8 cal .25</option>
@@ -74,7 +75,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">Finish *</label>
-                                    <select id="acabado" class="form-select">
+                                    <select id="acabado" class="form-select" name="acabado" required>
                                         <option>Putty</option>
                                         <option>Plaster</option>
                                         <option>No Finish</option>
@@ -82,7 +83,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">Board Type *</label>
-                                    <select id="tipo_plancha" class="form-select">
+                                    <select id="tipo_plancha" class="form-select" name="tipo_plancha" required>
                                         <option>Sheetrock</option>
                                         <option>Densglass</option>
                                         <option>Durock</option>
@@ -90,7 +91,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">Tape *</label>
-                                    <select id="tipo_cinta" class="form-select">
+                                    <select id="tipo_cinta" class="form-select" name="tipo_cinta" required>
                                         <option>Paper</option>
                                         <option>Mesh</option>
                                     </select>
@@ -99,8 +100,10 @@
 
 
                             <div class="d-flex justify-content-end gap-3 mb-3">
-                                <input type="reset" id='resetBtn' value="Reset" class="btn btn-alt-secondary">
+                                <input type="button" id='resetBtn' value="Reset" class="btn btn-alt-secondary">
                                 <button id="copyBtn" type="button" class="btn btn-alt-primary">Copy</button>
+                                <input type="submit" value="Calculate" id="calculateBtn" class="btn btn-alt-success">
+
                             </div>
                         </form>
 
@@ -219,6 +222,9 @@
 
 @push('scripts')
     <script>
+        const calculateBtn = $('#calculate');
+        const copyBtn = $('#copyBtn');
+        const resetBtn = $('#resetBtn');
         let v = {};
 
         function calcular() {
@@ -281,13 +287,13 @@
             $('#m2_facia').text(v.m2_facias.toFixed(2));
         }
 
-        $(document).ready(function() {
-            calcular();
-        });
+        // $(document).ready(function() {
+        //     calcular();
+        // });
 
-        $('input').keyup(function(e) {
-            calcular();
-        });
+        // $('input').keyup(function(e) {
+        //     calcular();
+        // });
 
         $('#copyBtn').click(function(e) {
             e.preventDefault();
@@ -316,6 +322,79 @@
             document.execCommand('copy');
             $temp.remove();
             alertSuccess('Copied successfully!');
+        });
+
+        $('#resetBtn').click(function(e) {
+            e.preventDefault();
+            $('#calForm').trigger('reset');
+            $('#perimetro_ml').text('0.00');
+            $('#m2').text('0.00');
+            $('#d_ml').text('0.00');
+            $('#d_und').text('0.00');
+            $('#p_und_secciones').text('0.00');
+            $('#p_und').text('0.00');
+            $('#pl_m2').text('0.00');
+            $('#pl_und').text('0.00');
+            $('#m_galon_4_planchas').text('0.00');
+            $('#m_cubeta_4_planchas').text('0.00');
+            $('#to_tornillos_plancha').text('0.00');
+            $('#to_tornillos_estructura').text('0.00');
+            $('#to_clavos_pin').text('0.00');
+            $('#to_fulminantes').text('0.00');
+            $('#cinta').text('0.00');
+            $('#mano_obra_3').text('0.00');
+            $('#mano_obra_5').text('0.00');
+            $('#mano_obra_2').text('0.00');
+            $('#m2_facia').text('0.00');
+        });
+
+        $('#calForm').submit(function(e) {
+            e.preventDefault();
+            var form = $(this);
+
+            calculateBtn.prop('disabled', true);
+
+
+            $.ajax({
+                url: form.attr('action'),
+                type: 'POST',
+                data: form.serialize(),
+                success: function(response) {
+                    console.log('success', response);
+
+
+                    $('#perimetro_ml').text(response.perimetro_ml);
+                    $('#m2').text(response.m2);
+                    $('#d_ml').text(response.durmientes_ml);
+                    $('#d_und').text(Math.round(response.durmientes_und));
+                    $('#p_und_secciones').text(response.parales_secciones);
+                    $('#p_und').text(response.parales);
+                    $('#pl_m2').text(response.m2_facias);
+                    $('#pl_und').text(response.planchas);
+                    $('#m_galon_4_planchas').text(response.masilla_galones);
+                    $('#m_cubeta_4_planchas').text(response.masilla_cubetas);
+                    $('#to_tornillos_plancha').text(Math.ceil(response.tornillos_plancha));
+                    $('#to_tornillos_estructura').text(response.tornillo_estructura);
+                    $('#to_clavos_pin').text(response.clavos_pin);
+                    $('#to_fulminantes').text(response.fulminantes);
+                    $('#cinta').text(response.cinta);
+                    $('#mano_obra_3').text(response.mano_obra_3caras);
+                    $('#mano_obra_5').text(response.mano_obra_5caras);
+                    $('#mano_obra_2').text(response.mano_obra_2caras);
+                    $('#m2_facia').text(response.m2_facias);
+
+
+                    calculateBtn.prop('disabled', false);
+                    copyBtn.prop('disabled', false);
+                    resetBtn.prop('disabled', false);
+
+                },
+                error: function(response) {
+                    console.log('error', response);
+                    calculateBtn.prop('disabled', false);
+                }
+            });
+
         });
     </script>
 @endpush
