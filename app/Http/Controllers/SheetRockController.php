@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserSheetRockCalculation;
 use Illuminate\Http\Request;
 
 class SheetRockController extends Controller
@@ -102,6 +103,36 @@ class SheetRockController extends Controller
             'cement' => $cement,
 
         ];
+
+        if(auth()->check()){
+            UserSheetRockCalculation::create([
+                'user_id' => auth()->id(),
+                'metros_lineares' => $metros_lineares,
+                'height' => $height,
+                'sides' => $sides,
+                'profile' => $profile,
+                'finish' => $finish,
+                'tape' => $tape,
+                'doors' => $doors,
+                'corners' => $corners,
+                'corner_pieces' => $corner_pieces,
+                'interior_exterior' => $interior_exterior,
+                'product' => $product,
+                'm2box' => $m2box,
+                'sleepers' => $sleepers,
+                'studs' => $studs,
+                'structural_screws' => $structural_screws,
+                'nails' => $nails,
+                'tapes' => $tapes,
+                'screws' => $screws,
+                'putty' => $putty,
+                'corner_beads' => $corner_beads,
+                'wood_reinforcement' => $wood_reinforcement,
+                'panels' => $panels,
+                'fasteners' => $fasteners,
+                'cement' => $cement,
+            ]);
+        }
 
 
         return response()->json($data);

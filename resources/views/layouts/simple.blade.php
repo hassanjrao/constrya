@@ -194,7 +194,8 @@
                         <ul class="nav-main nav-main-dark nav-main-horizontal nav-main-hover">
                             @foreach ($calculators as $calculator)
                                 <li class="nav-main-item">
-                                    <a class="nav-main-link {{ request()->is($calculator->slug.'/calculate') ? ' active' : '' }}" href="{{ route('calculator.show', $calculator->slug) }}">
+                                    <a class="nav-main-link {{ request()->is($calculator->slug . '/calculate') ? ' active' : '' }}"
+                                        href="{{ route('calculator.show', $calculator->slug) }}">
                                         <i class="nav-main-link-icon si si-compass"></i>
                                         <span class="nav-main-link-name">
                                             {{ $calculator->name }}
@@ -214,21 +215,23 @@
 
                 @auth
                     @if (!auth()->user()->subscribed_at && request()->segment(4) !== 'pay')
-                        <div class="row justify-content-center">
-                            <div class="col-lg-6">
-                                <div class="alert alert-danger alert-dismissible" role="alert">
-                                    <p class="mb-0">
+                        @role('user')
+                            <div class="row justify-content-center">
+                                <div class="col-lg-6">
+                                    <div class="alert alert-danger alert-dismissible" role="alert">
+                                        <p class="mb-0">
 
-                                        <a class="alert-link"
-                                            href="{{ route('user.plans.pay', ['plan' => auth()->user()->plan_id]) }}">
-                                            {{ __('Please click here to pay the fee to enjoy premium features') }}
-                                        </a>!
-                                    </p>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                        aria-label="Close"></button>
+                                            <a class="alert-link"
+                                                href="{{ route('user.plans.pay', ['plan' => auth()->user()->plan_id]) }}">
+                                                {{ __('Please click here to pay the fee to enjoy premium features') }}
+                                            </a>!
+                                        </p>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endrole
                     @endif
 
                 @endauth

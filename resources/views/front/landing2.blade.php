@@ -13,7 +13,7 @@
                         </h1>
                     </div>
                     <div class="block-content block-content-full space-y-3">
-                        <form class="sheetRockForm" autocomplete="off" method="POST"
+                        <form class="sheetRockForm mb-5" id="sheetRockForm" autocomplete="off" method="POST"
                             action="{{ route('sheet-rock.calculate') }}">
                             @csrf
                             <div class="mb-3">
@@ -249,6 +249,10 @@
 
 
                         </form>
+                        <hr>
+                        <div class="section mt-5 mt-5">
+                            {!! $calculator->description !!}
+                        </div>
 
                     </div>
                 </div>
@@ -270,7 +274,7 @@
         resetBtn.prop('disabled', true);
 
         // add form submit event
-        $('.sheetRockForm').submit(function(e) {
+        $('#sheetRockForm').submit(function(e) {
             e.preventDefault();
             var form = $(this);
 

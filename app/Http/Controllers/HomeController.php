@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Calculator;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -20,6 +21,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('front.landing2');
+        $calculator = Calculator::where('slug', 'sheetrock')->first();
+
+        if (!$calculator) {
+            return abort(404);
+        }
+
+        $calculatorView= $calculator->view;
+
+        return view($calculatorView, compact('calculator'));
+      
     }
 }

@@ -60,7 +60,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','role:admin'])->group
     Route::resource("profile", AdminProfileController::class)->only(["index", "update"]);
 
     Route::resource('users', AdminUserController::class);
-
     Route::resource('blogs', AdminBlogController::class);
 
 });
