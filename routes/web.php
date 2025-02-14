@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\CalculatorController;
 use App\Http\Controllers\FaciasCalculatorController;
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\FlatRoofCalculatorController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\QuotesController;
@@ -41,6 +42,7 @@ Route::get('quotation/generate',[QuotesController::class,'generateQuotation'])->
 
 Route::post('sheet-rock/calculate', [SheetRockController::class, 'calculate'])->name('sheet-rock.calculate');
 Route::post('facias/calculate', [FaciasCalculatorController::class, 'calculate'])->name('facias.calculate');
+Route::post('flat-roof/calculate', [FlatRoofCalculatorController::class, 'calculate'])->name('flat-roof.calculate');
 
 
 Route::prefix('user')->name('user.')->middleware(['auth'])->group(function () {

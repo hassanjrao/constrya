@@ -18,17 +18,18 @@
                             parámetros estándar. Sin embargo, es importante tener en cuenta que cada instalación puede
                             presentar particularidades que no se consideran en este cálculo general.
                         </p>
-                        <form class="ajaxform2" autocomplete="off">
+                        <form class="ajaxform2" autocomplete="off" id="calForm">
+                            @csrf
                             <div class="row mb-5">
                                 <div class="col-md-3">
                                     <label class="form-label">Largo *</label>
                                     <input type="number" step="any" min="0" placeholder="0" value="0"
-                                        required name="TextBox1" id="largo" class="form-control bg-warning-light">
+                                        required id="largo" name="largo" class="form-control bg-warning-light">
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">Ancho *</label>
                                     <input type="number" step="any" min="0" placeholder="0" value="0"
-                                        required name="TextBox2" id="ancho" class="form-control bg-warning-light">
+                                        required id="ancho" name="ancho" class="form-control bg-warning-light">
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">Perímetro ML *</label>
@@ -43,7 +44,7 @@
                             <div class="row mb-5">
                                 <div class="col-md-3">
                                     <label class="form-label">Perfiles Metálicos @ 60cm *</label>
-                                    <select name="ComboBox1" id="perfiles" class="form-select">
+                                    <select id="perfiles" class="form-select" name="perfiles">
                                         <option>2 1/2 cal .25</option>
                                         <option>2 1/2 cal .22</option>
                                         <option>1 5/8 cal .25</option>
@@ -52,7 +53,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">Acabado *</label>
-                                    <select name="ComboBox2" id="acabado" class="form-select">
+                                    <select name="acabado" id="acabado" class="form-select">
                                         <option>Masilla</option>
                                         <option>Empañete</option>
                                         <option>Sin terminación</option>
@@ -60,7 +61,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">Tipo de Plancha *</label>
-                                    <select name="ComboBox3" id="tipo_plancha" class="form-select">
+                                    <select name="tipo_plancha" id="tipo_plancha" class="form-select">
                                         <option>Sheetrock</option>
                                         <option>Densglass</option>
                                         <option>Durock</option>
@@ -68,7 +69,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label class="form-label">Cinta *</label>
-                                    <select name="ComboBox5" id="tipo_cinta" class="form-select">
+                                    <select name="tipo_cinta" id="tipo_cinta" class="form-select">
                                         <option>Papel</option>
                                         <option>Malla</option>
                                     </select>
@@ -76,8 +77,10 @@
                             </div>
 
                             <div class="d-flex justify-content-end gap-3 mb-3">
-                                <button type="reset" class="btn btn-alt-secondary">Reiniciar</button>
-                                <button id="copiar" class="btn btn-alt-primary">Copiar</button>
+                                <input type="button" id='resetBtn' value="Reset" class="btn btn-alt-secondary">
+                                <button id="copyBtn" type="button" class="btn btn-alt-primary">Copy</button>
+                                <input type="submit" value="Calculate" id="calculateBtn" class="btn btn-alt-success">
+
                             </div>
 
                         </form>
@@ -103,32 +106,38 @@
                                     </div>
                                     <div class="col-lg-3 col-6">
                                         <label class="text-uppercase fw-semibold small">GALÓN CADA 4 PLANCHAS</label>
-                                        <div id="m_galon_4_planchas" class="border w-100 text-center bg-white fw-semibold py-2">
+                                        <div id="m_galon_4_planchas"
+                                            class="border w-100 text-center bg-white fw-semibold py-2">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-6">
                                         <label class="text-uppercase fw-semibold small">CUBETAS DE MASILLA UNA CARA</label>
-                                        <div id="m_cubeta_4_planchas" class="border w-100 text-center bg-white fw-semibold py-2">
+                                        <div id="m_cubeta_4_planchas"
+                                            class="border w-100 text-center bg-white fw-semibold py-2">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-6">
                                         <label class="text-uppercase fw-semibold small">TORNILLOS DE PLANCHA</label>
-                                        <div id="to_tornillos_plancha" class="border w-100 text-center bg-white fw-semibold py-2">
+                                        <div id="to_tornillos_plancha"
+                                            class="border w-100 text-center bg-white fw-semibold py-2">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-6">
                                         <label class="text-uppercase fw-semibold small">TORNILLO DE ESTRUCTURA</label>
-                                        <div id="to_tornillos_estructura" class="border w-100 text-center bg-white fw-semibold py-2">
+                                        <div id="to_tornillos_estructura"
+                                            class="border w-100 text-center bg-white fw-semibold py-2">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-6">
                                         <label class="text-uppercase fw-semibold small">CLAVOS PIN</label>
-                                        <div id="to_clavos_pin" class="border w-100 text-center bg-white fw-semibold py-2">
+                                        <div id="to_clavos_pin"
+                                            class="border w-100 text-center bg-white fw-semibold py-2">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-6">
                                         <label class="text-uppercase fw-semibold small">FULMINANTES</label>
-                                        <div id="to_fulminantes" class="border w-100 text-center bg-white fw-semibold py-2">
+                                        <div id="to_fulminantes"
+                                            class="border w-100 text-center bg-white fw-semibold py-2">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-6">
@@ -138,7 +147,9 @@
                                     </div>
                                     <div class="col-lg-3 col-6">
                                         <label class="text-uppercase fw-semibold small">Precio M2</label>
-                                        <input type="number" step="any" min="0" placeholder="0" value="350" required name="TextBox2" id="mano_precio" class="form-control bg-warning-light">
+                                        <input type="number" step="any" min="0" placeholder="0"
+                                            value="350" required name="mano_precio" id="mano_precio"
+                                            class="form-control bg-warning-light">
                                     </div>
                                     <div class="col-lg-3 col-6">
                                         <label class="text-uppercase fw-semibold small">Mano de obra</label>
@@ -161,6 +172,9 @@
 
 @push('scripts')
     <script>
+        const calculateBtn = $('#calculate');
+        const copyBtn = $('#copyBtn');
+        const resetBtn = $('#resetBtn');
         let v = {};
 
         function calcular() {
@@ -232,11 +246,11 @@
             calcular();
         });
 
-        $('input').keyup(function(e) {
-            calcular();
-        });
+        // $('input').keyup(function(e) {
+        //     calcular();
+        // });
 
-        $('#copiar').click(function(e) {
+        $('#copyBtn').click(function(e) {
             e.preventDefault();
             let perfiles = $('#perfiles').val();
             let acabado = $('#acabado').val();
@@ -263,5 +277,69 @@
             $temp.remove();
             alertSuccess('Copied successfully!');
         });
+
+
+        $('#calForm').submit(function(e) {
+            e.preventDefault();
+            var form = $(this);
+
+            // add mano_precio to the form
+            form.append('<input type="hidden" name="mano_precio" value="' + $('#mano_precio').val() + '">');
+
+            calculateBtn.prop('disabled', true);
+
+
+            $.ajax({
+                url: form.attr('action'),
+                type: 'POST',
+                data: form.serialize(),
+                success: function(response) {
+                    console.log('success', response);
+
+
+
+                    $('#perimetro_ml').text(response.perimetro_ml.toFixed(2));
+                    $('#m2').text(response.m2.toFixed(2));
+                    $('#d_ml').text(response.durmientes_ml.toFixed(2));
+                    $('#d_und').text(Math.round(response.durmientes_und).toFixed(2));
+                    $('#m_galon_4_planchas').text(response.masilla_galones.toFixed(2));
+                    $('#m_cubeta_4_planchas').text(response.masilla_cubetas.toFixed(2));
+                    $('#to_tornillos_plancha').text(response.tornillos_plancha.toFixed(2));
+                    $('#to_tornillos_estructura').text(response.tornillo_estructura.toFixed(2));
+                    $('#to_clavos_pin').text(response.clavos_pin.toFixed(2));
+                    $('#to_fulminantes').text(response.fulminantes.toFixed(2));
+                    $('#cinta').text(response.cinta.toFixed(2));
+                    $('#p_largo').text(response.parales_largo.toFixed(2));
+                    $('#p_ancho').text(response.parales_ancho.toFixed(2));
+                    $('#p_und_largo').text(response.parales_und_largo.toFixed(2));
+                    $('#p_und_ancho').text(response.parales_und_ancho.toFixed(2));
+                    $('#p_und').text(response.parales.toFixed(2));
+                    $('#pl_m2').text(response.planchas_m2.toFixed(2));
+                    $('#pl_und').text(response.planchas.toFixed(2));
+                    $('#mano_obra').text(response.mano_obra.toFixed(2));
+                    $('#equineros_ml').text(response.esquineros_ml.toFixed(2));
+                    $('#equineros').text(response.esquineros.toFixed(2));
+                    $('#equineros_mas').text(response.esquineros_mas.toFixed(2));
+
+
+                    calculateBtn.prop('disabled', false);
+                    copyBtn.prop('disabled', false);
+                    resetBtn.prop('disabled', false);
+
+                },
+                error: function(response) {
+                    console.log('error', response);
+                    calculateBtn.prop('disabled', false);
+                }
+            });
+
+        });
+
+        $('#resetBtn').click(function(e) {
+            e.preventDefault();
+            $('#calForm').trigger('reset');
+            calcular();
+        });
+
     </script>
 @endpush

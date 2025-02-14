@@ -222,7 +222,7 @@
 
 @push('scripts')
     <script>
-        const calculateBtn = $('#calculate');
+        const calculateBtn = $('#calculateBtn');
         const copyBtn = $('#copyBtn');
         const resetBtn = $('#resetBtn');
         let v = {};
