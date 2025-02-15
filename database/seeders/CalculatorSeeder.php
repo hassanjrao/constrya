@@ -32,11 +32,6 @@ class CalculatorSeeder extends Seeder
                 'view' => 'front.flat-ceiling.index'
             ],
             [
-                'name' => 'Muros',
-                'slug' => 'muros',
-                'view' => 'front.muros.index'
-            ],
-            [
                 'name' => 'Plafon',
                 'slug' => 'plafon',
                 'view' => 'front.plafon.index'
@@ -45,11 +40,6 @@ class CalculatorSeeder extends Seeder
                 'name' => 'Quotation',
                 'slug' => 'quotation',
                 'view' => 'front.quotes.index'
-            ],
-            [
-                'name' => 'Memory Calculation',
-                'slug' => 'memory-calculation',
-                'view' => 'front.memory-calculation.index'
             ]
         ];
 

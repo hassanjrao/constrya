@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             PlanSeeder::class,
             CalculatorSeeder::class,
             MaterialSeeder::class,
+            MemoryCalculationSeeder::class,
         ]);
     }
 }

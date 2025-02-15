@@ -9,6 +9,7 @@ use App\Http\Controllers\CalculatorController;
 use App\Http\Controllers\FaciasCalculatorController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\FlatRoofCalculatorController;
+use App\Http\Controllers\MemoryCalculationController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\QuotesController;
@@ -54,6 +55,13 @@ Route::prefix('user')->name('user.')->middleware(['auth'])->group(function () {
 
     Route::post('profile/cancel-subscription', [UserProfileController::class, 'cancelSubscription'])->name('profile.cancelSubscription');
     Route::resource('profile', UserProfileController::class)->only(['index', 'update']);
+
+    Route::get('memory-calculations',[MemoryCalculationController::class,'index'])->name('memory-calculations.index');
+    Route::get('memory-calculations/facias',[MemoryCalculationController::class,'facias'])->name('memory-calculations.facias');
+    Route::get('memory-calculations/flat-roof',[MemoryCalculationController::class,'flatRoof'])->name('memory-calculations.flat-roof');
+    Route::get('memory-calculations/plafon',[MemoryCalculationController::class,'index'])->name('memory-calculations.plafon');
+
+
 
 });
 

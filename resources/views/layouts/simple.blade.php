@@ -279,6 +279,16 @@
                                 </li>
                             @endforeach
 
+                            <li class="nav-main-item">
+                                <a class="nav-main-link {{ request()->is('user/memory-calculations') ? ' active' : '' }}"
+                                    href="{{ route('user.memory-calculations.index',1) }}">
+                                    <i class="nav-main-link-icon si si-compass"></i>
+                                    <span class="nav-main-link-name">
+                                        {{ __('Memory Calculations') }}
+                                    </span>
+                                </a>
+                            </li>
+
                         </ul>
                     </div>
                     <!-- END Main Navigation -->
