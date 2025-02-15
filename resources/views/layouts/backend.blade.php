@@ -191,6 +191,13 @@
                                 <span class="nav-main-link-name">Blogs</span>
                             </a>
                         </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->is('admin/banners*') ? ' active' : '' }}"
+                                href="{{ route('admin.banners.index') }}">
+                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <span class="nav-main-link-name">Banners</span>
+                            </a>
+                        </li>
 
                     </ul>
                 </div>

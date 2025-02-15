@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminBannerController;
 use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminProfileController;
@@ -66,5 +67,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','role:admin'])->group
 
     Route::resource('users', AdminUserController::class);
     Route::resource('blogs', AdminBlogController::class);
+
+    Route::resource('banners', AdminBannerController::class);
 
 });
