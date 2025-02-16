@@ -9,7 +9,7 @@
                 <div class="block block-rounded">
                     <div class="block-header">
                         <h1 class="">
-                            Sheet Rock
+                            {{ __('Sheet Rock') }}
                         </h1>
                     </div>
                     <div class="block-content block-content-full space-y-3">
@@ -24,13 +24,13 @@
                                             name="metros_lineares" id="metros_lineares" class="form-control">
                                     </div>
                                     <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                                        <label for="height" class="form-label">Height *</label>
+                                        <label for="height" class="form-label">{{ __('Height') }} *</label>
                                         <input type="number" step="any" min="0" placeholder="0" required
                                             name="height" id="height" class="form-control">
                                     </div>
                                     <div class="col-lg-3 col-md-4 col-sm-6 d-flex align-items-center mb-3">
                                         <div id="m2" class="border p-2 me-2 text-center"></div>
-                                        <span class="fw-bold">M2</span>
+                                        <span class="fw-bold">{{ __('M2') }}</span>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -38,12 +38,12 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="sides" value="1"
                                                 required id="side1">
-                                            <label class="form-check-label" for="side1">1 Side</label>
+                                            <label class="form-check-label" for="side1">{{ __('1 Side') }}</label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="sides" value="2"
                                                 required id="side2" checked>
-                                            <label class="form-check-label" for="side2">2 Sides</label>
+                                            <label class="form-check-label" for="side2">{{ __('2 Sides') }}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -51,7 +51,7 @@
 
                             <div class="row g-3 mb-3">
                                 <div class="col-lg-3 col-sm-6">
-                                    <label for="profile" class="form-label">Metal profiles @ 60cm *</label>
+                                    <label for="profile" class="form-label">{{ __('Metal profiles @ 60cm') }} *</label>
                                     <select name="profile" id="profile" class="form-select">
                                         <option>2 1/2 cal .25</option>
                                         <option>2 1/2 cal .22</option>
@@ -60,7 +60,7 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-3 col-sm-6">
-                                    <label for="finish" class="form-label">Finish *</label>
+                                    <label for="finish" class="form-label">{{ __('Finish') }} *</label>
                                     <select name="finish" id="finish" class="form-select">
                                         <option>Putty</option>
                                         <option>Plaster</option>
@@ -68,7 +68,7 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-3 col-sm-6">
-                                    <label for="board_type" class="form-label">Type of board *</label>
+                                    <label for="board_type" class="form-label">{{ __('Type of board') }} *</label>
                                     <select name="board_type" id="board_type" class="form-select">
                                         <option>Sheetrock</option>
                                         <option>Densglass</option>
@@ -76,7 +76,7 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-3 col-sm-6">
-                                    <label for="tape" class="form-label">Tape *</label>
+                                    <label for="tape" class="form-label">{{ __('Tape') }} *</label>
                                     <select name="tape" id="tape" class="form-select">
                                         <option>Paper</option>
                                         <option>Mesh</option>
@@ -86,18 +86,18 @@
 
                             <div class="row mb-3">
                                 <div class="col-md-3 mb-3">
-                                    <label for="doors" class="form-label">Doors (Units) *</label>
+                                    <label for="doors" class="form-label">{{ __('Doors (Units)') }} *</label>
                                     <input type="number" value="0" required min="0" placeholder="0"
                                         name="doors" id="doors" class="form-control">
                                     <p class="text-danger small fw-bold">(2.10 x 0.90)</p>
                                 </div>
                                 <div class="col-md-3 mb-3">
-                                    <label for="corners" class="form-label">Corners *</label>
+                                    <label for="corners" class="form-label">{{ __('Corners') }} *</label>
                                     <input type="number" value="0" required min="0" placeholder="0"
                                         name="corners" id="corners" class="form-control">
                                 </div>
                                 <div class="col-md-3 mb-3">
-                                    <label for="corner_pieces" class="form-label">Corner pieces *</label>
+                                    <label for="corner_pieces" class="form-label">{{ __('Corner pieces') }} *</label>
                                     <select name="corner_pieces" id="corner_pieces" class="form-select">
                                         <option>Metal</option>
                                         <option>Plastic</option>
@@ -107,24 +107,28 @@
                                     <div class="form-check">
                                         <input type="radio" class="form-check-input" name="interior_exterior"
                                             value="interior" id="interior" required checked>
-                                        <label class="form-check-label" for="interior">Interior</label>
+                                        <label class="form-check-label" for="interior">{{ __('Interior') }}</label>
                                     </div>
                                     <div class="form-check">
                                         <input type="radio" class="form-check-input" name="interior_exterior"
                                             value="exterior" id="exterior" required>
-                                        <label class="form-check-label" for="exterior">Exterior</label>
+                                        <label class="form-check-label" for="exterior">{{ __('Exterior') }}</label>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="d-flex justify-content-end gap-3 mb-3">
-                                <input type="submit" value="Calculate" id="calculate" class="btn btn-alt-success">
-                                <input type="reset" id='resetBtn' value="Reset" class="btn btn-alt-secondary">
-                                <button id="copyBtn" onclick="copyResults()" class="btn btn-alt-primary">Copy</button>
+                                <input type="submit" value="{{ __('Calculate') }}" id="calculate"
+                                    class="btn btn-alt-success">
+                                <input type="reset" id='resetBtn' value="{{ __('Reset') }}"
+                                    class="btn btn-alt-secondary">
+                                <button id="copyBtn" onclick="copyResults()"
+                                    class="btn btn-alt-primary">{{ __('Copy') }}</button>
                             </div>
 
-                            <p class="alert alert-warning fw-semibold text-xs">The boards corresponding to the holes for
-                                the doors (1.89 m2 per door) are not being subtracted.</p>
+                            <p class="alert alert-warning fw-semibold text-xs">
+                                {{ __('The boards corresponding to the holes for the doors (1.89 m2 per door) are not being subtracted.') }}
+                            </p>
 
                             <div>
                                 <h3 class="fw-semibold text-sm mb-1">
@@ -249,8 +253,7 @@
 
                             @if (userSubscribed())
                                 <div class="d-flex justify-content-end gap-3 mt-3">
-                                    <button id="providerBtn" onclick="sendToProviders()"
-                                        class="btn btn-alt-primary">
+                                    <button id="providerBtn" onclick="sendToProviders()" class="btn btn-alt-primary">
                                         {{ __('Send To Providers') }}
                                     </button>
                                 </div>
@@ -318,9 +321,10 @@
                     $('#cement').text(response.cement);
 
 
-                    if(response.calculationId){
+                    if (response.calculationId) {
                         // create hidden input for calculation id
-                        let input = `<input type="hidden" name="calculation_id" id="calculation_id" value="${response.calculationId}">`;
+                        let input =
+                            `<input type="hidden" name="calculation_id" id="calculation_id" value="${response.calculationId}">`;
 
                         form.append(input);
 
@@ -370,7 +374,7 @@
             });
         }
 
-        function sendToProviders(){
+        function sendToProviders() {
 
             providerBtn.prop('disabled', true);
 
@@ -391,5 +395,24 @@
             });
 
         }
+
+        function setDefaultValues() {
+
+            $('#m2').text(0.00);
+            $('#sleepers').text(0.00);
+            $('#screws').text(0.00);
+            $('#wood_reinforcement').text(0.00);
+            $('#studs').text(0.00);
+            $('#structural_screws').text(0.00);
+            $('#panels').text(0.00);
+            $('#nails').text(0.00);
+            $('#putty_bucket').text(0.00);
+            $('#tapes').text(0.00);
+            $('#fasteners').text(0.00);
+            $('#corner_beads').text(0.00);
+            $('#cement').text(0.00);
+        }
+
+        setDefaultValues();
     </script>
 @endpush

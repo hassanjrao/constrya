@@ -17,21 +17,21 @@
                             @csrf
                             <div class="row mb-5">
                                 <div class="col-md-3">
-                                    <label class="form-label">Length *</label>
+                                    <label class="form-label">{{ __('Length') }} *</label>
                                     <input type="number" step="any" min="0" placeholder="0" value="0"
                                         name="largo" required id="largo" class="form-control bg-warning-light">
                                 </div>
                                 <div class="col-md-3">
-                                    <label class="form-label">Width *</label>
+                                    <label class="form-label">{{ __('Width') }} *</label>
                                     <input type="number" step="any" min="0" placeholder="0" value="0"
                                         name="ancho" required id="ancho" class="form-control bg-warning-light">
                                 </div>
                                 <div class="col-md-3">
-                                    <label class="form-label">Perimeter ML *</label>
+                                    <label class="form-label">{{ __('Perimeter ML') }} *</label>
                                     <div id="perimetro_ml" class="form-control text-center bg-light">0.00</div>
                                 </div>
                                 <div class="col-md-3">
-                                    <label class="form-label">M² Space *</label>
+                                    <label class="form-label">{{ __('M² Space') }} *</label>
                                     <div id="m2" class="form-control text-center bg-light">0.00</div>
                                 </div>
                             </div>
@@ -58,14 +58,14 @@
                                         required id="d" name="d" class="form-control bg-warning-light">
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="form-label">M² Fascia</label>
+                                    <label class="form-label">{{ __('M² Fascia') }}</label>
                                     <div id="m2_facia" class="form-control text-center bg-light">0.00</div>
                                 </div>
                             </div>
 
                             <div class="row mb-5">
                                 <div class="col-md-3">
-                                    <label class="form-label">Metal Profiles @ 60cm *</label>
+                                    <label class="form-label">{{ __('Metal Profiles @ 60cm') }} *</label>
                                     <select id="profiles" class="form-select" name="profiles" required>
                                         <option>2 1/2 cal .25</option>
                                         <option>2 1/2 cal .22</option>
@@ -74,110 +74,107 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <label class="form-label">Finish *</label>
+                                    <label class="form-label">{{ __('Finish') }} *</label>
                                     <select id="acabado" class="form-select" name="acabado" required>
-                                        <option>Putty</option>
-                                        <option>Plaster</option>
-                                        <option>No Finish</option>
+                                        <option>{{ __('Putty') }}</option>
+                                        <option>{{ __('Plaster') }}</option>
+                                        <option>{{ __('No Finish') }}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <label class="form-label">Board Type *</label>
+                                    <label class="form-label">{{ __('Board Type') }} *</label>
                                     <select id="tipo_plancha" class="form-select" name="tipo_plancha" required>
-                                        <option>Sheetrock</option>
-                                        <option>Densglass</option>
-                                        <option>Durock</option>
+                                        <option>{{ __('Sheetrock') }}</option>
+                                        <option>{{ __('Densglass') }}</option>
+                                        <option>{{ __('Durock') }}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <label class="form-label">Tape *</label>
+                                    <label class="form-label">{{ __('Tape') }} *</label>
                                     <select id="tipo_cinta" class="form-select" name="tipo_cinta" required>
-                                        <option>Paper</option>
-                                        <option>Mesh</option>
+                                        <option>{{ __('Paper') }}</option>
+                                        <option>{{ __('Mesh') }}</option>
                                     </select>
                                 </div>
                             </div>
 
 
                             <div class="d-flex justify-content-end gap-3 mb-3">
-                                <input type="button" id='resetBtn' value="Reset" class="btn btn-alt-secondary">
-                                <button id="copyBtn" type="button" class="btn btn-alt-primary">Copy</button>
-                                <input type="submit" value="Calculate" id="calculateBtn" class="btn btn-alt-success">
+                                <input type="button" id='resetBtn' value="{{ __('Reset') }}" class="btn btn-alt-secondary">
+                                <button id="copyBtn" type="button" class="btn btn-alt-primary">{{ __('Copy') }}</button>
+                                <input type="submit" value="{{ __('Calculate') }}" id="calculateBtn" class="btn btn-alt-success">
 
                             </div>
                         </form>
 
                         <div id="materials" class="mb-5">
                             <div class="p-5 bg-light rounded mb-5">
-                                <h3 class="fw-bold mb-2 text-primary text-sm">MATERIALS</h3>
+                                <h3 class="fw-bold mb-2 text-primary text-sm">{{ __('MATERIALS') }}</h3>
                                 <div class="row g-3 mb-5">
                                     <div class="col-md-3">
-                                        <label class="text-uppercase text-secondary fw-semibold">UNIT SLEEPERS</label>
+                                        <label class="text-uppercase text-secondary fw-semibold">{{ __('UNIT SLEEPERS') }}</label>
                                         <div id="d_und" class="border p-2 text-center bg-white fw-semibold">
                                             0.00
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label class="text-uppercase text-secondary fw-semibold">UNIT SECTIONS</label>
+                                        <label class="text-uppercase text-secondary fw-semibold">{{ __('UNIT SECTIONS') }}</label>
                                         <div id="p_und_secciones" class="border p-2 text-center bg-white fw-semibold">
                                             0.00
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label class="text-uppercase text-secondary fw-semibold">UNIT PARALLELS</label>
+                                        <label class="text-uppercase text-secondary fw-semibold">{{ __('UNIT PARALLELS') }}</label>
                                         <div id="p_und" class="border p-2 text-center bg-white fw-semibold">
                                             0.00
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label class="text-uppercase text-secondary fw-semibold">UNIT SHEETS</label>
+                                        <label class="text-uppercase text-secondary fw-semibold">{{ __('UNIT SHEETS') }}</label>
                                         <div id="pl_und" class="border p-2 text-center bg-white fw-semibold">
                                             0.00
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label class="text-uppercase text-secondary fw-semibold">GALLON PER 4
-                                            SHEETS</label>
+                                        <label class="text-uppercase text-secondary fw-semibold">{{ __('GALLON PER 4 SHEETS') }}</label>
                                         <div id="m_galon_4_planchas" class="border p-2 text-center bg-white fw-semibold">
                                             0.00
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label class="text-uppercase text-secondary fw-semibold">BUCKETS OF PUTTY ONE
-                                            SIDE</label>
+                                        <label class="text-uppercase text-secondary fw-semibold">{{ __('BUCKETS OF PUTTY ONE SIDE') }}</label>
                                         <div id="m_cubeta_4_planchas" class="border p-2 text-center bg-white fw-semibold">
                                             0.00
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label class="text-uppercase text-secondary fw-semibold">SHEET SCREWS
-                                            (POUND)</label>
+                                        <label class="text-uppercase text-secondary fw-semibold">{{ __('SHEET SCREWS (POUND)') }}</label>
                                         <div id="to_tornillos_plancha"
                                             class="border p-2 text-center bg-white fw-semibold">
                                             0.00
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label class="text-uppercase text-secondary fw-semibold">STRUCTURE SCREWS</label>
+                                        <label class="text-uppercase text-secondary fw-semibold">{{ __('STRUCTURE SCREWS') }}</label>
                                         <div id="to_tornillos_estructura"
                                             class="border p-2 text-center bg-white fw-semibold">
                                             0.00
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label class="text-uppercase text-secondary fw-semibold">PIN NAILS</label>
+                                        <label class="text-uppercase text-secondary fw-semibold">{{ __('PIN NAILS') }}</label>
                                         <div id="to_clavos_pin" class="border p-2 text-center bg-white fw-semibold">
                                             0.00
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label class="text-uppercase text-secondary fw-semibold">DETONATORS</label>
+                                        <label class="text-uppercase text-secondary fw-semibold">{{ __('DETONATORS') }}</label>
                                         <div id="to_fulminantes" class="border p-2 text-center bg-white fw-semibold">
                                             0.00
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <label class="text-uppercase text-secondary fw-semibold">UNIT TAPE 250</label>
+                                        <label class="text-uppercase text-secondary fw-semibold">{{ __('UNIT TAPE 250') }}</label>
                                         <div id="cinta" class="border p-2 text-center bg-white fw-semibold">
                                             0.00
                                         </div>
@@ -185,25 +182,22 @@
                                 </div>
                             </div>
                             <div class="p-5 bg-light rounded mb-5">
-                                <h3 class="fw-bold mb-2 text-primary text-sm">LABOR</h3>
+                                <h3 class="fw-bold mb-2 text-primary text-sm">{{ __('LABOR') }}</h3>
                                 <div class="row g-3 mb-5">
                                     <div class="col-md-4">
-                                        <label class="text-uppercase text-secondary fw-semibold">Labor Fascia 3
-                                            Sides</label>
+                                        <label class="text-uppercase text-secondary fw-semibold">{{ __('Labor Fascia 3 Sides') }}</label>
                                         <div id="mano_obra_3" class="border p-2 text-center bg-white fw-semibold">
                                             0.00
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="text-uppercase text-secondary fw-semibold">Labor Fascia 5
-                                            Sides</label>
+                                        <label class="text-uppercase text-secondary fw-semibold">{{ __('Labor Fascia 5 Sides') }}</label>
                                         <div id="mano_obra_5" class="border p-2 text-center bg-white fw-semibold">
                                             0.00
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="text-uppercase text-secondary fw-semibold">Labor Fascia 2
-                                            Sides</label>
+                                        <label class="text-uppercase text-secondary fw-semibold">{{ __('Labor Fascia 2 Sides') }}</label>
                                         <div id="mano_obra_2" class="border p-2 text-center bg-white fw-semibold">
                                             0.00
                                         </div>
@@ -233,73 +227,6 @@
         const resetBtn = $('#resetBtn');
         let v = {};
 
-        function calcular() {
-            v.largo = parseFloat($('#largo').val());
-            v.ancho = parseFloat($('#ancho').val());
-            v.base = {
-                a: parseFloat($('#a').val()),
-                b: parseFloat($('#b').val()),
-                c: parseFloat($('#c').val()),
-                d: parseFloat($('#d').val()),
-            }
-            v.perimetro_ml = (v.largo + v.ancho) * 2;
-            v.m2 = (v.largo * v.ancho);
-            v.durmientes_ml = v.perimetro_ml;
-            v.durmientes_und = (v.perimetro_ml * 3) / 3.05;
-            v.durmientes_und_cal1 = (v.durmientes_und * 0.05) + v.durmientes_und;
-
-            v.parales_secciones = v.perimetro_ml / 0.61;
-            v.parales = (v.base.a + v.base.d) * v.parales_secciones / 3.05;
-
-            v.m2_facias = v.perimetro_ml * (v.base.a + v.base.b + v.base.c + v.base.d);
-            v.planchas_m2_facias = v.m2_facias;
-            v.planchas = v.planchas_m2_facias / 2.97;
-
-            v.esquineros_ml = v.perimetro_ml;
-            v.esquineros = (v.esquineros_ml * 2) / 3.05;
-            v.esquineros_calc1 = (v.esquineros * 0.05) + v.esquineros;
-
-            v.mano_obra_facia_3caras = v.perimetro_ml * 3;
-            v.mano_obra_facia_5caras = v.perimetro_ml * 5;
-            v.mano_obra_facia_2caras = v.perimetro_ml * 2;
-
-            v.masilla_galones = v.planchas / 4;
-            v.masilla_cubetas = v.masilla_galones / 5;
-
-            v.tornillos_plancha = v.planchas * 30 / 270;
-            v.tornillo_estructura = v.parales_secciones * 10 / 430;
-            v.clavos_pin = 3 * v.parales_secciones / 100;
-            v.fulminantes = v.clavos_pin;
-            v.cinta = v.planchas * 8.75 / 250;
-
-            $('#perimetro_ml').text(v.perimetro_ml.toFixed(2));
-            $('#m2').text(v.m2.toFixed(2));
-            $('#d_ml').text(v.durmientes_ml.toFixed(2));
-            $('#d_und').text(Math.round(v.durmientes_und_cal1).toFixed(2));
-            $('#p_und_secciones').text(v.parales_secciones.toFixed(2));
-            $('#p_und').text(v.parales.toFixed(2));
-            $('#pl_m2').text(v.m2_facias.toFixed(2));
-            $('#pl_und').text(v.planchas.toFixed(2));
-            $('#m_galon_4_planchas').text(v.masilla_galones.toFixed(2));
-            $('#m_cubeta_4_planchas').text(v.masilla_cubetas.toFixed(2));
-            $('#to_tornillos_plancha').text(Math.ceil(v.tornillos_plancha));
-            $('#to_tornillos_estructura').text(v.tornillo_estructura.toFixed(2));
-            $('#to_clavos_pin').text(v.clavos_pin.toFixed(2));
-            $('#to_fulminantes').text(v.fulminantes.toFixed(2));
-            $('#cinta').text(v.cinta.toFixed(2));
-            $('#mano_obra_3').text(v.mano_obra_facia_3caras.toFixed(2));
-            $('#mano_obra_5').text(v.mano_obra_facia_5caras.toFixed(2));
-            $('#mano_obra_2').text(v.mano_obra_facia_2caras.toFixed(2));
-            $('#m2_facia').text(v.m2_facias.toFixed(2));
-        }
-
-        // $(document).ready(function() {
-        //     calcular();
-        // });
-
-        // $('input').keyup(function(e) {
-        //     calcular();
-        // });
 
         $('#copyBtn').click(function(e) {
             e.preventDefault();

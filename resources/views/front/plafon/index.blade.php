@@ -45,9 +45,9 @@
 
 
                             <div class="d-flex justify-content-end gap-3 mb-3">
-                                <input type="button" id='resetBtn' value="Reset" class="btn btn-alt-secondary">
-                                <button id="copyBtn" type="button" class="btn btn-alt-primary">Copy</button>
-                                <input type="submit" value="Calculate" id="calculateBtn" class="btn btn-alt-success">
+                                <input type="button" id='resetBtn' value="{{ __('Reset') }}" class="btn btn-alt-secondary">
+                                <button id="copyBtn" type="button" class="btn btn-alt-primary">{{ __('Reset') }}</button>
+                                <input type="submit" value="{{ __('Calculate') }}" id="calculateBtn" class="btn btn-alt-success">
 
                             </div>
 
