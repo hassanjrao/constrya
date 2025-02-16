@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Quotation;
 use App\Models\QuotationItem;
 use Illuminate\Http\Request;
+use Mpdf\Mpdf;
 
 class QuotesController extends Controller
 {
@@ -41,7 +42,8 @@ class QuotesController extends Controller
 
         $pdf=$this->createPDF($quotation,$data);
 
-        return $pdf->Output('cotizaciones.pdf', 'D');
+
+         $pdf->Output('cotizaciones.pdf', 'D');
 
 
     }
@@ -50,14 +52,16 @@ class QuotesController extends Controller
     public function createPDF($quotation,$data)
     {
         // Create mPDF object
-        $mpdf = new \Mpdf\Mpdf();
+        $mpdf = new Mpdf();
+
+        $logoUrl = asset('media/logos/logo.png');
 
         // Header HTML
         $headerHtml = '
                     <table width="100%" style="border:none !important">
                         <tr style="border:none !important">
                             <td align="center" style="width: 60%; text-align:center; border:none !important">
-                                <img src="{{ asset("media/logos/logo.png") }}"
+                                <img src="' . $logoUrl . '"
                                 alt="Logo"
                                 width="250"/>
                                 <h2>Gullone Infraestructura S.R.L.</h2>

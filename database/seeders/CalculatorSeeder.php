@@ -27,9 +27,9 @@ class CalculatorSeeder extends Seeder
                 'view' => 'front.facias.index'
             ],
             [
-                'name' => 'Flat Ceiling',
-                'slug' => 'flat-ceiling',
-                'view' => 'front.flat-ceiling.index'
+                'name' => 'Flat Roof',
+                'slug' => 'flat-roof',
+                'view' => 'front.flat-roof.index'
             ],
             [
                 'name' => 'Plafon',
