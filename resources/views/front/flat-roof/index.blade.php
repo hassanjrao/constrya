@@ -18,7 +18,7 @@
                             parámetros estándar. Sin embargo, es importante tener en cuenta que cada instalación puede
                             presentar particularidades que no se consideran en este cálculo general.
                         </p>
-                        <form class="ajaxform2" autocomplete="off" id="calForm">
+                        <form class="ajaxform2" autocomplete="off" id="calForm" method="POST" action="{{ route('flat-roof.calculate') }}">
                             @csrf
                             <div class="row mb-5">
                                 <div class="col-md-3">

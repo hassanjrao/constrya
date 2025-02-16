@@ -12,6 +12,7 @@ use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\FlatRoofCalculatorController;
 use App\Http\Controllers\MemoryCalculationController;
 use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\PlafonCalculatorController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\QuotesController;
 use App\Http\Controllers\SendToProviderController;
@@ -47,6 +48,8 @@ Route::get('quotation/generate',[QuotesController::class,'generateQuotation'])->
 Route::post('sheet-rock/calculate', [SheetRockController::class, 'calculate'])->name('sheet-rock.calculate');
 Route::post('facias/calculate', [FaciasCalculatorController::class, 'calculate'])->name('facias.calculate');
 Route::post('flat-roof/calculate', [FlatRoofCalculatorController::class, 'calculate'])->name('flat-roof.calculate');
+Route::post('plafon/calculate', [PlafonCalculatorController::class, 'calculate'])->name('plafon.calculate');
+
 
 
 Route::prefix('user')->name('user.')->middleware(['auth'])->group(function () {
