@@ -247,6 +247,16 @@
                                 </div>
                             </div>
 
+                            @if (userSubscribed())
+                                <div class="d-flex justify-content-end gap-3 mt-3">
+                                    <button id="providerBtn" onclick="sendToProviders()"
+                                        class="btn btn-alt-primary">
+                                        {{ __('Send To Providers') }}
+                                    </button>
+                                </div>
+                            @endif
+
+
 
                         </form>
                         <hr>
@@ -267,7 +277,11 @@
     <script>
         const calculateBtn = $('#calculate');
         const copyBtn = $('#copyBtn');
-        const resetBtn= $('#resetBtn');
+        const resetBtn = $('#resetBtn');
+        const providerBtn = $('#providerBtn');
+
+
+        providerBtn.prop('disabled', true);
 
         // disable copy button and reset button
         copyBtn.prop('disabled', true);
@@ -304,6 +318,14 @@
                     $('#cement').text(response.cement);
 
 
+                    if(response.calculationId){
+                        // create hidden input for calculation id
+                        let input = `<input type="hidden" name="calculation_id" id="calculation_id" value="${response.calculationId}">`;
+
+                        form.append(input);
+
+                        providerBtn.prop('disabled', false);
+                    }
 
 
                     calculateBtn.prop('disabled', false);
@@ -323,28 +345,51 @@
             let finish = $('#finish').val();
             let board_type = $('#board_type').val();
             let tape = $('#tape').val();
-            let corner_type=$('#corner_pieces').val();
-            let sleepers=$('#sleepers').text();
-            let screws=$('#screws').text();
-            let wood_reinforcement=$('#wood_reinforcement').text();
-            let studs=$('#studs').text();
-            let structural_screws=$('#structural_screws').text();
-            let panels=$('#panels').text();
-            let nails=$('#nails').text();
-            let putty_bucket=$('#putty_bucket').text();
-            let tapes=$('#tapes').text();
-            let fasteners=$('#fasteners').text();
-            let corner_beads=$('#corner_beads').text();
-            let cement=$('#cement').text();
+            let corner_type = $('#corner_pieces').val();
+            let sleepers = $('#sleepers').text();
+            let screws = $('#screws').text();
+            let wood_reinforcement = $('#wood_reinforcement').text();
+            let studs = $('#studs').text();
+            let structural_screws = $('#structural_screws').text();
+            let panels = $('#panels').text();
+            let nails = $('#nails').text();
+            let putty_bucket = $('#putty_bucket').text();
+            let tapes = $('#tapes').text();
+            let fasteners = $('#fasteners').text();
+            let corner_beads = $('#corner_beads').text();
+            let cement = $('#cement').text();
 
 
-            let text = `Profile: ${profile}\nFinish: ${finish}\nBoard Type: ${board_type}\nTape: ${tape}\nCorner Type: ${corner_type}\nSleepers: ${sleepers}\nScrews: ${screws}\nWood Reinforcement: ${wood_reinforcement}\nStuds: ${studs}\nStructural Screws: ${structural_screws}\nPanels: ${panels}\nNails: ${nails}\nPutty Bucket: ${putty_bucket}\nTapes: ${tapes}\nFasteners: ${fasteners}\nCorner Beads: ${corner_beads}\nCement: ${cement}`;
+            let text =
+                `Profile: ${profile}\nFinish: ${finish}\nBoard Type: ${board_type}\nTape: ${tape}\nCorner Type: ${corner_type}\nSleepers: ${sleepers}\nScrews: ${screws}\nWood Reinforcement: ${wood_reinforcement}\nStuds: ${studs}\nStructural Screws: ${structural_screws}\nPanels: ${panels}\nNails: ${nails}\nPutty Bucket: ${putty_bucket}\nTapes: ${tapes}\nFasteners: ${fasteners}\nCorner Beads: ${corner_beads}\nCement: ${cement}`;
 
             navigator.clipboard.writeText(text).then(function() {
                 alertSuccess('Results copied to clipboard');
             }, function(err) {
                 alertError('Async: Could not copy text: ', err);
             });
+        }
+
+        function sendToProviders(){
+
+            providerBtn.prop('disabled', true);
+
+            $.ajax({
+                url: "{{ route('user.send-to-providers') }}",
+                type: 'POST',
+                data: $('#sheetRockForm').serialize(),
+                success: function(response) {
+                    console.log('success', response);
+                    alertSuccess('Sent to providers successfully');
+                    providerBtn.prop('disabled', false);
+                },
+                error: function(response) {
+                    console.log('error', response);
+                    alertError('Error sending to providers');
+                    providerBtn.prop('disabled', false);
+                }
+            });
+
         }
     </script>
 @endpush

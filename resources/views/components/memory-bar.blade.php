@@ -26,7 +26,7 @@
                 </a>
             </li>
             <li class="nav-main-item">
-                <a href="{{ route('user.memory-calculations.flat-roof') }}" class="nav-main-link {{ request()->is('memory-calculations/flat-roof') ? ' active' : '' }}"
+                <a href="{{ route('user.memory-calculations.flat-roof') }}" class="nav-main-link {{ request()->is('user/memory-calculations/flat-roof') ? ' active' : '' }}"
                     href="be_ui_navigation_horizontal.html">
                     <i class="nav-main-link-icon si si-compass"></i>
 

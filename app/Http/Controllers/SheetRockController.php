@@ -34,6 +34,7 @@ class SheetRockController extends Controller
         $corners = $request->corners;
         $corner_pieces = $request->corner_pieces;
         $interior_exterior = $request->interior_exterior;
+        $board_type = $request->board_type;
 
         $product = $metros_lineares * $height;
         $m2box = $product;
@@ -82,6 +83,7 @@ class SheetRockController extends Controller
             'sides' => $sides,
             'profile' => $profile,
             'finish' => $finish,
+            'board_type'=>$board_type,
             'tape' => $tape,
             'doors' => $doors,
             'corners' => $corners,
@@ -104,14 +106,17 @@ class SheetRockController extends Controller
 
         ];
 
+        $calculationId = null;
+
         if(auth()->check()){
-            UserSheetRockCalculation::create([
+          $calculation=  UserSheetRockCalculation::create([
                 'user_id' => auth()->id(),
                 'metros_lineares' => $metros_lineares,
                 'height' => $height,
                 'sides' => $sides,
                 'profile' => $profile,
                 'finish' => $finish,
+                'board_type'=>$board_type,
                 'tape' => $tape,
                 'doors' => $doors,
                 'corners' => $corners,
@@ -132,7 +137,11 @@ class SheetRockController extends Controller
                 'fasteners' => $fasteners,
                 'cement' => $cement,
             ]);
+
+            $calculationId = $calculation->id;
         }
+
+        $data['calculationId'] = $calculationId;
 
 
         return response()->json($data);

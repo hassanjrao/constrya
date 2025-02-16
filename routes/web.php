@@ -13,6 +13,7 @@ use App\Http\Controllers\MemoryCalculationController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\QuotesController;
+use App\Http\Controllers\SendToProviderController;
 use App\Http\Controllers\SheetRockController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -61,6 +62,7 @@ Route::prefix('user')->name('user.')->middleware(['auth'])->group(function () {
     Route::get('memory-calculations/flat-roof',[MemoryCalculationController::class,'flatRoof'])->name('memory-calculations.flat-roof');
     Route::get('memory-calculations/plafon',[MemoryCalculationController::class,'index'])->name('memory-calculations.plafon');
 
+    Route::post('send-to-providers',[SendToProviderController::class,'sendToProviders'])->name('send-to-providers');
 
 
 });
