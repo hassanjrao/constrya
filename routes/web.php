@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminBannerController;
 use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\AdminProviderController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\CalculatorController;
 use App\Http\Controllers\FaciasCalculatorController;
@@ -79,5 +80,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','role:admin'])->group
     Route::resource('blogs', AdminBlogController::class);
 
     Route::resource('banners', AdminBannerController::class);
+
+
+    Route::resource('providers', AdminProviderController::class);
 
 });

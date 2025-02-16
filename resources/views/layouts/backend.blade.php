@@ -198,6 +198,13 @@
                                 <span class="nav-main-link-name">Banners</span>
                             </a>
                         </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->is('admin/providers*') ? ' active' : '' }}"
+                                href="{{ route('admin.providers.index') }}">
+                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <span class="nav-main-link-name">Providers</span>
+                            </a>
+                        </li>
 
                     </ul>
                 </div>
