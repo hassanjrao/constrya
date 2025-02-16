@@ -168,7 +168,6 @@ class QuotesController extends Controller
 
             // add footer
 
-            dd($html);
             $mpdf->SetHTMLFooter('
                 <table width="100%" style="border:none !important">
                     <tr style="border:none !important">
