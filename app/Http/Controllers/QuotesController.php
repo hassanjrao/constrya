@@ -44,8 +44,6 @@ class QuotesController extends Controller
         $pdf = $this->createPDF($quotation, $data);
 
 
-        //  $pdf->Output('cotizaciones.pdf', 'D');
-
         $pdfOutput = $pdf->Output('', 'S');
         return response($pdfOutput, 200)
             ->header('Content-Type', 'application/pdf');
@@ -64,7 +62,9 @@ class QuotesController extends Controller
                     <table width="100%" style="border:none !important">
                         <tr style="border:none !important">
                             <td align="center" style="width: 60%; text-align:center; border:none !important">
-
+                                <img src="' . $logoUrl . '"
+                                alt="Logo"
+                                width="250"/>
                                 <h2>Gullone Infraestructura S.R.L.</h2>
                                 <h5>  RNC: 132-18351-7</h5>
                                 <h5>Calle Principal Juan Dolio, San Pedro Macoris</h5>
