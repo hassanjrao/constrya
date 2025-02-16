@@ -22,9 +22,9 @@ class CalculatorSeeder extends Seeder
                 'view' => 'front.landing2'
             ],
             [
-                'name' => 'Facius',
-                'slug' => 'facius',
-                'view' => 'front.facius.index'
+                'name' => 'Facias',
+                'slug' => 'facias',
+                'view' => 'front.facias.index'
             ],
             [
                 'name' => 'Flat Ceiling',
