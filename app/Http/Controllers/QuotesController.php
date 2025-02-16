@@ -10,7 +10,8 @@ use Mpdf\Mpdf;
 class QuotesController extends Controller
 {
 
-    public function generateQuotation(Request $request){
+    public function generateQuotation(Request $request)
+    {
         $request->validate([
             'materials' => 'required|array',
             'quantity' => 'required|array',
@@ -22,9 +23,9 @@ class QuotesController extends Controller
         $materials = $request->materials;
         $quantity = $request->quantity;
 
-        $quotation=Quotation::create([
-            'client_name'=>$request->name,
-            'user_id'=>1
+        $quotation = Quotation::create([
+            'client_name' => $request->name,
+            'user_id' => 1
         ]);
 
 
@@ -40,16 +41,18 @@ class QuotesController extends Controller
 
         QuotationItem::insert($data);
 
-        $pdf=$this->createPDF($quotation,$data);
+        $pdf = $this->createPDF($quotation, $data);
 
 
-         $pdf->Output('cotizaciones.pdf', 'D');
+        //  $pdf->Output('cotizaciones.pdf', 'D');
 
-
+        $pdfOutput = $pdf->Output('', 'S');
+        return response($pdfOutput, 200)
+            ->header('Content-Type', 'application/pdf');
     }
 
 
-    public function createPDF($quotation,$data)
+    public function createPDF($quotation, $data)
     {
         // Create mPDF object
         $mpdf = new Mpdf();
@@ -79,7 +82,7 @@ class QuotesController extends Controller
                     </table>
                     <br>
                 ';
-                        // Table header HTML
+        // Table header HTML
         $tableHeaderHtml = '
                     <thead>
                         <tr style="background-color: #ddd;">
@@ -93,9 +96,9 @@ class QuotesController extends Controller
 
         $subTotal = 0;
         $total = 0;
-        $taxPercentage=18;
+        $taxPercentage = 18;
 
-        $items=$quotation->quotationItems()->with('material')->get();
+        $items = $quotation->quotationItems()->with('material')->get();
 
         // Table body HTML (example data)
         $tableBodyHtml =
@@ -108,15 +111,15 @@ class QuotesController extends Controller
                 <td>' . $material->name . '</td>
                 <td>' . $item->quantity . '</td>
                 <td>$' . $material->price_per_unit . '</td>
-                <td>$' . number_format(($material->price_per_unit * $item->quantity),2) . '</td>
+                <td>$' . number_format(($material->price_per_unit * $item->quantity), 2) . '</td>
             </tr>';
 
             $total += $material->price_per_unit * $item->quantity;
         }
 
-        $tax=($total*$taxPercentage)/100;
+        $tax = ($total * $taxPercentage) / 100;
 
-        $subTotal=$total-$tax;
+        $subTotal = $total - $tax;
 
         $tableBodyHtml .= '</tbody>';
 
@@ -126,15 +129,15 @@ class QuotesController extends Controller
                 <tfoot>
                     <tr>
                         <td colspan="3" align="right"><strong>Sub Total:</strong></td>
-                        <td>$' . number_format(($subTotal),2) . '</td>
+                        <td>$' . number_format(($subTotal), 2) . '</td>
                     </tr>
                     <tr>
-                        <td colspan="3" align="right"><strong>ITBIS ('.$taxPercentage.'%):</strong></td>
-                        <td>$' . number_format(($tax),2) . '</td>
+                        <td colspan="3" align="right"><strong>ITBIS (' . $taxPercentage . '%):</strong></td>
+                        <td>$' . number_format(($tax), 2) . '</td>
                     </tr>
                     <tr>
                         <td colspan="3" align="right"><strong>Total:</strong></td>
-                        <td>$' . number_format(($total),2) . '</td>
+                        <td>$' . number_format(($total), 2) . '</td>
                     </tr>
                 </tfoot>
             ';
@@ -166,9 +169,9 @@ class QuotesController extends Controller
                 </html>
             ';
 
-            // add footer
+        // add footer
 
-            $mpdf->SetHTMLFooter('
+        $mpdf->SetHTMLFooter('
                 <table width="100%" style="border:none !important">
                     <tr style="border:none !important">
                         <td style="width: 60%; text-align:left; border:none !important">
