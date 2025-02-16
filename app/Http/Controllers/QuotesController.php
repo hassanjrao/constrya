@@ -61,7 +61,7 @@ class QuotesController extends Controller
                     <table width="100%" style="border:none !important">
                         <tr style="border:none !important">
                             <td align="center" style="width: 60%; text-align:center; border:none !important">
-                               
+
                                 <h2>Gullone Infraestructura S.R.L.</h2>
                                 <h5>  RNC: 132-18351-7</h5>
                                 <h5>Calle Principal Juan Dolio, San Pedro Macoris</h5>
@@ -168,6 +168,7 @@ class QuotesController extends Controller
 
             // add footer
 
+            dd($html);
             $mpdf->SetHTMLFooter('
                 <table width="100%" style="border:none !important">
                     <tr style="border:none !important">
