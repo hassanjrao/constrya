@@ -19,7 +19,7 @@ class CalculatorSeeder extends Seeder
             [
                 'name' => 'SheetRock',
                 'slug' => 'sheetrock',
-                'view' => 'front.sheetrock.index'
+                'view' => 'front.landing2'
             ],
             [
                 'name' => 'Facius',
