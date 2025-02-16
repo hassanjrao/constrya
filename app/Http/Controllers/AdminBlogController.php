@@ -83,7 +83,7 @@ class AdminBlogController extends Controller
             'description'=>$request->description,
         ]);
 
-        return redirect()->route('admin.blogs.index')->with('success','Blog Updated Successfully');
+        return redirect()->route('admin.blogs.index')->withToastSuccess('Blog Updated Successfully');
     }
 
     /**

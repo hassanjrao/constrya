@@ -1,7 +1,7 @@
 @extends('layouts.backend')
 
 @php
-    $addEdit = isset($calculator) ? 'Edit' : 'Add';
+    $addEdit = isset($calculator) ? 'Edit '. $calculator->name : 'Add';
     $addUpdate = isset($calculator) ? 'Update' : 'Add';
 @endphp
 @section('page-title', $addEdit . ' Blog')
@@ -12,7 +12,7 @@
 
         <div class="block block-rounded">
             <div class="block-header block-header-default d-flex">
-                <h3 class="block-title">{{ $addEdit }} Blogs</h3>
+                <h3 class="block-title">{{ $calculator->name }} Blog</h3>
 
                 <a href="{{ route('admin.blogs.index') }}" class="btn btn-primary">Back</a>
 
@@ -34,8 +34,7 @@
                             $value = old('description', $calculator ? $calculator->description : null);
 
                             ?>
-                            <label class="form-label" for="label">Blog <span class="text-danger">*</span></label>
-                            <textarea  class="form-control" id="editor" name="description" placeholder="Enter Description">{{ $value }}</textarea>
+                            <textarea  class="form-control" rows="200" id="editor" name="description" placeholder="Enter Description">{{ $value }}</textarea>
                             @error('description')
                                 <span class="text-danger" role="alert">
                                     <strong>{{ $message }}</strong>

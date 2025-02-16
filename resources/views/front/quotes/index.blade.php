@@ -57,6 +57,11 @@
                         </form>
 
 
+                        <hr>
+                        <div class="section mt-5 mt-5">
+                            {!! $calculator->description !!}
+                        </div>
+
 
 
 
