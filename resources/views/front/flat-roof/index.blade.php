@@ -55,9 +55,9 @@
                                 <div class="col-md-3">
                                     <label class="form-label">{{ __('Acabado') }} *</label>
                                     <select name="acabado" id="acabado" class="form-select">
-                                        <option>Masilla</option>
-                                        <option>Empañete</option>
-                                        <option>Sin terminación</option>
+                                        <option>{{  __('Masilla')}}</option>
+                                        <option>{{  __('Empañete')}}</option>
+                                        <option>{{  __('Sin terminación')}}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-3">
@@ -78,11 +78,11 @@
                             </div>
 
                             <div class="d-flex justify-content-end gap-3 mb-3">
-                                <input type="button" id='resetBtn' value="{{ __('Reset') }}"
+                                <input type="button" id='resetBtn' value="{{ __('Reiniciar') }}"
                                     class="btn btn-alt-secondary">
                                 <button id="copyBtn" type="button"
-                                    class="btn btn-alt-primary">{{ __('Copy') }}</button>
-                                <input type="submit" value="{{ __('Calculate') }}" id="calculateBtn"
+                                    class="btn btn-alt-primary">{{ __('Copiar') }}</button>
+                                <input type="submit" value="{{ __('Calcular') }}" id="calculateBtn"
                                     class="btn btn-alt-success">
 
                             </div>
@@ -221,7 +221,7 @@
             $temp.val(texto).select();
             document.execCommand('copy');
             $temp.remove();
-            alertSuccess('Copied successfully!');
+            alertSuccess("{!! __('Copiado al portapapeles') !!}");
         });
 
 

@@ -65,7 +65,7 @@
             createSubscription: function(data, actions) {
                 return actions.subscription.create({
                     /* Creates the subscription */
-                    plan_id: 'P-0HX41104EW6963253M6BMNPY'
+                    plan_id: 'P-5KR760659G103732HM6ZYVSQ'
                 });
             },
             onApprove: function(data, actions) {

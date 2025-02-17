@@ -1,5 +1,5 @@
 @extends('layouts.simple')
-@section('page-title', __('Get Quotation'))
+@section('page-title', __('Obtener cotización'))
 
 @php
     $materials = \App\Models\Material::all();
@@ -13,7 +13,7 @@
                 <div class="block block-rounded">
                     <div class="block-header">
                         <h1 class="">
-                            <i class="fa fa-calculator"></i> {{ __('Get Quotation') }}
+                            <i class="fa fa-calculator"></i> {{ __('Obtener cotización') }}
                         </h1>
                     </div>
                     <div class="block-content block-content-full space-y-3">
@@ -23,15 +23,15 @@
                             <div class="row justify-content-between mb-3">
                                 <div class="col-lg-4 mb-2">
                                     <button type="button" onclick="addRow()" class="btn btn-alt-success">
-                                        {{ __('Add Material') }}
+                                        {{ __('Agregar material') }}
                                     </button>
                                 </div>
                                 <div class="col-lg-4 mb-2">
                                     <input type="text" name="name" class="form-control"
-                                        placeholder="{{ __('Client') }}" required>
+                                        placeholder="{{ __('Cliente') }}" required>
                                 </div>
                                 <div class="col-lg-4 text-end mb-2">
-                                    <input type="submit" id="submitBtn" value="{{ __('Generate') }}"
+                                    <input type="submit" id="submitBtn" value="{{ __('Generar') }}"
                                         class="btn btn-alt-primary">
                                 </div>
                             </div>
@@ -44,8 +44,8 @@
                                             <th scope="col">#</th>
                                             <th scope="col">{{ __('Material') }}</th>
                                             <!-- <th scope="col">Price per Unit</th> -->
-                                            <th scope="col">{{ __('Quantity') }}</th>
-                                            <th scope="col">{{ __('Action') }}</th>
+                                            <th scope="col">{{ __('Cantidad') }}</th>
+                                            <th scope="col">{{ __('Acción') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody id="materialTableBody">
@@ -93,7 +93,7 @@
                     <td class="py-2">
                         <select name="materials[]" class="form-select" required>
                             <option value="">
-                                {{ __('Select Material') }}
+                                {{ __('Seleccionar material') }}
                                 </option>
                             ${materials.map(material => `<option value="${material.id}">${material.name}</option>`)}
                         </select>

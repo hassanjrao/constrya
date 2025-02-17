@@ -19,12 +19,13 @@
                             <div class="mb-3">
                                 <div class="row align-items-end">
                                     <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                                        <label for="metros_lineares" class="form-label">{{ __('Linear meters *') }}</label>
+                                        <label for="metros_lineares"
+                                            class="form-label">{{ __('Metros lineales *') }}</label>
                                         <input type="number" step="any" min="0" placeholder="0" required
                                             name="metros_lineares" id="metros_lineares" class="form-control">
                                     </div>
                                     <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                                        <label for="height" class="form-label">{{ __('Height') }} *</label>
+                                        <label for="height" class="form-label">{{ __('Altura *') }}</label>
                                         <input type="number" step="any" min="0" placeholder="0" required
                                             name="height" id="height" class="form-control">
                                     </div>
@@ -38,12 +39,12 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="sides" value="1"
                                                 required id="side1">
-                                            <label class="form-check-label" for="side1">{{ __('1 Side') }}</label>
+                                            <label class="form-check-label" for="side1">{{ __('1 Lado') }}</label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="sides" value="2"
                                                 required id="side2" checked>
-                                            <label class="form-check-label" for="side2">{{ __('2 Sides') }}</label>
+                                            <label class="form-check-label" for="side2">{{ __('2 Lados') }}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -51,7 +52,7 @@
 
                             <div class="row g-3 mb-3">
                                 <div class="col-lg-3 col-sm-6">
-                                    <label for="profile" class="form-label">{{ __('Metal profiles @ 60cm') }} *</label>
+                                    <label for="profile" class="form-label">{{ __('Perfiles metálicos a 60cm *') }}</label>
                                     <select name="profile" id="profile" class="form-select">
                                         <option>2 1/2 cal .25</option>
                                         <option>2 1/2 cal .22</option>
@@ -60,15 +61,15 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-3 col-sm-6">
-                                    <label for="finish" class="form-label">{{ __('Finish') }} *</label>
+                                    <label for="finish" class="form-label">{{ __('Acabado *') }}</label>
                                     <select name="finish" id="finish" class="form-select">
-                                        <option>Putty</option>
-                                        <option>Plaster</option>
-                                        <option>Without finish</option>
+                                        <option>Masilla</option>
+                                        <option>Yeso</option>
+                                        <option>Sin acabado</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-3 col-sm-6">
-                                    <label for="board_type" class="form-label">{{ __('Type of board') }} *</label>
+                                    <label for="board_type" class="form-label">{{ __('Tipo de plancha *') }}</label>
                                     <select name="board_type" id="board_type" class="form-select">
                                         <option>Sheetrock</option>
                                         <option>Densglass</option>
@@ -76,31 +77,31 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-3 col-sm-6">
-                                    <label for="tape" class="form-label">{{ __('Tape') }} *</label>
+                                    <label for="tape" class="form-label">{{ __('Cinta *') }}</label>
                                     <select name="tape" id="tape" class="form-select">
-                                        <option>Paper</option>
-                                        <option>Mesh</option>
+                                        <option>Papel</option>
+                                        <option>Malla</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <div class="col-md-3 mb-3">
-                                    <label for="doors" class="form-label">{{ __('Doors (Units)') }} *</label>
+                                    <label for="doors" class="form-label">{{ __('Puertas (Unidades) *') }}</label>
                                     <input type="number" value="0" required min="0" placeholder="0"
                                         name="doors" id="doors" class="form-control">
                                     <p class="text-danger small fw-bold">(2.10 x 0.90)</p>
                                 </div>
                                 <div class="col-md-3 mb-3">
-                                    <label for="corners" class="form-label">{{ __('Corners') }} *</label>
+                                    <label for="corners" class="form-label">{{ __('Esquinas *') }}</label>
                                     <input type="number" value="0" required min="0" placeholder="0"
                                         name="corners" id="corners" class="form-control">
                                 </div>
                                 <div class="col-md-3 mb-3">
-                                    <label for="corner_pieces" class="form-label">{{ __('Corner pieces') }} *</label>
+                                    <label for="corner_pieces" class="form-label">{{ __('Piezas de esquina *') }}</label>
                                     <select name="corner_pieces" id="corner_pieces" class="form-select">
                                         <option>Metal</option>
-                                        <option>Plastic</option>
+                                        <option>Plástico</option>
                                     </select>
                                 </div>
                                 <div class="col-md-3">
@@ -118,38 +119,38 @@
                             </div>
 
                             <div class="d-flex justify-content-end gap-3 mb-3">
-                                <input type="submit" value="{{ __('Calculate') }}" id="calculate"
+                                <input type="submit" value="{{ __('Calcular') }}" id="calculate"
                                     class="btn btn-alt-success">
-                                <input type="button" id='resetBtn' value="{{ __('Reset') }}"
+                                <input type="button" id='resetBtn' value="{{ __('Reiniciar') }}"
                                     class="btn btn-alt-secondary">
                                 <button id="copyBtn" onclick="copyResults()"
-                                    class="btn btn-alt-primary">{{ __('Copy') }}</button>
+                                    class="btn btn-alt-primary">{{ __('Copiar') }}</button>
                             </div>
 
                             <p class="alert alert-warning fw-semibold text-xs">
-                                {{ __('The boards corresponding to the holes for the doors (1.89 m2 per door) are not being subtracted.') }}
+                                {{ __('Las planchas correspondientes a los huecos de las puertas (1.89 m2 por puerta) no se están restando.') }}
                             </p>
+
+
 
                             <div>
                                 <h3 class="fw-semibold text-sm mb-1">
-                                    Materials
+                                    {{ __('Materiales') }}
                                 </h3>
                                 <div class="border p-3">
                                     <div class="row g-3">
                                         <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
                                             <span class="fw-bold text-xs text-capitalize">
-                                                Sleepers
+                                                {{ __('Durmientes') }}
                                             </span>
-                                            <div id="sleepers"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="sleepers" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
                                             <span class="fw-bold text-xs text-capitalize">
-                                                Screws
+                                                {{ __('Tornillos') }}
                                             </span>
-                                            <div id="screws"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="screws" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                             <span class="fw-bold ms-2 text-xs">
                                                 (lb)
@@ -158,7 +159,7 @@
                                         <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
                                             <div class="d-flex align-items-center">
                                                 <span class="fw-bold text-xs text-capitalize me-2">
-                                                    Wood reinforcement
+                                                    {{ __('Refuerzo de madera') }}
                                                     <p class="text-xs text-danger fw-bold">( 1"x 2"x 8')</p>
                                                 </span>
                                                 <div id="wood_reinforcement"
@@ -168,18 +169,16 @@
                                         </div>
                                         <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
                                             <span class="fw-bold text-xs text-capitalize">
-                                                Studs
+                                                {{ __('Montantes') }}
                                             </span>
-                                            <div id="studs"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="studs" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
                                             <span class="fw-bold text-xs text-capitalize">
-                                                Structural screws
+                                                {{ __('Tornillos estructurales') }}
                                             </span>
-                                            <div id="structural_screws"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="structural_screws" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                             <span class="fw-bold ms-2 text-xs">
                                                 (lb)
@@ -187,18 +186,16 @@
                                         </div>
                                         <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
                                             <span class="fw-bold text-xs text-capitalize">
-                                                Panels
+                                                {{ __('Paneles') }}
                                             </span>
-                                            <div id="panels"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="panels" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
                                             <span class="fw-bold text-xs text-capitalize">
-                                                Nails
+                                                {{ __('Clavos') }}
                                             </span>
-                                            <div id="nails"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="nails" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                             <span class="fw-bold ms-2 text-xs">
                                                 (Uds.)
@@ -206,26 +203,23 @@
                                         </div>
                                         <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
                                             <span class="fw-bold text-xs text-capitalize">
-                                                Putty - bucket
+                                                {{ __('Masilla - Cubeta') }}
                                             </span>
-                                            <div id="putty_bucket"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="putty_bucket" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
                                             <span class="fw-bold text-xs text-capitalize">
-                                                Tapes
+                                                {{ __('Cintas') }}
                                             </span>
-                                            <div id="tapes"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="tapes" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
                                             <span class="fw-bold text-xs text-capitalize">
-                                                Fasteners
+                                                {{ __('Sujetadores') }}
                                             </span>
-                                            <div id="fasteners"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="fasteners" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                             <span class="fw-bold ms-2 text-xs">
                                                 (Uds.)
@@ -233,28 +227,28 @@
                                         </div>
                                         <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
                                             <span class="fw-bold text-xs text-capitalize">
-                                                Corner beads
+                                                {{ __('Cantoneras') }}
                                             </span>
-                                            <div id="corner_beads"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="corner_beads" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
                                             <span class="fw-bold text-xs text-capitalize">
-                                                Cement
+                                                {{ __('Cemento') }}
                                             </span>
-                                            <div id="cement"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="cement" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+
+
                             @if (userSubscribed())
                                 <div class="d-flex justify-content-end gap-3 mt-3">
                                     <button id="providerBtn" onclick="sendToProviders()" class="btn btn-alt-primary">
-                                        {{ __('Send To Providers') }}
+                                        {{ __('Enviar a Proveedores') }}
                                     </button>
                                 </div>
                             @endif
@@ -368,7 +362,7 @@
                 `Profile: ${profile}\nFinish: ${finish}\nBoard Type: ${board_type}\nTape: ${tape}\nCorner Type: ${corner_type}\nSleepers: ${sleepers}\nScrews: ${screws}\nWood Reinforcement: ${wood_reinforcement}\nStuds: ${studs}\nStructural Screws: ${structural_screws}\nPanels: ${panels}\nNails: ${nails}\nPutty Bucket: ${putty_bucket}\nTapes: ${tapes}\nFasteners: ${fasteners}\nCorner Beads: ${corner_beads}\nCement: ${cement}`;
 
             navigator.clipboard.writeText(text).then(function() {
-                alertSuccess('Results copied to clipboard');
+                alertSuccess("{!! __('Copiado al portapapeles') !!}");
             }, function(err) {
                 alertError('Async: Could not copy text: ', err);
             });

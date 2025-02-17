@@ -11,9 +11,9 @@
                             <thead class="table-dark text-uppercase fs-sm">
                                 <tr>
                                     <th class="py-3" style="width: 180px;"></th>
-                                    <th class="py-3">Free</th>
+                                    <th class="py-3">{{ __('Gratis') }}</th>
                                     <th class="py-3 bg-primary">
-                                        <i class="fa fa-thumbs-up me-1"></i> Professional
+                                        <i class="fa fa-thumbs-up me-1"></i> {{ __('Profesional') }}
                                     </th>
                                 </tr>
                             </thead>
@@ -63,10 +63,10 @@
                                     <td></td>
                                     <td>
 
-                                        <button type="button" class="btn btn-sm rounded-pill btn-secondary px-4">No Sign Up Required</button>
+                                        <button type="button" class="btn btn-sm rounded-pill btn-secondary px-4">{{ __('No es necesario registrarse') }}</button>
                                     </td>
                                     <td>
-                                        <a href="{{ route('plans.register',2) }}" class="btn rounded-pill btn-primary px-4">Sign Up</a>
+                                        <a href="{{ route('plans.register',2) }}" class="btn rounded-pill btn-primary px-4">{{ __('Inscribirse') }}</a>
                                     </td>
 
                                 </tr>

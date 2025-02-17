@@ -14,7 +14,8 @@
                     </div>
                     <div class="block-content block-content-full space-y-3">
 
-                        <form class="ajaxform2" autocomplete="off" id="calForm" method="POST" action="{{ route('plafon.calculate') }}">
+                        <form class="ajaxform2" autocomplete="off" id="calForm" method="POST"
+                            action="{{ route('plafon.calculate') }}">
                             @csrf
                             <div class="row mb-5">
                                 <div class="col-md-3">
@@ -35,7 +36,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <label class="form-label">{{ __('Panel Size') }}</label>
+                                    <label class="form-label">{{ __('Tamaño del panel') }}</label>
                                     <select name="panel_size" id="panel_size" class="form-select">
                                         <option value="2x2">2x2</option>
                                         <option value="2x4">2x4</option>
@@ -45,10 +46,12 @@
 
 
                             <div class="d-flex justify-content-end gap-3 mb-3">
-                                <input type="button" id='resetBtn' value="{{ __('Reset') }}" class="btn btn-alt-secondary">
-                                <button id="copyBtn" type="button" class="btn btn-alt-primary">{{ __('Reset') }}</button>
-                                <input type="submit" value="{{ __('Calculate') }}" id="calculateBtn" class="btn btn-alt-success">
-
+                                <input type="button" id='resetBtn' value="{{ __('Reiniciar') }}"
+                                    class="btn btn-alt-secondary">
+                                <button id="copyBtn" type="button"
+                                    class="btn btn-alt-primary">{{ __('Copiar') }}</button>
+                                <input type="submit" value="{{ __('Calcular') }}" id="calculateBtn"
+                                    class="btn btn-alt-success">
                             </div>
 
                         </form>
@@ -58,41 +61,35 @@
                                 <h3 class="fw-bold mb-2 text-primary fs-6">{{ __('MATERIALES') }}</h3>
                                 <div class="row g-3">
                                     <div class="col-lg-3 col-6">
-                                        <label class="text-uppercase fw-semibold small">{{ __('Panel Count') }}</label>
+                                        <label class="text-uppercase fw-semibold small">{{ __('Cantidad de Paneles') }}</label>
                                         <div id="panel_count" class="border w-100 text-center bg-white fw-semibold py-2">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-6">
-                                        <label class="text-uppercase fw-semibold small">{{ __('Main Tee Count') }}</label>
+                                        <label class="text-uppercase fw-semibold small">{{ __('Cantidad de Main Tee') }}</label>
                                         <div id="main_tee_count" class="border w-100 text-center bg-white fw-semibold py-2">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-6">
-                                        <label
-                                            class="text-uppercase fw-semibold small">{{ __('Cross Tee4 Count') }}</label>
-                                        <div id="cross_tee4_count"
-                                            class="border w-100 text-center bg-white fw-semibold py-2">
+                                        <label class="text-uppercase fw-semibold small">{{ __('Cantidad de Cross Tee4') }}</label>
+                                        <div id="cross_tee4_count" class="border w-100 text-center bg-white fw-semibold py-2">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-6">
-                                        <label
-                                            class="text-uppercase fw-semibold small">{{ __('Cross Tee2 Count') }}</label>
-                                        <div id="cross_tee2_count"
-                                            class="border w-100 text-center bg-white fw-semibold py-2">
+                                        <label class="text-uppercase fw-semibold small">{{ __('Cantidad de Cross Tee2') }}</label>
+                                        <div id="cross_tee2_count" class="border w-100 text-center bg-white fw-semibold py-2">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-3 col-6">
-                                        <label class="text-uppercase fw-semibold small">{{ __('Angular Count') }}</label>
+                                        <label class="text-uppercase fw-semibold small">{{ __('Cantidad de Angular') }}</label>
                                         <div id="angular_count" class="border w-100 text-center bg-white fw-semibold py-2">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-3 col-6">
-                                        <label
-                                            class="text-uppercase fw-semibold small">{{ __('Suspension Count') }}</label>
-                                        <div id="suspension_count"
-                                            class="border w-100 text-center bg-white fw-semibold py-2">
+                                        <label class="text-uppercase fw-semibold small">{{ __('Cantidad de Suspensión') }}</label>
+                                        <div id="suspension_count" class="border w-100 text-center bg-white fw-semibold py-2">
                                         </div>
                                     </div>
 
@@ -109,6 +106,7 @@
                                 </div>
                             </div>
                         </div>
+
 
                         <hr>
                         <div class="section mt-5 mt-5">
@@ -179,7 +177,7 @@
             $temp.val(texto).select();
             document.execCommand('copy');
             $temp.remove();
-            alertSuccess('Copied successfully!');
+            alertSuccess("{!! __('Copiado al portapapeles') !!}");
         });
 
 

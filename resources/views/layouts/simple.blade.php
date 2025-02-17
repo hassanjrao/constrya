@@ -178,13 +178,13 @@
 
                             {{-- join premium icon --}}
                             <i class="fa fa-fw fa-crown"></i>
-                            <span class="d-none d-sm-inline-block ms-1">Join Premium</span>
+                            <span class="d-none d-sm-inline-block ms-1">{{ __('Unirse Premium') }}</span>
                         </a>
 
                         <a href="{{ route('login') }}" class="btn btn-sm btn-alt-secondary" id="page-header-user-dropdown">
 
                             <i class="fa fa-fw fa-user"></i>
-                            <span class="d-none d-sm-inline-block ms-1">Login</span>
+                            <span class="d-none d-sm-inline-block ms-1">{{ __('Iniciar sesión') }}</span>
                         </a>
 
                     @endguest
@@ -338,7 +338,7 @@
             <div class="content py-3">
                 <div class="row fs-sm">
                     <div class="col-sm-6 order-sm-2 py-1 text-center text-sm-end">
-                        All rights reserved.
+                        {{ __('Reservados todos los derechos.') }}
                     </div>
                     <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-start">
                         <a class="fw-semibold" href="https://1.envato.market/AVD6j"
