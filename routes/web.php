@@ -51,7 +51,6 @@ Route::post('flat-roof/calculate', [FlatRoofCalculatorController::class, 'calcul
 Route::post('plafon/calculate', [PlafonCalculatorController::class, 'calculate'])->name('plafon.calculate');
 
 
-
 Route::prefix('user')->name('user.')->middleware(['auth'])->group(function () {
 
     Route::get('plans/{plan}/pay', [PlanController::class, 'payView'])->name('plans.pay');

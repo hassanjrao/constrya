@@ -23,7 +23,6 @@ class PayPalController extends Controller
             'category' => 'required|string',
         ]);
 
-        dd('sd');
 
         try {
             $product = $this->paypalService->createProduct($request->all());

@@ -120,7 +120,7 @@
                             <div class="d-flex justify-content-end gap-3 mb-3">
                                 <input type="submit" value="{{ __('Calculate') }}" id="calculate"
                                     class="btn btn-alt-success">
-                                <input type="reset" id='resetBtn' value="{{ __('Reset') }}"
+                                <input type="button" id='resetBtn' value="{{ __('Reset') }}"
                                     class="btn btn-alt-secondary">
                                 <button id="copyBtn" onclick="copyResults()"
                                     class="btn btn-alt-primary">{{ __('Copy') }}</button>
@@ -287,8 +287,8 @@
         providerBtn.prop('disabled', true);
 
         // disable copy button and reset button
-        copyBtn.prop('disabled', true);
-        resetBtn.prop('disabled', true);
+        // copyBtn.prop('disabled', true);
+        // resetBtn.prop('disabled', true);
 
         // add form submit event
         $('#sheetRockForm').submit(function(e) {
@@ -412,6 +412,12 @@
             $('#corner_beads').text(0.00);
             $('#cement').text(0.00);
         }
+
+        $('#resetBtn').click(function() {
+            // reset form
+            $('#sheetRockForm').trigger('reset');
+            setDefaultValues();
+        });
 
         setDefaultValues();
     </script>

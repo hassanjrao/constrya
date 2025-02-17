@@ -16,7 +16,7 @@ class PayPalService
     private function authenticate()
     {
         // disable ssl verification
-        $response = Http::withBasicAuth(env('PAYPAL_CLIENT_ID'), env('PAYPAL_CLIENT_SECRET'))
+        $response = Http::withBasicAuth(env('PAYPAL_SANDBOX_CLIENT_ID'), env('PAYPAL_SANDBOX_CLIENT_SECRET'))
             ->withOptions([
                 'verify' => false,
             ])
