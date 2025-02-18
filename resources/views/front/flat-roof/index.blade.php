@@ -207,6 +207,7 @@
 
 
         providerBtn.prop('disabled', true);
+        automaticQuoteBtn.prop('disabled', true);
 
         let v = {};
 
