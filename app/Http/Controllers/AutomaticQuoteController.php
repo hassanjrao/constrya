@@ -12,6 +12,13 @@ use Mpdf\Mpdf;
 
 class AutomaticQuoteController extends Controller
 {
+
+    public function __construct()
+    {
+        if(!userSubscribed()){
+            return abort(403, __("No tienes una suscripción activa."));
+        }
+    }
     public function automaticQuoteSheetRock(Request $request)
     {
         $request->validate([

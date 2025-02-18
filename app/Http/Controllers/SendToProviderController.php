@@ -15,6 +15,14 @@ use Mpdf\Mpdf;
 
 class SendToProviderController extends Controller
 {
+
+    public function __construct()
+    {
+        if(!userSubscribed()){
+            return response()->json(['message' => __('No tienes una suscripción activa.')], 403);
+        }
+    }
+
     public function sendToProvidersSheetRock(Request $request)
     {
         $request->validate([
