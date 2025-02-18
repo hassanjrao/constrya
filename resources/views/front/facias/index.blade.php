@@ -106,6 +106,17 @@
                                 <input type="submit" value="{{ __('Calcular') }}" id="calculateBtn"
                                     class="btn btn-alt-success">
                             </div>
+
+                            <div class="d-flex justify-content-end gap-3 mb-3">
+
+                                @if (userSubscribed())
+                                    <div class="d-flex justify-content-end gap-3 mt-3">
+                                        <button id="providerBtn" onclick="sendToProviders()" class="btn btn-alt-primary">
+                                            {{ __('Enviar a Proveedores') }}
+                                        </button>
+                                    </div>
+                                @endif
+                            </div>
                         </form>
 
                         <div id="materials" class="mb-5">
@@ -241,6 +252,11 @@
         const calculateBtn = $('#calculateBtn');
         const copyBtn = $('#copyBtn');
         const resetBtn = $('#resetBtn');
+        const providerBtn = $('#providerBtn');
+
+        providerBtn.prop('disabled', true);
+
+
         let v = {};
 
 
@@ -336,6 +352,16 @@
                     copyBtn.prop('disabled', false);
                     resetBtn.prop('disabled', false);
 
+                    if (response.calculationId) {
+                        // create hidden input for calculation id
+                        let input =
+                            `<input type="hidden" name="calculation_id" id="calculation_id" value="${response.calculationId}">`;
+
+                        form.append(input);
+
+                        providerBtn.prop('disabled', false);
+                    }
+
                 },
                 error: function(response) {
                     console.log('error', response);
@@ -344,5 +370,28 @@
             });
 
         });
+
+
+        function sendToProviders() {
+
+            providerBtn.prop('disabled', true);
+
+            $.ajax({
+                url: "{{ route('user.send-to-providers.facias') }}",
+                type: 'POST',
+                data: $('#calForm').serialize(),
+                success: function(response) {
+                    console.log('success', response);
+                    alertSuccess('Sent to providers successfully');
+                    providerBtn.prop('disabled', false);
+                },
+                error: function(response) {
+                    console.log('error', response);
+                    alertError('Error sending to providers');
+                    providerBtn.prop('disabled', false);
+                }
+            });
+
+        }
     </script>
 @endpush

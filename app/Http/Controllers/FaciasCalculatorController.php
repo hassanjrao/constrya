@@ -20,6 +20,11 @@ class FaciasCalculatorController extends Controller
             'd' => (float) $request->d,
         ];
 
+        $profiles=$request->profiles;
+        $acabado=$request->acabado;
+        $tipo_plancha=$request->tipo_plancha;
+        $tipo_cinta=$request->tipo_cinta;
+
         $perimetro_ml = ($largo + $ancho) * 2;
         $m2 = $largo * $ancho;
         $durmientes_ml = $perimetro_ml;
@@ -57,6 +62,10 @@ class FaciasCalculatorController extends Controller
             'b' => $base['b'],
             'c' => $base['c'],
             'd' => $base['d'],
+            'profiles' => $profiles,
+            'acabado' => $acabado,
+            'tipo_plancha' => $tipo_plancha,
+            'tipo_cinta' => $tipo_cinta,
             'perimetro_ml' => round($perimetro_ml, 2),
             'm2' => round($m2, 2),
             'durmientes_ml' => round($durmientes_ml, 2),
@@ -77,10 +86,19 @@ class FaciasCalculatorController extends Controller
             'mano_obra_2caras' => round($mano_obra_facia_2caras, 2)
         ];
 
+        $calculationId = null;
+
         if(auth()->check()){
             $data['user_id'] = auth()->id();
-            UserFaciasCalculation::create($data);
+            $calculation=UserFaciasCalculation::create($data);
+
+
+            $calculationId = $calculation->id;
+
         }
+
+        $data['calculationId'] = $calculationId;
+
 
         return response()->json(
             $data

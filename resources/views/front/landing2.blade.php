@@ -373,7 +373,7 @@
             providerBtn.prop('disabled', true);
 
             $.ajax({
-                url: "{{ route('user.send-to-providers') }}",
+                url: "{{ route('user.send-to-providers.sheet-rock') }}",
                 type: 'POST',
                 data: $('#sheetRockForm').serialize(),
                 success: function(response) {

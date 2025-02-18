@@ -65,7 +65,8 @@ Route::prefix('user')->name('user.')->middleware(['auth'])->group(function () {
     Route::get('memory-calculations/flat-roof',[MemoryCalculationController::class,'flatRoof'])->name('memory-calculations.flat-roof');
     Route::get('memory-calculations/plafon',[MemoryCalculationController::class,'index'])->name('memory-calculations.plafon');
 
-    Route::post('send-to-providers',[SendToProviderController::class,'sendToProviders'])->name('send-to-providers');
+    Route::post('send-to-providers/sheet-rock',[SendToProviderController::class,'sendToProvidersSheetRock'])->name('send-to-providers.sheet-rock');
+    Route::post('send-to-providers/facias',[SendToProviderController::class,'sendToProvidersFacias'])->name('send-to-providers.facias');
 
 
 });

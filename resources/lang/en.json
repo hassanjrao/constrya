@@ -123,5 +123,19 @@
     "confirmar Contraseña": "Confirm Password",
     "Plan seleccionado": "Selected plan",
     "Pago exitoso": "Successful payment",
-    "Ya estás suscrito a un plan.": "You are already subscribed to a plan."
+    "Ya estás suscrito a un plan.": "You are already subscribed to a plan.",
+    "Cálculo de SheetRock": "SheetRock Calculation",
+    "Metros lineales": "Linear meters",
+    "Altura": "Height",
+    "1 Lado / 2 Lados": "1 Side / 2 Sides",
+    "M²": "M²",
+    "Perfiles metálicos a 60cm": "Metal profiles @ 60cm",
+    "Tipo de tablero": "Type of board",
+    "Puertas (Unidades)": "Doors (Units)",
+    "Esquinas": "Corners",
+    "Piezas de esquina": "Corner pieces",
+    "Interior/Exterior": "Interior/Exterior",
+    "Tornillos (1 lb)": "Screws (1 lb)",
+    "Refuerzo de madera (1\"x2\"x8)": "Wood Reinforcement (1\"x2\"x8)",
+    "Perfiles de esquina": "Corner Beads"
 }
