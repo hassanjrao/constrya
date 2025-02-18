@@ -26,7 +26,7 @@ class PdfAttachmentMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Your PDF Calculation')
+        return $this->subject(__('Cálculos de'). ' ' . config('app.name'))
                     ->view('emails.pdf_mail') // a Blade view for the email body
                     ->attachData($this->pdfContent, 'calculation.pdf', [
                         'mime' => 'application/pdf',
