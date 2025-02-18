@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\PdfAttachmentMail;
-use App\Models\Provider;
+
 use App\Models\UserFaciasCalculation;
 use App\Models\UserFlatRoofCalculation;
 use App\Models\UserPlafonCalculation;
 use App\Models\UserSheetRockCalculation;
-use App\Notifications\SendToProviderNotification;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Mpdf\Mpdf;
 
-class SendToProviderController extends Controller
+class AutomaticQuoteController extends Controller
 {
-    public function sendToProvidersSheetRock(Request $request)
+    public function automaticQuoteSheetRock(Request $request)
     {
         $request->validate([
             'calculation_id' => 'required|numeric|exists:user_sheet_rock_calculations,id',
@@ -33,23 +30,17 @@ class SendToProviderController extends Controller
 
         $pdfContent =  $mpdf->Output('', 'S');
 
-        $this->sendToProviderS($pdfContent);
+        // open in browser in new tab
 
-        return response()->json(['message' => 'Emails sent to providers']);
+        return response($pdfContent, 200)
+            ->header('Content-Type', 'application/pdf');
+
     }
 
 
-    public function sendToProviderS($pdfContent)
-    {
-        $providers = Provider::all();
-
-        foreach ($providers as $provider) {
-            Mail::to($provider->email)->send(new PdfAttachmentMail($pdfContent));
-        }
-    }
 
 
-    public function sendToProvidersFacias(Request $request)
+    public function automaticQuotesFacias(Request $request)
     {
 
         $request->validate([
@@ -68,13 +59,12 @@ class SendToProviderController extends Controller
 
         $pdfContent =  $mpdf->Output('', 'S');
 
-        $this->sendToProviderS($pdfContent);
 
 
         return response()->json(['message' => 'Emails sent to providers']);
     }
 
-    public function sendToProvidersFlatRoof(Request $request)
+    public function automaticQuotesFlatRoof(Request $request)
     {
 
         $request->validate([
@@ -93,14 +83,13 @@ class SendToProviderController extends Controller
 
         $pdfContent =  $mpdf->Output('', 'S');
 
-        $this->sendToProviderS($pdfContent);
 
 
         return response()->json(['message' => 'Emails sent to providers']);
     }
 
 
-    public function sendToProvidersPlafon(Request $request)
+    public function automaticQuotesPlafon(Request $request)
     {
 
         $request->validate([
@@ -119,7 +108,6 @@ class SendToProviderController extends Controller
 
         $pdfContent =  $mpdf->Output('', 'S');
 
-        $this->sendToProviderS($pdfContent);
 
 
         return response()->json(['message' => 'Emails sent to providers']);

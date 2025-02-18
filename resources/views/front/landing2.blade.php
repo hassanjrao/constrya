@@ -127,6 +127,21 @@
                                     class="btn btn-alt-primary">{{ __('Copiar') }}</button>
                             </div>
 
+                            <div class="d-flex justify-content-end gap-3 mb-3">
+
+                                @if (userSubscribed())
+                                    <div class="d-flex justify-content-end gap-3 mt-3">
+                                        <button id="providerBtn" onclick="sendToProviders()" class="btn btn-alt-primary">
+                                            {{ __('Enviar a Proveedores') }}
+                                        </button>
+                                        <button id="automaticQuoteBtn" onclick="automaticQuote()"
+                                            class="btn btn-alt-info">
+                                            {{ __('Cotización automática') }}
+                                        </button>
+                                    </div>
+                                @endif
+                            </div>
+
                             <p class="alert alert-warning fw-semibold text-xs">
                                 {{ __('Las planchas correspondientes a los huecos de las puertas (1.89 m2 por puerta) no se están restando.') }}
                             </p>
@@ -143,14 +158,16 @@
                                             <span class="fw-bold text-xs text-capitalize">
                                                 {{ __('Durmientes') }}
                                             </span>
-                                            <div id="sleepers" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="sleepers"
+                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
                                             <span class="fw-bold text-xs text-capitalize">
                                                 {{ __('Tornillos') }}
                                             </span>
-                                            <div id="screws" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="screws"
+                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                             <span class="fw-bold ms-2 text-xs">
                                                 (lb)
@@ -171,14 +188,16 @@
                                             <span class="fw-bold text-xs text-capitalize">
                                                 {{ __('Montantes') }}
                                             </span>
-                                            <div id="studs" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="studs"
+                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
                                             <span class="fw-bold text-xs text-capitalize">
                                                 {{ __('Tornillos estructurales') }}
                                             </span>
-                                            <div id="structural_screws" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="structural_screws"
+                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                             <span class="fw-bold ms-2 text-xs">
                                                 (lb)
@@ -188,14 +207,16 @@
                                             <span class="fw-bold text-xs text-capitalize">
                                                 {{ __('Paneles') }}
                                             </span>
-                                            <div id="panels" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="panels"
+                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
                                             <span class="fw-bold text-xs text-capitalize">
                                                 {{ __('Clavos') }}
                                             </span>
-                                            <div id="nails" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="nails"
+                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                             <span class="fw-bold ms-2 text-xs">
                                                 (Uds.)
@@ -205,21 +226,24 @@
                                             <span class="fw-bold text-xs text-capitalize">
                                                 {{ __('Masilla - Cubeta') }}
                                             </span>
-                                            <div id="putty_bucket" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="putty_bucket"
+                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
                                             <span class="fw-bold text-xs text-capitalize">
                                                 {{ __('Cintas') }}
                                             </span>
-                                            <div id="tapes" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="tapes"
+                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
                                             <span class="fw-bold text-xs text-capitalize">
                                                 {{ __('Sujetadores') }}
                                             </span>
-                                            <div id="fasteners" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="fasteners"
+                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                             <span class="fw-bold ms-2 text-xs">
                                                 (Uds.)
@@ -229,14 +253,16 @@
                                             <span class="fw-bold text-xs text-capitalize">
                                                 {{ __('Cantoneras') }}
                                             </span>
-                                            <div id="corner_beads" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="corner_beads"
+                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
                                             <span class="fw-bold text-xs text-capitalize">
                                                 {{ __('Cemento') }}
                                             </span>
-                                            <div id="cement" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                            <div id="cement"
+                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                             </div>
                                         </div>
                                     </div>
@@ -245,13 +271,6 @@
 
 
 
-                            @if (userSubscribed())
-                                <div class="d-flex justify-content-end gap-3 mt-3">
-                                    <button id="providerBtn" onclick="sendToProviders()" class="btn btn-alt-primary">
-                                        {{ __('Enviar a Proveedores') }}
-                                    </button>
-                                </div>
-                            @endif
 
 
 
@@ -276,9 +295,11 @@
         const copyBtn = $('#copyBtn');
         const resetBtn = $('#resetBtn');
         const providerBtn = $('#providerBtn');
+        const automaticQuoteBtn = $('#automaticQuoteBtn');
 
 
         providerBtn.prop('disabled', true);
+        automaticQuoteBtn.prop('disabled', true);
 
         // disable copy button and reset button
         // copyBtn.prop('disabled', true);
@@ -323,6 +344,7 @@
                         form.append(input);
 
                         providerBtn.prop('disabled', false);
+                        automaticQuoteBtn.prop('disabled', false);
                     }
 
 
@@ -385,6 +407,27 @@
                     console.log('error', response);
                     alertError('Error sending to providers');
                     providerBtn.prop('disabled', false);
+                }
+            });
+
+        }
+
+        function automaticQuote() {
+
+            automaticQuoteBtn.prop('disabled', true);
+
+            $.ajax({
+                url: "{{ route('user.automatic-quote.sheet-rock') }}",
+                type: 'POST',
+                data: $('#sheetRockForm').serialize(),
+                success: function(response) {
+                    console.log('success', response);
+                    automaticQuoteBtn.prop('disabled', false);
+                },
+                error: function(response) {
+                    console.log('error', response);
+                    alertError('Error contact support');
+                    automaticQuoteBtn.prop('disabled', false);
                 }
             });
 

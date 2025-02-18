@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminProviderController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AutomaticQuoteController;
 use App\Http\Controllers\CalculatorController;
 use App\Http\Controllers\FaciasCalculatorController;
 use App\Http\Controllers\FileUploadController;
@@ -67,6 +68,15 @@ Route::prefix('user')->name('user.')->middleware(['auth'])->group(function () {
 
     Route::post('send-to-providers/sheet-rock',[SendToProviderController::class,'sendToProvidersSheetRock'])->name('send-to-providers.sheet-rock');
     Route::post('send-to-providers/facias',[SendToProviderController::class,'sendToProvidersFacias'])->name('send-to-providers.facias');
+    Route::post('send-to-providers/flat-roof',[SendToProviderController::class,'sendToProvidersFlatRoof'])->name('send-to-providers.flat-roof');
+    Route::post('send-to-providers/plafon',[SendToProviderController::class,'sendToProvidersPlafon'])->name('send-to-providers.plafon');
+
+
+
+    Route::post('automatic-quote/sheet-rock',[AutomaticQuoteController::class,'automaticQuoteSheetRock'])->name('automatic-quote.sheet-rock');
+    Route::post('automatic-quote/facias',[AutomaticQuoteController::class,'automaticQuoteFacias'])->name('automatic-quote.facias');
+    Route::post('automatic-quote/flat-roof',[AutomaticQuoteController::class,'automaticQuoteFlatRoof'])->name('automatic-quote.flat-roof');
+    Route::post('automatic-quote/plafon',[AutomaticQuoteController::class,'automaticQuotePlafon'])->name('automatic-quote.plafon');
 
 
 });

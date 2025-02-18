@@ -15,8 +15,8 @@
                     <div class="block-content block-content-full space-y-3">
                         <p class="alert alert-secondary p-3 text-xs mb-5">
                             {{ __('Esta herramienta ha sido diseñada para brindar un cálculo aproximado, teniendo en cuenta ciertos
-                                                        parámetros estándar. Sin embargo, es importante tener en cuenta que cada instalación puede
-                                                        presentar particularidades que no se consideran en este cálculo general.') }}
+                                                                                                                parámetros estándar. Sin embargo, es importante tener en cuenta que cada instalación puede
+                                                                                                                presentar particularidades que no se consideran en este cálculo general.') }}
                         </p>
                         <form class="ajaxform2" autocomplete="off" id="calForm" method="POST"
                             action="{{ route('flat-roof.calculate') }}">
@@ -55,9 +55,9 @@
                                 <div class="col-md-3">
                                     <label class="form-label">{{ __('Acabado') }} *</label>
                                     <select name="acabado" id="acabado" class="form-select">
-                                        <option>{{  __('Masilla')}}</option>
-                                        <option>{{  __('Empañete')}}</option>
-                                        <option>{{  __('Sin terminación')}}</option>
+                                        <option>{{ __('Masilla') }}</option>
+                                        <option>{{ __('Empañete') }}</option>
+                                        <option>{{ __('Sin terminación') }}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-3">
@@ -85,6 +85,16 @@
                                 <input type="submit" value="{{ __('Calcular') }}" id="calculateBtn"
                                     class="btn btn-alt-success">
 
+                            </div>
+                            <div class="d-flex justify-content-end gap-3 mb-3">
+
+                                @if (userSubscribed())
+                                    <div class="d-flex justify-content-end gap-3 mt-3">
+                                        <button id="providerBtn" onclick="sendToProviders()" class="btn btn-alt-primary">
+                                            {{ __('Enviar a Proveedores') }}
+                                        </button>
+                                    </div>
+                                @endif
                             </div>
 
                         </form>
@@ -188,6 +198,10 @@
         const calculateBtn = $('#calculate');
         const copyBtn = $('#copyBtn');
         const resetBtn = $('#resetBtn');
+        const providerBtn = $('#providerBtn');
+
+        providerBtn.prop('disabled', true);
+
         let v = {};
 
 
@@ -257,8 +271,6 @@
                     $('#cinta').text(response.cinta.toFixed(2));
                     $('#p_largo').text(response.parales_largo.toFixed(2));
                     $('#p_ancho').text(response.parales_ancho.toFixed(2));
-                    $('#p_und_largo').text(response.parales_und_largo.toFixed(2));
-                    $('#p_und_ancho').text(response.parales_und_ancho.toFixed(2));
                     $('#p_und').text(response.parales.toFixed(2));
                     $('#pl_m2').text(response.planchas_m2.toFixed(2));
                     $('#pl_und').text(response.planchas.toFixed(2));
@@ -271,6 +283,17 @@
                     calculateBtn.prop('disabled', false);
                     copyBtn.prop('disabled', false);
                     resetBtn.prop('disabled', false);
+
+
+                    if (response.calculationId) {
+                        // create hidden input for calculation id
+                        let input =
+                            `<input type="hidden" name="calculation_id" id="calculation_id" value="${response.calculationId}">`;
+
+                        form.append(input);
+
+                        providerBtn.prop('disabled', false);
+                    }
 
                 },
                 error: function(response) {
@@ -303,8 +326,6 @@
             $('#cinta').text(0.00);
             $('#p_largo').text(0.00);
             $('#p_ancho').text(0.00);
-            $('#p_und_largo').text(0.00);
-            $('#p_und_ancho').text(0.00);
             $('#p_und').text(0.00);
             $('#pl_m2').text(0.00);
             $('#pl_und').text(0.00);
@@ -312,6 +333,28 @@
             $('#equineros_ml').text(0.00);
             $('#equineros').text(0.00);
             $('#equineros_mas').text(0.00);
+        }
+
+        function sendToProviders() {
+
+            providerBtn.prop('disabled', true);
+
+            $.ajax({
+                url: "{{ route('user.send-to-providers.flat-roof') }}",
+                type: 'POST',
+                data: $('#calForm').serialize(),
+                success: function(response) {
+                    console.log('success', response);
+                    alertSuccess('Sent to providers successfully');
+                    providerBtn.prop('disabled', false);
+                },
+                error: function(response) {
+                    console.log('error', response);
+                    alertError('Error sending to providers');
+                    providerBtn.prop('disabled', false);
+                }
+            });
+
         }
     </script>
 @endpush

@@ -65,7 +65,7 @@ class PlafonCalculatorController extends Controller
         $fulminantes = $mainTeeCount * 5;
 
 
-        $data=[
+        $data = [
             'largo'           => $largo,
             'ancho'           => $ancho,
             'unidad'          => $unidad,
@@ -82,10 +82,18 @@ class PlafonCalculatorController extends Controller
             'fulminantes'     => $fulminantes,
         ];
 
-        if(auth()->check()){
-            $data['user_id']=auth()->id();
-            $calculation=UserPlafonCalculation::create($data);
+
+        $calculationId = null;
+
+        if (auth()->check()) {
+            $data['user_id'] = auth()->id();
+            $calculation = UserPlafonCalculation::create($data);
+
+            $calculationId = $calculation->id;
         }
+
+        $data['calculationId'] = $calculationId;
+
 
         // 11) Return the results (e.g., as JSON)
         return response()->json($data);

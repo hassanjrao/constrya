@@ -80,10 +80,19 @@ class FlatRoofCalculatorController extends Controller
             'cinta' => ceil($cinta),
         ];
 
+
+        $calculationId = null;
         if(auth()->check()){
             $data['user_id'] = auth()->id();
-            UserFlatRoofCalculation::create($data);
+           $calculation= UserFlatRoofCalculation::create($data);
+
+
+           $calculationId = $calculation->id;
         }
+
+        $data['calculationId'] = $calculationId;
+
+
 
         return response()->json($data);
     }

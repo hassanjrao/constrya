@@ -54,6 +54,17 @@
                                     class="btn btn-alt-success">
                             </div>
 
+                            <div class="d-flex justify-content-end gap-3 mb-3">
+
+                                @if (userSubscribed())
+                                    <div class="d-flex justify-content-end gap-3 mt-3">
+                                        <button id="providerBtn" onclick="sendToProviders()" class="btn btn-alt-primary">
+                                            {{ __('Enviar a Proveedores') }}
+                                        </button>
+                                    </div>
+                                @endif
+                            </div>
+
                         </form>
 
                         <div id="materiales">
@@ -61,35 +72,44 @@
                                 <h3 class="fw-bold mb-2 text-primary fs-6">{{ __('MATERIALES') }}</h3>
                                 <div class="row g-3">
                                     <div class="col-lg-3 col-6">
-                                        <label class="text-uppercase fw-semibold small">{{ __('Cantidad de Paneles') }}</label>
+                                        <label
+                                            class="text-uppercase fw-semibold small">{{ __('Cantidad de Paneles') }}</label>
                                         <div id="panel_count" class="border w-100 text-center bg-white fw-semibold py-2">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-6">
-                                        <label class="text-uppercase fw-semibold small">{{ __('Cantidad de Main Tee') }}</label>
+                                        <label
+                                            class="text-uppercase fw-semibold small">{{ __('Cantidad de Main Tee') }}</label>
                                         <div id="main_tee_count" class="border w-100 text-center bg-white fw-semibold py-2">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-6">
-                                        <label class="text-uppercase fw-semibold small">{{ __('Cantidad de Cross Tee4') }}</label>
-                                        <div id="cross_tee4_count" class="border w-100 text-center bg-white fw-semibold py-2">
+                                        <label
+                                            class="text-uppercase fw-semibold small">{{ __('Cantidad de Cross Tee4') }}</label>
+                                        <div id="cross_tee4_count"
+                                            class="border w-100 text-center bg-white fw-semibold py-2">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-6">
-                                        <label class="text-uppercase fw-semibold small">{{ __('Cantidad de Cross Tee2') }}</label>
-                                        <div id="cross_tee2_count" class="border w-100 text-center bg-white fw-semibold py-2">
+                                        <label
+                                            class="text-uppercase fw-semibold small">{{ __('Cantidad de Cross Tee2') }}</label>
+                                        <div id="cross_tee2_count"
+                                            class="border w-100 text-center bg-white fw-semibold py-2">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-3 col-6">
-                                        <label class="text-uppercase fw-semibold small">{{ __('Cantidad de Angular') }}</label>
+                                        <label
+                                            class="text-uppercase fw-semibold small">{{ __('Cantidad de Angular') }}</label>
                                         <div id="angular_count" class="border w-100 text-center bg-white fw-semibold py-2">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-3 col-6">
-                                        <label class="text-uppercase fw-semibold small">{{ __('Cantidad de Suspensión') }}</label>
-                                        <div id="suspension_count" class="border w-100 text-center bg-white fw-semibold py-2">
+                                        <label
+                                            class="text-uppercase fw-semibold small">{{ __('Cantidad de Suspensión') }}</label>
+                                        <div id="suspension_count"
+                                            class="border w-100 text-center bg-white fw-semibold py-2">
                                         </div>
                                     </div>
 
@@ -128,6 +148,10 @@
         const calculateBtn = $('#calculate');
         const copyBtn = $('#copyBtn');
         const resetBtn = $('#resetBtn');
+        const providerBtn = $('#providerBtn');
+
+        providerBtn.prop('disabled', true);
+
 
 
         $(document).ready(function() {
@@ -209,6 +233,16 @@
                     copyBtn.prop('disabled', false);
                     resetBtn.prop('disabled', false);
 
+                    if (response.calculationId) {
+                        // create hidden input for calculation id
+                        let input =
+                            `<input type="hidden" name="calculation_id" id="calculation_id" value="${response.calculationId}">`;
+
+                        form.append(input);
+
+                        providerBtn.prop('disabled', false);
+                    }
+
                 },
                 error: function(response) {
                     console.log('error', response);
@@ -223,5 +257,28 @@
             $('#calForm').trigger('reset');
             setDefaultValues();
         });
+
+
+        function sendToProviders() {
+
+            providerBtn.prop('disabled', true);
+
+            $.ajax({
+                url: "{{ route('user.send-to-providers.plafon') }}",
+                type: 'POST',
+                data: $('#calForm').serialize(),
+                success: function(response) {
+                    console.log('success', response);
+                    alertSuccess('Sent to providers successfully');
+                    providerBtn.prop('disabled', false);
+                },
+                error: function(response) {
+                    console.log('error', response);
+                    alertError('Error sending to providers');
+                    providerBtn.prop('disabled', false);
+                }
+            });
+
+        }
     </script>
 @endpush
