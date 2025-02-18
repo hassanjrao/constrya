@@ -6,18 +6,20 @@
     <title>{{ __('Cálculo de SheetRock') }}</title>
     <style>
         /* Optional styling for header */
+
         .header {
             text-align: center;
-            border-bottom: 1px solid #000;
-            padding-bottom: 10px;
             margin-bottom: 20px;
+        }
+        .header img {
+            height: 50px;
         }
     </style>
 </head>
 <body>
     <!-- Header with Logo -->
     <div class="header">
-        <img src="{{ asset('media/logos/logo.png') }}"  alt="Logo">
+        <img src="{{ asset('media/logos/logo.png') }}" style="width: 100px; height: 100px" alt="Logo">
     </div>
 
     <h2 style="text-align:center;">{{ __('Cálculo de SheetRock') }}</h2>

@@ -8,6 +8,14 @@
         body {
             font-family: Arial, sans-serif;
         }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            height: 50px;
+        }
         .header-title {
             text-align: center;
             margin-bottom: 20px;
@@ -35,6 +43,10 @@
     </style>
 </head>
 <body>
+
+    <div class="header">
+        <img src="{{ asset('media/logos/logo.png') }}" style="width: 100px; height: 100px" alt="Logo">
+    </div>
 
     <h2 class="header-title">{{ __('Cálculo de Facias') }}</h2>
 
