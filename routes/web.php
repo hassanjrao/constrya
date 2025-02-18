@@ -73,10 +73,10 @@ Route::prefix('user')->name('user.')->middleware(['auth'])->group(function () {
 
 
 
-    Route::post('automatic-quote/sheet-rock',[AutomaticQuoteController::class,'automaticQuoteSheetRock'])->name('automatic-quote.sheet-rock');
-    Route::post('automatic-quote/facias',[AutomaticQuoteController::class,'automaticQuoteFacias'])->name('automatic-quote.facias');
-    Route::post('automatic-quote/flat-roof',[AutomaticQuoteController::class,'automaticQuoteFlatRoof'])->name('automatic-quote.flat-roof');
-    Route::post('automatic-quote/plafon',[AutomaticQuoteController::class,'automaticQuotePlafon'])->name('automatic-quote.plafon');
+    Route::get('automatic-quote/sheet-rock',[AutomaticQuoteController::class,'automaticQuoteSheetRock'])->name('automatic-quote.sheet-rock');
+    Route::get('automatic-quote/facias',[AutomaticQuoteController::class,'automaticQuoteFacias'])->name('automatic-quote.facias');
+    Route::get('automatic-quote/flat-roof',[AutomaticQuoteController::class,'automaticQuoteFlatRoof'])->name('automatic-quote.flat-roof');
+    Route::get('automatic-quote/plafon',[AutomaticQuoteController::class,'automaticQuotePlafon'])->name('automatic-quote.plafon');
 
 
 });

@@ -18,7 +18,11 @@ class AutomaticQuoteController extends Controller
             'calculation_id' => 'required|numeric|exists:user_sheet_rock_calculations,id',
         ]);
 
-        $calculation = UserSheetRockCalculation::find($request->calculation_id);
+        $calculation = UserSheetRockCalculation::where('id',$request->calculation_id)->where('user_id',auth()->id())->first();
+
+        if(!$calculation){
+            return abort(404,__("No calculation found"));
+        }
 
 
         // Instantiate mPDF

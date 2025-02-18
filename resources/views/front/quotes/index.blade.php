@@ -78,6 +78,8 @@
     <script>
         const materials = @json($materials);
 
+        console.log('materials',materials);
+
         addRow();
         // Function to add a new row to the table
         function addRow() {

@@ -414,22 +414,15 @@
 
         function automaticQuote() {
 
-            automaticQuoteBtn.prop('disabled', true);
+            // open a new window by passing calculation_id as query param
 
-            $.ajax({
-                url: "{{ route('user.automatic-quote.sheet-rock') }}",
-                type: 'POST',
-                data: $('#sheetRockForm').serialize(),
-                success: function(response) {
-                    console.log('success', response);
-                    automaticQuoteBtn.prop('disabled', false);
-                },
-                error: function(response) {
-                    console.log('error', response);
-                    alertError('Error contact support');
-                    automaticQuoteBtn.prop('disabled', false);
-                }
-            });
+            let calculationId = $('#calculation_id').val();
+
+            if (calculationId) {
+                window.open("{{ route('user.automatic-quote.sheet-rock') }}?calculation_id=" + calculationId, '_blank');
+            } else {
+                alertError("{!! __('Primero calcule los materiales') !!}");
+            }
 
         }
 
