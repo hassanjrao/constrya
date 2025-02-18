@@ -61,10 +61,11 @@
                                         <button id="providerBtn" onclick="sendToProviders()" class="btn btn-alt-primary">
                                             {{ __('Enviar a Proveedores') }}
                                         </button>
+
+                                        <button id="automaticQuoteBtn" onclick="automaticQuote()" class="btn btn-alt-info">
+                                            {{ __('Cotización automática') }}
+                                        </button>
                                     </div>
-                                    <button id="automaticQuoteBtn" onclick="automaticQuote()" class="btn btn-alt-info">
-                                        {{ __('Cotización automática') }}
-                                    </button>
                                 @endif
                             </div>
 
