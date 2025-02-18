@@ -78,12 +78,13 @@
                             </div>
 
                             <div class="d-flex justify-content-end gap-3 mb-3">
+                                <input type="submit" value="{{ __('Calcular') }}" id="calculateBtn"
+                                class="btn btn-alt-success">
                                 <input type="button" id='resetBtn' value="{{ __('Reiniciar') }}"
                                     class="btn btn-alt-secondary">
                                 <button id="copyBtn" type="button"
                                     class="btn btn-alt-primary">{{ __('Copiar') }}</button>
-                                <input type="submit" value="{{ __('Calcular') }}" id="calculateBtn"
-                                    class="btn btn-alt-success">
+
 
                             </div>
                             <div class="d-flex justify-content-end gap-3 mb-3">
