@@ -15,7 +15,7 @@ class AutomaticQuoteController extends Controller
     public function automaticQuoteSheetRock(Request $request)
     {
         $request->validate([
-            'calculation_id' => 'required|numeric|exists:user_sheet_rock_calculations,id',
+            'calculation_id' => 'nullable',
         ]);
 
         $calculation = UserSheetRockCalculation::where('id', $request->calculation_id)->where('user_id', auth()->id())->first();
@@ -47,7 +47,7 @@ class AutomaticQuoteController extends Controller
     {
 
         $request->validate([
-            'calculation_id' => 'required|numeric|exists:user_facias_calculations,id',
+            'calculation_id' => 'nullable',
         ]);
 
 
@@ -76,7 +76,7 @@ class AutomaticQuoteController extends Controller
     {
 
         $request->validate([
-            'calculation_id' => 'required|numeric|exists:user_flat_roof_calculations,id',
+            'calculation_id' => 'nullable',
         ]);
 
 
@@ -107,7 +107,7 @@ class AutomaticQuoteController extends Controller
     {
 
         $request->validate([
-            'calculation_id' => 'required|numeric|exists:user_plafon_calculations,id',
+            'calculation_id' => 'nullable',
         ]);
 
         $plafonCalculation = UserPlafonCalculation::where('id', $request->calculation_id)->where('user_id', auth()->id())->first();
