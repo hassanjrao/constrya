@@ -8,6 +8,13 @@
         body {
             font-family: Arial, sans-serif;
         }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            height: 50px;
+        }
         .header-title {
             text-align: center;
             margin-bottom: 20px;
@@ -35,6 +42,12 @@
     </style>
 </head>
 <body>
+
+      <!-- Logo Header -->
+      <div class="header">
+        <!-- Replace 'logo.png' with your actual logo file name -->
+        <img src="{{ asset('images/logo.png') }}" alt="Logo">
+    </div>
 
     <h2 class="header-title">{{ __('Calculadora de Plafón') }}</h2>
 

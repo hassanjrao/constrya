@@ -18,10 +18,10 @@ class AutomaticQuoteController extends Controller
             'calculation_id' => 'required|numeric|exists:user_sheet_rock_calculations,id',
         ]);
 
-        $calculation = UserSheetRockCalculation::where('id',$request->calculation_id)->where('user_id',auth()->id())->first();
+        $calculation = UserSheetRockCalculation::where('id', $request->calculation_id)->where('user_id', auth()->id())->first();
 
-        if(!$calculation){
-            return abort(404,__("No calculation found"));
+        if (!$calculation) {
+            return abort(404, __("No calculation found"));
         }
 
 
@@ -38,7 +38,6 @@ class AutomaticQuoteController extends Controller
 
         return response($pdfContent, 200)
             ->header('Content-Type', 'application/pdf');
-
     }
 
 
@@ -64,8 +63,8 @@ class AutomaticQuoteController extends Controller
         $pdfContent =  $mpdf->Output('', 'S');
 
 
-
-        return response()->json(['message' => 'Emails sent to providers']);
+        return response($pdfContent, 200)
+            ->header('Content-Type', 'application/pdf');
     }
 
     public function automaticQuotesFlatRoof(Request $request)
@@ -88,8 +87,8 @@ class AutomaticQuoteController extends Controller
         $pdfContent =  $mpdf->Output('', 'S');
 
 
-
-        return response()->json(['message' => 'Emails sent to providers']);
+        return response($pdfContent, 200)
+            ->header('Content-Type', 'application/pdf');
     }
 
 
@@ -100,8 +99,11 @@ class AutomaticQuoteController extends Controller
             'calculation_id' => 'required|numeric|exists:user_plafon_calculations,id',
         ]);
 
-        $plafonCalculation = UserPlafonCalculation::find($request->calculation_id);
+        $plafonCalculation = UserPlafonCalculation::where('id', $request->calculation_id)->where('user_id', auth()->id())->first();
 
+        if (!$plafonCalculation) {
+            return abort(404, __("No calculation found"));
+        }
 
         // Instantiate mPDF
         $mpdf = new Mpdf();
@@ -114,6 +116,7 @@ class AutomaticQuoteController extends Controller
 
 
 
-        return response()->json(['message' => 'Emails sent to providers']);
+        return response($pdfContent, 200)
+            ->header('Content-Type', 'application/pdf');
     }
 }
