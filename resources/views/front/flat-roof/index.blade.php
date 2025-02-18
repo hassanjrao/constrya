@@ -15,8 +15,8 @@
                     <div class="block-content block-content-full space-y-3">
                         <p class="alert alert-secondary p-3 text-xs mb-5">
                             {{ __('Esta herramienta ha sido diseñada para brindar un cálculo aproximado, teniendo en cuenta ciertos
-                                                                                                                parámetros estándar. Sin embargo, es importante tener en cuenta que cada instalación puede
-                                                                                                                presentar particularidades que no se consideran en este cálculo general.') }}
+                                                                                                                                            parámetros estándar. Sin embargo, es importante tener en cuenta que cada instalación puede
+                                                                                                                                            presentar particularidades que no se consideran en este cálculo general.') }}
                         </p>
                         <form class="ajaxform2" autocomplete="off" id="calForm" method="POST"
                             action="{{ route('flat-roof.calculate') }}">
@@ -92,6 +92,9 @@
                                     <div class="d-flex justify-content-end gap-3 mt-3">
                                         <button id="providerBtn" onclick="sendToProviders()" class="btn btn-alt-primary">
                                             {{ __('Enviar a Proveedores') }}
+                                        </button>
+                                        <button id="automaticQuoteBtn" onclick="automaticQuote()" class="btn btn-alt-info">
+                                            {{ __('Cotización automática') }}
                                         </button>
                                     </div>
                                 @endif
@@ -199,6 +202,8 @@
         const copyBtn = $('#copyBtn');
         const resetBtn = $('#resetBtn');
         const providerBtn = $('#providerBtn');
+        const automaticQuoteBtn = $('#automaticQuoteBtn');
+
 
         providerBtn.prop('disabled', true);
 
@@ -293,6 +298,8 @@
                         form.append(input);
 
                         providerBtn.prop('disabled', false);
+                        automaticQuoteBtn.prop('disabled', false);
+
                     }
 
                 },
@@ -354,6 +361,21 @@
                     providerBtn.prop('disabled', false);
                 }
             });
+
+        }
+
+
+        function automaticQuote() {
+
+            // open a new window by passing calculation_id as query param
+
+            let calculationId = $('#calculation_id').val();
+
+            if (calculationId) {
+                window.open("{{ route('user.automatic-quote.flat-roof') }}?calculation_id=" + calculationId, '_blank');
+            } else {
+                alertError("{!! __('Primero calcule los materiales') !!}");
+            }
 
         }
     </script>

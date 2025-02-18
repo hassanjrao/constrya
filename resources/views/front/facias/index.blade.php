@@ -114,6 +114,11 @@
                                         <button id="providerBtn" onclick="sendToProviders()" class="btn btn-alt-primary">
                                             {{ __('Enviar a Proveedores') }}
                                         </button>
+
+                                        <button id="automaticQuoteBtn" onclick="automaticQuote()"
+                                            class="btn btn-alt-info">
+                                            {{ __('Cotización automática') }}
+                                        </button>
                                     </div>
                                 @endif
                             </div>
@@ -253,8 +258,11 @@
         const copyBtn = $('#copyBtn');
         const resetBtn = $('#resetBtn');
         const providerBtn = $('#providerBtn');
+        const automaticQuoteBtn = $('#automaticQuoteBtn');
+
 
         providerBtn.prop('disabled', true);
+        automaticQuoteBtn.prop('disabled', true);
 
 
         let v = {};
@@ -360,6 +368,8 @@
                         form.append(input);
 
                         providerBtn.prop('disabled', false);
+                        automaticQuoteBtn.prop('disabled', false);
+
                     }
 
                 },
@@ -391,6 +401,20 @@
                     providerBtn.prop('disabled', false);
                 }
             });
+
+        }
+
+        function automaticQuote() {
+
+            // open a new window by passing calculation_id as query param
+
+            let calculationId = $('#calculation_id').val();
+
+            if (calculationId) {
+                window.open("{{ route('user.automatic-quote.facias') }}?calculation_id=" + calculationId, '_blank');
+            } else {
+                alertError("{!! __('Primero calcule los materiales') !!}");
+            }
 
         }
     </script>

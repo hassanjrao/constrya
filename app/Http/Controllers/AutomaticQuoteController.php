@@ -50,7 +50,12 @@ class AutomaticQuoteController extends Controller
             'calculation_id' => 'required|numeric|exists:user_facias_calculations,id',
         ]);
 
-        $faciaCalculation = UserFaciasCalculation::find($request->calculation_id);
+
+        $faciaCalculation = UserFaciasCalculation::where('id', $request->calculation_id)->where('user_id', auth()->id())->first();
+
+        if (!$faciaCalculation) {
+            return abort(404, __("No calculation found"));
+        }
 
 
         // Instantiate mPDF
@@ -74,7 +79,13 @@ class AutomaticQuoteController extends Controller
             'calculation_id' => 'required|numeric|exists:user_flat_roof_calculations,id',
         ]);
 
-        $roofCalculation = UserFlatRoofCalculation::find($request->calculation_id);
+
+        $roofCalculation = UserFlatRoofCalculation::where('id', $request->calculation_id)->where('user_id', auth()->id())->first();
+
+        if (!$roofCalculation) {
+            return abort(404, __("No calculation found"));
+        }
+
 
 
         // Instantiate mPDF
