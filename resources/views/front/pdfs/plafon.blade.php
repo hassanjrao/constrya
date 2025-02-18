@@ -46,7 +46,7 @@
       <!-- Logo Header -->
       <div class="header">
         <!-- Replace 'logo.png' with your actual logo file name -->
-        <img src="{{ asset('images/logo.png') }}" alt="Logo">
+        <img src="{{ asset('media/logos/logo.png') }}"  alt="Logo">
     </div>
 
     <h2 class="header-title">{{ __('Calculadora de Plafón') }}</h2>

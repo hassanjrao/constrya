@@ -17,7 +17,7 @@
 <body>
     <!-- Header with Logo -->
     <div class="header">
-        <img src="{{ asset('media/logos/logo.png') }}" style="height: 50px;" alt="Logo">
+        <img src="{{ asset('media/logos/logo.png') }}"  alt="Logo">
     </div>
 
     <h2 style="text-align:center;">{{ __('Cálculo de SheetRock') }}</h2>
