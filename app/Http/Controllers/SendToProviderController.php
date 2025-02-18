@@ -35,7 +35,7 @@ class SendToProviderController extends Controller
 
         $this->sendToProviderS($pdfContent);
 
-        return response()->json(['message' => 'Emails sent to providers']);
+        return response()->json(['message' => __('Correos electrónicos enviados a proveedores.')]);
     }
 
 
@@ -71,7 +71,7 @@ class SendToProviderController extends Controller
         $this->sendToProviderS($pdfContent);
 
 
-        return response()->json(['message' => 'Emails sent to providers']);
+        return response()->json(['message' => __('Correos electrónicos enviados a proveedores.')]);
     }
 
     public function sendToProvidersFlatRoof(Request $request)
@@ -96,7 +96,7 @@ class SendToProviderController extends Controller
         $this->sendToProviderS($pdfContent);
 
 
-        return response()->json(['message' => 'Emails sent to providers']);
+        return response()->json(['message' => __('Correos electrónicos enviados a proveedores.')]);
     }
 
 
@@ -122,6 +122,6 @@ class SendToProviderController extends Controller
         $this->sendToProviderS($pdfContent);
 
 
-        return response()->json(['message' => 'Emails sent to providers']);
+        return response()->json(['message' => __('Correos electrónicos enviados a proveedores.')]);
     }
 }
