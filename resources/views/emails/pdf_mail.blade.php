@@ -1,1 +1,1 @@
-<p>Hello! Please find attached the PDF with your calculations.</p>
+<p>{{ __('¡Hola! Adjunto encontrará el PDF') }}</p>
