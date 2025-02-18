@@ -43,7 +43,7 @@ class AutomaticQuoteController extends Controller
 
 
 
-    public function automaticQuotesFacias(Request $request)
+    public function automaticQuoteFacias(Request $request)
     {
 
         $request->validate([
@@ -67,7 +67,7 @@ class AutomaticQuoteController extends Controller
             ->header('Content-Type', 'application/pdf');
     }
 
-    public function automaticQuotesFlatRoof(Request $request)
+    public function automaticQuoteFlatRoof(Request $request)
     {
 
         $request->validate([
@@ -92,7 +92,7 @@ class AutomaticQuoteController extends Controller
     }
 
 
-    public function automaticQuotesPlafon(Request $request)
+    public function automaticQuotePlafon(Request $request)
     {
 
         $request->validate([
