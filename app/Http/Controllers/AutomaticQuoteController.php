@@ -54,6 +54,10 @@ class AutomaticQuoteController extends Controller
     public function automaticQuoteFacias(Request $request)
     {
 
+
+        if(!userSubscribed()){
+            return abort(403, __("No tienes una suscripción activa."));
+        }
         $request->validate([
             'calculation_id' => 'nullable',
         ]);
@@ -82,6 +86,10 @@ class AutomaticQuoteController extends Controller
 
     public function automaticQuoteFlatRoof(Request $request)
     {
+
+        if(!userSubscribed()){
+            return abort(403, __("No tienes una suscripción activa."));
+        }
 
         $request->validate([
             'calculation_id' => 'nullable',
@@ -113,6 +121,10 @@ class AutomaticQuoteController extends Controller
 
     public function automaticQuotePlafon(Request $request)
     {
+
+        if(!userSubscribed()){
+            return abort(403, __("No tienes una suscripción activa."));
+        }
 
         $request->validate([
             'calculation_id' => 'nullable',
