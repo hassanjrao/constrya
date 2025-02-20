@@ -25,6 +25,32 @@ class AdminUserController extends Controller
         return view('admin.users.index',compact('users'));
     }
 
+    public function updateSubscription(Request $request){
+        $request->validate([
+            'user_id'=>'required|exists:users,id',
+        ]);
+
+        $user=User::find($request->user_id);
+
+        if($user->subscribed_at)
+        {
+            $user->update([
+                'subscribed_at'=>null,
+                'subcription_expired_at'=>null,
+                'subscribed_by_admin'=>0
+            ]);
+        }else{
+            $user->update([
+                'subscribed_at'=>now(),
+                'subcription_expired_at'=>now()->addYear(),
+                'subscribed_by_admin'=>1
+            ]);
+        }
+
+
+        return redirect()->back()->withToastSuccess('Subscription updated successfully');
+
+    }
 
     /**
      * Show the form for creating a new resource.

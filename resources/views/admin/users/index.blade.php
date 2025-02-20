@@ -37,6 +37,8 @@
                                 <th>Name</th>
                                 <th>Phone</th>
                                 <th>Email</th>
+                                <th>Subscribed</th>
+                                <th>Subscribed At</th>
                                 <th>Profession</th>
                                 <th>Plan</th>
                                 <th>Created At</th>
@@ -56,6 +58,26 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->phone }}</td>
                                     <td>{{ $user->email }}</td>
+
+                                    <td>
+                                        {{-- switch button --}}
+                                        <form id="formsub-{{ $user->id }}" method="POST"
+                                            action="{{ route('admin.users.updateSubscription') }}">
+                                            @csrf
+                                            <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox"
+                                                name="subscribed_at"
+                                                    id="{{ 'user_sub' . $user->id }}" 
+                                                    onchange="updateSubscription({{ $user->id }})"
+                                                    {{ $user->subscribed_at ? 'checked' : '' }}>
+                                                <label class="form-check-label"
+                                                    for="{{ 'user_sub' . $user->id }}">Subscribed</label>
+                                            </div>
+                                        </form>
+                                    </td>
+                                    <td>{{ $user->subscribed_at }}</td>
+
                                     <td>{{ $user->profession }}</td>
                                     <td>
                                         {{ $user->plan->name }}
@@ -68,8 +90,8 @@
                                             action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
                                             @method('DELETE')
                                             @csrf
-                                            <button type="button" onclick="confirmDelete({{ $user->id }})" class="btn btn-sm btn-danger" data-toggle="tooltip"
-                                                title="Delete">
+                                            <button type="button" onclick="confirmDelete({{ $user->id }})"
+                                                class="btn btn-sm btn-danger" data-toggle="tooltip" title="Delete">
                                                 <i class="fa fa-trash"></i>
                                             </button>
 
@@ -104,5 +126,13 @@
 
 @section('js_after')
 
+    <script>
+        function updateSubscription(id) {
+
+            var form = document.getElementById('formsub-' + id);
+            form.submit();
+
+        }
+    </script>
 
 @endsection

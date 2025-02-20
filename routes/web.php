@@ -90,6 +90,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','role:admin'])->group
     Route::get('', [AdminDashboardController::class, 'index'])->name('dashboard.index');
     Route::resource("profile", AdminProfileController::class)->only(["index", "update"]);
 
+    Route::post('users/update-subscription', [AdminUserController::class, 'updateSubscription'])->name('users.updateSubscription');
     Route::resource('users', AdminUserController::class);
     Route::resource('blogs', AdminBlogController::class);
 

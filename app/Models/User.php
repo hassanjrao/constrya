@@ -26,7 +26,8 @@ class User extends Authenticatable
         'plan_id',
         'subscription_id',
         'subscribed_at',
-        'subcription_expired_at'
+        'subcription_expired_at',
+        'subscribed_by_admin'
     ];
 
     /**
