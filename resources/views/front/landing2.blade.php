@@ -130,17 +130,15 @@
 
                             <div class="d-flex justify-content-end gap-3 mb-3">
 
-                                @if (userSubscribed())
-                                    <div class="d-flex justify-content-end gap-3 mt-3">
-                                        <button id="providerBtn" onclick="sendToProviders()" class="btn btn-alt-primary">
-                                            {{ __('Enviar a Proveedores') }}
-                                        </button>
-                                        <button id="automaticQuoteBtn" onclick="automaticQuote()"
-                                            class="btn btn-alt-info">
-                                            {{ __('Cotización automática') }}
-                                        </button>
-                                    </div>
-                                @endif
+                                <div class="d-flex justify-content-end gap-3 mt-3">
+                                    <button id="providerBtn" type="button" onclick="sendToProviders()" class="btn btn-alt-primary">
+                                        {{ __('Enviar a Proveedores') }}
+                                    </button>
+                                    <button id="automaticQuoteBtn" type="button" onclick="automaticQuote()" class="btn btn-alt-info">
+                                        {{ __('Cotización automática') }}
+                                    </button>
+                                </div>
+
                             </div>
 
                             <p class="alert alert-warning fw-semibold text-xs">
@@ -299,8 +297,8 @@
         const automaticQuoteBtn = $('#automaticQuoteBtn');
 
 
-        providerBtn.prop('disabled', true);
-        automaticQuoteBtn.prop('disabled', true);
+        // providerBtn.prop('disabled', true);
+        // automaticQuoteBtn.prop('disabled', true);
 
         // disable copy button and reset button
         // copyBtn.prop('disabled', true);
@@ -406,8 +404,13 @@
                 },
                 error: function(response) {
                     console.log('error', response);
-                    alertError('Error sending to providers');
                     providerBtn.prop('disabled', false);
+                    if(response.status==401){
+                        alertError("{!! __('Esta es una función paga, suscríbete para obtener acceso.') !!}");
+                        return
+                    }
+                    alertError(response.responseJSON.message);
+
                 }
             });
 
@@ -422,7 +425,8 @@
             if (calculationId) {
                 window.open("{{ route('user.automatic-quote.sheet-rock') }}?calculation_id=" + calculationId, '_blank');
             } else {
-                alertError("{!! __('Primero calcule los materiales') !!}");
+                alertError("{!! __('Esta es una función paga, suscríbete para obtener acceso.') !!}");
+
             }
 
         }

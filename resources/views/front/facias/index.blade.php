@@ -101,7 +101,7 @@
 
                             <div class="d-flex justify-content-end gap-3 mb-3">
                                 <input type="submit" value="{{ __('Calcular') }}" id="calculateBtn"
-                                class="btn btn-alt-success">
+                                    class="btn btn-alt-success">
                                 <input type="button" id='resetBtn' value="{{ __('Reiniciar') }}"
                                     class="btn btn-alt-secondary">
                                 <button id="copyBtn" type="button"
@@ -111,18 +111,16 @@
 
                             <div class="d-flex justify-content-end gap-3 mb-3">
 
-                                @if (userSubscribed())
-                                    <div class="d-flex justify-content-end gap-3 mt-3">
-                                        <button id="providerBtn" onclick="sendToProviders()" class="btn btn-alt-primary">
-                                            {{ __('Enviar a Proveedores') }}
-                                        </button>
+                                <div class="d-flex justify-content-end gap-3 mt-3">
+                                    <button id="providerBtn" type="button" onclick="sendToProviders()" class="btn btn-alt-primary">
+                                        {{ __('Enviar a Proveedores') }}
+                                    </button>
 
-                                        <button id="automaticQuoteBtn" onclick="automaticQuote()"
-                                            class="btn btn-alt-info">
-                                            {{ __('Cotización automática') }}
-                                        </button>
-                                    </div>
-                                @endif
+                                    <button id="automaticQuoteBtn" type="button" onclick="automaticQuote()" class="btn btn-alt-info">
+                                        {{ __('Cotización automática') }}
+                                    </button>
+                                </div>
+
                             </div>
                         </form>
 
@@ -263,9 +261,6 @@
         const automaticQuoteBtn = $('#automaticQuoteBtn');
 
 
-        providerBtn.prop('disabled', true);
-        automaticQuoteBtn.prop('disabled', true);
-
 
         let v = {};
 
@@ -399,8 +394,14 @@
                 },
                 error: function(response) {
                     console.log('error', response);
-                    alertError('Error sending to providers');
                     providerBtn.prop('disabled', false);
+                    if (response.status == 401) {
+                        alertError("{!! __('Esta es una función paga, suscríbete para obtener acceso.') !!}");
+
+                        return
+                    }
+                    alertError(response.responseJSON.message);
+
                 }
             });
 
@@ -415,7 +416,8 @@
             if (calculationId) {
                 window.open("{{ route('user.automatic-quote.facias') }}?calculation_id=" + calculationId, '_blank');
             } else {
-                alertError("{!! __('Primero calcule los materiales') !!}");
+                alertError("{!! __('Esta es una función paga, suscríbete para obtener acceso.') !!}");
+
             }
 
         }

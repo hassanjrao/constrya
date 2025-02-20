@@ -19,7 +19,7 @@ class SendToProviderController extends Controller
     public function __construct()
     {
         if(!userSubscribed()){
-            return response()->json(['message' => __('No tienes una suscripción activa.')], 403);
+            return response()->json(['message' => __('Esta es una función paga, suscríbete para obtener acceso.')], 403);
         }
     }
 

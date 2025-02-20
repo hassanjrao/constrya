@@ -389,7 +389,6 @@
                 toast: true,
                 position: "top-end",
                 showConfirmButton: false,
-                showCancelButton: true,
                 timer: 3000,
                 timerProgressBar: true,
                 didOpen: (toast) => {
