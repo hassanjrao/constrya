@@ -106,14 +106,14 @@
 
                                     <div class="col-lg-3 col-6">
                                         <label
-                                            class="text-uppercase fw-semibold small">{{ __('Cantidad de Angular') }}</label>
+                                            class="text-uppercase fw-semibold small">{{ __('Angular comercial') }}</label>
                                         <div id="angular_count" class="border w-100 text-center bg-white fw-semibold py-2">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-3 col-6">
                                         <label
-                                            class="text-uppercase fw-semibold small">{{ __('Cantidad de Suspensión') }}</label>
+                                            class="text-uppercase fw-semibold small">{{ __('Alambre dulce') }}</label>
                                         <div id="suspension_count"
                                             class="border w-100 text-center bg-white fw-semibold py-2">
                                         </div>

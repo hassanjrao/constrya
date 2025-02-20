@@ -92,8 +92,8 @@
     "Cantidad de Main Tee": "Number of Main Tee",
     "Cantidad de Cross Tee4": "Number of Cross Tee4",
     "Cantidad de Cross Tee2": "Number of Cross Tee2",
-    "Cantidad de Angular": "Number of Angular",
-    "Cantidad de Suspensión": "Number of Suspension",
+    "Angular comercial": "Number of Angular",
+    "Alambre dulce": "Number of Suspension",
     "Clavo Tipo L": "L Type Nail",
     "Fulminantes": "Fulminants",
     "Obtener cotización": "Get Quote",
@@ -178,5 +178,6 @@
     "¡Hola! Adjunto encontrará el PDF": "Hello! Attached you will find the PDF",
     "Cálculos de": "Calculations from",
     "No tienes una suscripción activa.": "You do not have an active subscription.",
-    "Actualizar": "Update"
+    "Actualizar": "Update",
+    "Muros de Sheetrock": "Sheetrock Walls"
 }

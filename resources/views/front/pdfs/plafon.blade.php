@@ -94,9 +94,9 @@
                 <td>{{ $plafonCalculation->cross_tee4_count }}</td>
             </tr>
             <tr>
-                <td class="label">{{ __('Cantidad de Angular') }}</td>
+                <td class="label">{{ __('Angular comercial') }}</td>
                 <td>{{ $plafonCalculation->angular_count }}</td>
-                <td class="label">{{ __('Cantidad de Suspensión') }}</td>
+                <td class="label">{{ __('Alambre dulce') }}</td>
                 <td>{{ $plafonCalculation->suspension_count }}</td>
                 <td class="label">{{ __('Clavo tipo L') }}</td>
                 <td>{{ $plafonCalculation->clavos_tipo_l }}</td>
