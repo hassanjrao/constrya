@@ -3,14 +3,12 @@
 if (!function_exists('userSubscribed')) {
     function userSubscribed()
     {
-        dd(auth()->check());
         if(!auth()->check()) {
             return false;
         }
 
         $user=auth()->user();
 
-        dd($user);
 
         if($user->subscribed_at) {
             return true;
