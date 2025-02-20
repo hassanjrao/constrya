@@ -182,14 +182,14 @@
         });
 
         function setDefaultValues() {
-            $('#panel_count').text('0.00');
-            $('#main_tee_count').text('0.00');
-            $('#cross_tee4_count').text('0.00');
-            $('#cross_tee2_count').text('0.00');
-            $('#angular_count').text('0.00');
-            $('#suspension_count').text('0.00');
-            $('#clavos_tipo_l').text('0.00');
-            $('#fulminantes').text('0.00');
+            $('#panel_count').text('0');
+            $('#main_tee_count').text('0');
+            $('#cross_tee4_count').text('0');
+            $('#cross_tee2_count').text('0');
+            $('#angular_count').text('0');
+            $('#suspension_count').text('0');
+            $('#clavos_tipo_l').text('0');
+            $('#fulminantes').text('0');
         }
 
         // $('input').keyup(function(e) {
@@ -240,14 +240,14 @@
                 success: function(response) {
                     console.log('success', response);
 
-                    $('#panel_count').text(response.panel_count.toFixed(2));
-                    $('#main_tee_count').text(response.main_tee_count.toFixed(2));
-                    $('#cross_tee4_count').text(response.cross_tee4_count.toFixed(2));
-                    $('#cross_tee2_count').text(response.cross_tee2_count.toFixed(2));
-                    $('#angular_count').text(response.angular_count.toFixed(2));
-                    $('#suspension_count').text(response.suspension_count.toFixed(2));
-                    $('#clavos_tipo_l').text(response.clavos_tipo_l.toFixed(2));
-                    $('#fulminantes').text(response.fulminantes.toFixed(2));
+                    $('#panel_count').text(response.panel_count);
+                    $('#main_tee_count').text(response.main_tee_count);
+                    $('#cross_tee4_count').text(response.cross_tee4_count);
+                    $('#cross_tee2_count').text(response.cross_tee2_count);
+                    $('#angular_count').text(response.angular_count);
+                    $('#suspension_count').text(response.suspension_count);
+                    $('#clavos_tipo_l').text(response.clavos_tipo_l);
+                    $('#fulminantes').text(response.fulminantes);
 
 
                     calculateBtn.prop('disabled', false);
