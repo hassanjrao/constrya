@@ -9,6 +9,8 @@ if (!function_exists('userSubscribed')) {
 
         $user=auth()->user();
 
+        dd($user);
+
         if($user->subscribed_at) {
             return true;
         }
