@@ -99,7 +99,7 @@
                                         name="corners" id="corners" class="form-control">
                                 </div>
                                 <div class="col-md-3 mb-3">
-                                    <label for="corner_pieces" class="form-label">{{ __('Piezas de esquina *') }}</label>
+                                    <label for="corner_pieces" class="form-label">{{ __('Esquineros *') }}</label>
                                     <select name="corner_pieces" id="corner_pieces" class="form-select">
                                         <option>Metal</option>
                                         <option>Plástico</option>

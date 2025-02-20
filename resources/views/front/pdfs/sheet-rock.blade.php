@@ -50,7 +50,7 @@
             <td>{{ $calculation->doors }}</td>
             <td><strong>{{ __('Esquinas') }}</strong></td>
             <td>{{ $calculation->corners }}</td>
-            <td><strong>{{ __('Piezas de esquina') }}</strong></td>
+            <td><strong>{{ __('Esquineros') }}</strong></td>
             <td>{{ $calculation->corner_pieces }}</td>
             <td><strong>{{ __('Interior/Exterior') }}</strong></td>
             <td>{{ $calculation->interior_exterior }}</td>
