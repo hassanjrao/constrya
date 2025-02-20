@@ -86,14 +86,27 @@
                             </div>
                             <div class="d-flex justify-content-end gap-3 mb-3">
 
+                                @if (userSubscribed())
                                     <div class="d-flex justify-content-end gap-3 mt-3">
-                                        <button id="providerBtn" type="button" onclick="sendToProviders()" class="btn btn-alt-primary">
+                                        <button id="providerBtn" type="button" onclick="sendToProviders()"
+                                            class="btn btn-alt-primary">
                                             {{ __('Enviar a Proveedores') }}
                                         </button>
-                                        <button id="automaticQuoteBtn" type="button" onclick="automaticQuote()" class="btn btn-alt-info">
+                                        <button id="automaticQuoteBtn" type="button" onclick="automaticQuote()"
+                                            class="btn btn-alt-info">
                                             {{ __('Cotización automática') }}
                                         </button>
                                     </div>
+                                @else
+                                    <div class="d-flex justify-content-end gap-3 mt-3">
+                                        <button type="button" onclick="showMessage()" class="btn btn-alt-primary">
+                                            {{ __('Enviar a Proveedores') }}
+                                        </button>
+                                        <button type="button" onclick="showMessage()" class="btn btn-alt-info">
+                                            {{ __('Cotización automática') }}
+                                        </button>
+                                    </div>
+                                @endif
 
                             </div>
 
@@ -202,6 +215,9 @@
         const automaticQuoteBtn = $('#automaticQuoteBtn');
 
 
+
+        providerBtn.prop('disabled', true);
+        automaticQuoteBtn.prop('disabled', true);
 
         let v = {};
 

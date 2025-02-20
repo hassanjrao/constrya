@@ -130,159 +130,165 @@
 
                             <div class="d-flex justify-content-end gap-3 mb-3">
 
-                                <div class="d-flex justify-content-end gap-3 mt-3">
-                                    <button id="providerBtn" type="button" onclick="sendToProviders()" class="btn btn-alt-primary">
-                                        {{ __('Enviar a Proveedores') }}
-                                    </button>
-                                    <button id="automaticQuoteBtn" type="button" onclick="automaticQuote()" class="btn btn-alt-info">
-                                        {{ __('Cotización automática') }}
-                                    </button>
-                                </div>
-
+                                @if (userSubscribed())
+                                    <div class="d-flex justify-content-end gap-3 mt-3">
+                                        <button id="providerBtn" type="button" onclick="sendToProviders()"
+                                            class="btn btn-alt-primary">
+                                            {{ __('Enviar a Proveedores') }}
+                                        </button>
+                                        <button id="automaticQuoteBtn" type="button" onclick="automaticQuote()"
+                                            class="btn btn-alt-info">
+                                            {{ __('Cotización automática') }}
+                                        </button>
+                                    </div>
+                                @else
+                                    <div class="d-flex justify-content-end gap-3 mt-3">
+                                        <button  type="button" onclick="showMessage()"
+                                            class="btn btn-alt-primary">
+                                            {{ __('Enviar a Proveedores') }}
+                                        </button>
+                                        <button  type="button" onclick="showMessage()"
+                                            class="btn btn-alt-info">
+                                            {{ __('Cotización automática') }}
+                                        </button>
+                                    </div>
+                                @endif
                             </div>
 
-                            <p class="alert alert-warning fw-semibold text-xs">
-                                {{ __('Las planchas correspondientes a los huecos de las puertas (1.89 m2 por puerta) no se están restando.') }}
-                            </p>
+                    </div>
+
+                    <p class="alert alert-warning fw-semibold text-xs">
+                        {{ __('Las planchas correspondientes a los huecos de las puertas (1.89 m2 por puerta) no se están restando.') }}
+                    </p>
 
 
 
-                            <div>
-                                <h3 class="fw-semibold text-sm mb-1">
-                                    {{ __('Materiales') }}
-                                </h3>
-                                <div class="border p-3">
-                                    <div class="row g-3">
-                                        <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
-                                            <span class="fw-bold text-xs text-capitalize">
-                                                {{ __('Durmientes') }}
-                                            </span>
-                                            <div id="sleepers"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
-                                            <span class="fw-bold text-xs text-capitalize">
-                                                {{ __('Tornillos') }}
-                                            </span>
-                                            <div id="screws"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
-                                            </div>
-                                            <span class="fw-bold ms-2 text-xs">
-                                                (lb)
-                                            </span>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
-                                            <div class="d-flex align-items-center">
-                                                <span class="fw-bold text-xs text-capitalize me-2">
-                                                    {{ __('Refuerzo de madera') }}
-                                                    <p class="text-xs text-danger fw-bold">( 1"x 2"x 8')</p>
-                                                </span>
-                                                <div id="wood_reinforcement"
-                                                    class="border p-2 ms-2 text-center text-sm fw-semibold reset">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
-                                            <span class="fw-bold text-xs text-capitalize">
-                                                {{ __('Montantes') }}
-                                            </span>
-                                            <div id="studs"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
-                                            <span class="fw-bold text-xs text-capitalize">
-                                                {{ __('Tornillos estructurales') }}
-                                            </span>
-                                            <div id="structural_screws"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
-                                            </div>
-                                            <span class="fw-bold ms-2 text-xs">
-                                                (lb)
-                                            </span>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
-                                            <span class="fw-bold text-xs text-capitalize">
-                                                {{ __('Paneles') }}
-                                            </span>
-                                            <div id="panels"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
-                                            <span class="fw-bold text-xs text-capitalize">
-                                                {{ __('Clavos') }}
-                                            </span>
-                                            <div id="nails"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
-                                            </div>
-                                            <span class="fw-bold ms-2 text-xs">
-                                                (Uds.)
-                                            </span>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
-                                            <span class="fw-bold text-xs text-capitalize">
-                                                {{ __('Masilla - Cubeta') }}
-                                            </span>
-                                            <div id="putty_bucket"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
-                                            <span class="fw-bold text-xs text-capitalize">
-                                                {{ __('Cintas') }}
-                                            </span>
-                                            <div id="tapes"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
-                                            <span class="fw-bold text-xs text-capitalize">
-                                                {{ __('Sujetadores') }}
-                                            </span>
-                                            <div id="fasteners"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
-                                            </div>
-                                            <span class="fw-bold ms-2 text-xs">
-                                                (Uds.)
-                                            </span>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
-                                            <span class="fw-bold text-xs text-capitalize">
-                                                {{ __('Cantoneras') }}
-                                            </span>
-                                            <div id="corner_beads"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
-                                            <span class="fw-bold text-xs text-capitalize">
-                                                {{ __('Cemento') }}
-                                            </span>
-                                            <div id="cement"
-                                                class="border p-2 ms-2 text-center text-sm fw-semibold reset">
-                                            </div>
+                    <div>
+                        <h3 class="fw-semibold text-sm mb-1">
+                            {{ __('Materiales') }}
+                        </h3>
+                        <div class="border p-3">
+                            <div class="row g-3">
+                                <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
+                                    <span class="fw-bold text-xs text-capitalize">
+                                        {{ __('Durmientes') }}
+                                    </span>
+                                    <div id="sleepers" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
+                                    <span class="fw-bold text-xs text-capitalize">
+                                        {{ __('Tornillos') }}
+                                    </span>
+                                    <div id="screws" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                    </div>
+                                    <span class="fw-bold ms-2 text-xs">
+                                        (lb)
+                                    </span>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fw-bold text-xs text-capitalize me-2">
+                                            {{ __('Refuerzo de madera') }}
+                                            <p class="text-xs text-danger fw-bold">( 1"x 2"x 8')</p>
+                                        </span>
+                                        <div id="wood_reinforcement"
+                                            class="border p-2 ms-2 text-center text-sm fw-semibold reset">
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
+                                    <span class="fw-bold text-xs text-capitalize">
+                                        {{ __('Montantes') }}
+                                    </span>
+                                    <div id="studs" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
+                                    <span class="fw-bold text-xs text-capitalize">
+                                        {{ __('Tornillos estructurales') }}
+                                    </span>
+                                    <div id="structural_screws"
+                                        class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                    </div>
+                                    <span class="fw-bold ms-2 text-xs">
+                                        (lb)
+                                    </span>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
+                                    <span class="fw-bold text-xs text-capitalize">
+                                        {{ __('Paneles') }}
+                                    </span>
+                                    <div id="panels" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
+                                    <span class="fw-bold text-xs text-capitalize">
+                                        {{ __('Clavos') }}
+                                    </span>
+                                    <div id="nails" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                    </div>
+                                    <span class="fw-bold ms-2 text-xs">
+                                        (Uds.)
+                                    </span>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
+                                    <span class="fw-bold text-xs text-capitalize">
+                                        {{ __('Masilla - Cubeta') }}
+                                    </span>
+                                    <div id="putty_bucket" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
+                                    <span class="fw-bold text-xs text-capitalize">
+                                        {{ __('Cintas') }}
+                                    </span>
+                                    <div id="tapes" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
+                                    <span class="fw-bold text-xs text-capitalize">
+                                        {{ __('Sujetadores') }}
+                                    </span>
+                                    <div id="fasteners" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                    </div>
+                                    <span class="fw-bold ms-2 text-xs">
+                                        (Uds.)
+                                    </span>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
+                                    <span class="fw-bold text-xs text-capitalize">
+                                        {{ __('Cantoneras') }}
+                                    </span>
+                                    <div id="corner_beads" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-3 d-flex align-items-center">
+                                    <span class="fw-bold text-xs text-capitalize">
+                                        {{ __('Cemento') }}
+                                    </span>
+                                    <div id="cement" class="border p-2 ms-2 text-center text-sm fw-semibold reset">
+                                    </div>
+                                </div>
                             </div>
-
-
-
-
-
-
-                        </form>
-                        <hr>
-                        <div class="section mt-5 mt-5">
-                            {!! $calculator->description !!}
                         </div>
-
                     </div>
+
+
+
+
+
+
+                    </form>
+                    <hr>
+                    <div class="section mt-5 mt-5">
+                        {!! $calculator->description !!}
+                    </div>
+
                 </div>
             </div>
         </div>
+    </div>
 
     </div>
     <!-- END Section #2 -->
@@ -297,8 +303,8 @@
         const automaticQuoteBtn = $('#automaticQuoteBtn');
 
 
-        // providerBtn.prop('disabled', true);
-        // automaticQuoteBtn.prop('disabled', true);
+        providerBtn.prop('disabled', true);
+        automaticQuoteBtn.prop('disabled', true);
 
         // disable copy button and reset button
         // copyBtn.prop('disabled', true);
@@ -405,7 +411,7 @@
                 error: function(response) {
                     console.log('error', response);
                     providerBtn.prop('disabled', false);
-                    if(response.status==401){
+                    if (response.status == 401) {
                         alertError("{!! __('Esta es una función paga, suscríbete para obtener acceso.') !!}");
                         return
                     }
