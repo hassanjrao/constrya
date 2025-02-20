@@ -15,12 +15,13 @@ class AutomaticQuoteController extends Controller
 
     public function __construct()
     {
-        if(!userSubscribed()){
-            return abort(403, __("No tienes una suscripción activa."));
-        }
     }
     public function automaticQuoteSheetRock(Request $request)
     {
+
+        if(!userSubscribed()){
+            return abort(403, __("No tienes una suscripción activa."));
+        }
         $request->validate([
             'calculation_id' => 'nullable',
         ]);
