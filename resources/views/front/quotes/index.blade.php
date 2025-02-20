@@ -7,6 +7,7 @@
 
 @section('content')
     <!-- Section #2 -->
+    <x-daily-price />
     <div class="content content-boxed content-full overflow-hidden">
         <div class="row justify-content-center">
             <div class="col-lg-12">

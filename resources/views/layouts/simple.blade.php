@@ -323,8 +323,8 @@
 
                 @endauth
 
-
                 <div class="push">
+
                     @yield('content')
                 </div>
 

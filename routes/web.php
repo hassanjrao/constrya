@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminProviderController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AutomaticQuoteController;
 use App\Http\Controllers\CalculatorController;
+use App\Http\Controllers\DailyPriceController;
 use App\Http\Controllers\FaciasCalculatorController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\FlatRoofCalculatorController;
@@ -96,5 +97,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','role:admin'])->group
 
 
     Route::resource('providers', AdminProviderController::class);
+
+    Route::post('daily-price', [DailyPriceController::class, 'update'])->name('daily-price.update');
 
 });

@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             MaterialSeeder::class,
             MemoryCalculationSeeder::class,
             ProviderSeeder::class,
+            DailyPriceSeeder::class,
         ]);
     }
 }

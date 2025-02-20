@@ -3,6 +3,7 @@
 
 @section('content')
     <!-- Section #2 -->
+    <x-daily-price />
     <div class="content content-boxed content-full overflow-hidden">
         <div class="row justify-content-center">
             <div class="col-lg-12">
@@ -13,11 +14,7 @@
                         </h1>
                     </div>
                     <div class="block-content block-content-full space-y-3">
-                        <p class="alert alert-secondary p-3 text-xs mb-5">
-                            {{ __('Esta herramienta ha sido diseñada para brindar un cálculo aproximado, teniendo en cuenta ciertos
-                                                                                                                                            parámetros estándar. Sin embargo, es importante tener en cuenta que cada instalación puede
-                                                                                                                                            presentar particularidades que no se consideran en este cálculo general.') }}
-                        </p>
+
                         <form class="ajaxform2" autocomplete="off" id="calForm" method="POST"
                             action="{{ route('flat-roof.calculate') }}">
                             @csrf
@@ -79,7 +76,7 @@
 
                             <div class="d-flex justify-content-end gap-3 mb-3">
                                 <input type="submit" value="{{ __('Calcular') }}" id="calculateBtn"
-                                class="btn btn-alt-success">
+                                    class="btn btn-alt-success">
                                 <input type="button" id='resetBtn' value="{{ __('Reiniciar') }}"
                                     class="btn btn-alt-secondary">
                                 <button id="copyBtn" type="button"
